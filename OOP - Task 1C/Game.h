@@ -11,6 +11,8 @@ class Game
 		const std::string& GetName() const;
 		const std::string& GetDescription() const;
 		int GetCost() const;
+		int GetAgeRating() const;
+
 	private:
 		std::string name;
 		std::string description;
