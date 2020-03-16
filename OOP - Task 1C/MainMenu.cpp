@@ -43,9 +43,6 @@ bool MainMenu::HandleChoice(const char choice)
 		else
 		{
 			LoginUserMenu("Login", app);
-			// this would need to go to a LoginMenu - similar to StoreMenu
-			// instead we just set logged in to true on the main app object
-			app->LogoutUser();
 		}
 		break;
 	} 
