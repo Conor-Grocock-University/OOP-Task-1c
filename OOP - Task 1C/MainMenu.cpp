@@ -1,4 +1,5 @@
 #include "MainMenu.h"
+#include "LoginUserMenu.h"
 
 MainMenu::MainMenu(const std::string& title, Application* app) : Menu(title, app)
 {
@@ -20,14 +21,15 @@ void MainMenu::OutputOptions()
 	}
 }
 
-bool MainMenu::HandleChoice(char choice)
+bool MainMenu::HandleChoice(const char choice)
 {
 	switch (choice)
 	{
 	case 'S':
 	{
 		StoreMenu("STORE", app);
-	} break;
+		break;
+	} 
 	case 'L':
 	{
 		if (app->IsUserLoggedIn())
@@ -40,11 +42,13 @@ bool MainMenu::HandleChoice(char choice)
 		}
 		else
 		{
+			LoginUserMenu("Login", app);
 			// this would need to go to a LoginMenu - similar to StoreMenu
 			// instead we just set logged in to true on the main app object
 			app->LogoutUser();
 		}
-	} break;
+		break;
+	} 
 	case 'P':
 	{
 		if (app->IsUserLoggedIn())
@@ -53,8 +57,14 @@ bool MainMenu::HandleChoice(char choice)
 			// this needs to go to a profile page - similar to StoreMenu
 			// notice the if - this only works if somebody is logged in
 		}
-	} break;
+	    break;
 	}
+    default:
+	    {
+		BlockingMessage("Undefined case");
+		break;
+	    };
+    }
 
 	return false;
 }

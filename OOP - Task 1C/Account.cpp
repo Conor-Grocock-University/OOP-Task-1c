@@ -12,3 +12,9 @@ Account::~Account()
 		delete users[i];
 	}
 }
+
+
+std::string Account::getEmail() const
+{
+	return email;
+}
