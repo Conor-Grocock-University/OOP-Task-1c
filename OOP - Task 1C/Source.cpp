@@ -37,7 +37,7 @@ void createHardcodedTestData()
 	u3->library[0] = new LibraryItem("2018-09-30", app.GetStore().games[6]);
 
 	// Make an account and attach the users
-	app.accounts.push_back(Account* ("alice@shu.com", "password", "2018-06-16"));
+	app.accounts.push_back(new Account("alice@shu.com", "password", "2018-06-16"));
 	app.accounts[0]->users[0] = u1;
 	app.accounts[0]->users[1] = u2;
 	app.accounts[0]->users[2] = u3;
