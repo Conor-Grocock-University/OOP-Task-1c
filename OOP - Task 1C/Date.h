@@ -1,12 +1,13 @@
 #pragma once
-#include <ctime>
-#include <time.h>
+#include <string>
 class Date {
 
 public:
 	Date(const std::string&);
 
+
 	static const Date CurrentDate(); // static function to get current date
+	const std::string ToFormattedString() const;
 	int GetDay() const;
 	int GetMonth() const;
 	int GetYear() const;
