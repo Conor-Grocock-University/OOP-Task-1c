@@ -21,7 +21,9 @@ class Application
 		bool LoginUser(const std::string& username, const std::string& password);
 		void LogoutUser();
 		
-		Account* accounts[1] = { }; // TODO: this needs changing to a dynamic collection
+		std::vector<Account> accounts;
+		//Account* accounts[1] = { }; // TODO: this needs changing to a dynamic collection
+		//std::vector<std::string> login(1);
 	private:
 		Store store;
 		Account* currentAccount;

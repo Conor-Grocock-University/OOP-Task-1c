@@ -40,6 +40,8 @@ Store& Application::GetStore()
 bool Application::LoginAccount(const std::string& email, const std::string& password)
 {
 	// TODO: This currently always logs you in as the first account
+
+	for(int i=0; i <= accounts.size();)
 	currentAccount = accounts[0];
 
 	return true;
