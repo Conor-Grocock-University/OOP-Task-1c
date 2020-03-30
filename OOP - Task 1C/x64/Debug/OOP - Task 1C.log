@@ -2,13 +2,11 @@
   Admin.cpp
   Application.cpp
   Date.cpp
-D:\UniYear2\OOP\Assignment 2\OOP-task-1c\OOP - Task 1C\Date.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Game.cpp
   LibraryItem.cpp
   Player.cpp
   Source.cpp
   Store.cpp
-  User.cpp
   Utils.cpp
   Generating Code...
-D:\UniYear2\OOP\Assignment 2\OOP-task-1c\OOP - Task 1C\Date.cpp(6): error C4716: 'Date::CurrentDate': must return a value
+  OOP - Task 1C.vcxproj -> D:\UniYear2\OOP\Assignment 2\OOP-task-1c\x64\Debug\OOP - Task 1C.exe

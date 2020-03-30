@@ -1,20 +1,21 @@
 #pragma once
-
+#include <ctime>
+#include <time.h>
 class Date {
 
 public:
 	Date(int day, int month, int year);
 
-	static int CurrentDate(); // static function to get current date
+	static const int CurrentDate(); // static function to get current date
 	int GetDay() const;
 	int GetMonth() const;
 	int GetYear() const;
-	int GetTimstamp() const;
+	//time_t GetTimstamp();
 
 private:
 	int day;
 	int month;
 	int year;
-	int timestamp;
+	//time_t timestamp;
 };
 
