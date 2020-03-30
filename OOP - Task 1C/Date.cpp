@@ -6,16 +6,13 @@
 #include <stdio.h>
 
 
-Date::Date(int day, int month, int year) : day(day), month(month), year(year)
+Date::Date(const std::string& date) : date(date)
 {
 }
 
-const int Date::CurrentDate()
+const Date Date::CurrentDate()
 {
-	time_t t = std::time(0); // getting current time
-	long int now = static_cast<long int> (t); // casting to int
-
-	return now; // returning current timestamp
+	return new Date("30/03/2020"); // returning current timestamp
 }
 
 int Date::GetDay() const
