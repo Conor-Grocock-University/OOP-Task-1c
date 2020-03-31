@@ -7,7 +7,8 @@ LoginUserMenu::LoginUserMenu(const std::string& title, Application* app) : Menu(
 
 void LoginUserMenu::OutputOptions()
 {
-    if (app->IsAccountLoggedIn()) {
+    if (app->IsAccountLoggedIn())
+    {
         for (int i = 0; i < 3; i++)
         {
             // adding 1 so the display is nicer for the user
@@ -27,5 +28,3 @@ bool LoginUserMenu::HandleChoice(char choice)
     if (!success) BlockingMessage("Incorrect password");
     return success;
 }
-
-

@@ -1,88 +1,87 @@
 #include "Menu.h"
 #include <iostream>
 
-Menu::Menu(const std::string& title, Application* app) : title_(title), app(app)
+Menu::Menu(const std::string& title, Application* app) : app(app), title_(title)
 {
 }
 
 void Menu::Paint()
 {
-	bool readyToGoBack = false;
+    bool readyToGoBack = false;
 
-	while (!readyToGoBack)
-	{
-		Header();
-		OutputOptions();
-		Line();
-		Option('B', "Back");
-		Footer();
+    while (!readyToGoBack)
+    {
+        Header();
+        OutputOptions();
+        Line();
+        Option('B', "Back");
+        Footer();
 
-		char choice = Utils::getCharFromUser();
+        const char choice = Utils::getCharFromUser();
 
-		if (choice == 'B')
-		{
-			readyToGoBack = true;
-		}
-		else
-		{
-			readyToGoBack = HandleChoice(choice);
-		}
-	}
+        if (choice == 'B')
+        {
+            readyToGoBack = true;
+        }
+        else
+        {
+            readyToGoBack = HandleChoice(choice);
+        }
+    }
 }
 
 void Menu::Line()
 {
-	std::cout << '\n';
+    std::cout << '\n';
 }
 
 void Menu::Line(const std::string& text)
 {
-	std::cout << "  " << text << "\n";
+    std::cout << "  " << text << "\n";
 }
 
 void Menu::Option(char id, const std::string& option)
 {
-	std::cout << "  " << id << ") " << option << '\n';
+    std::cout << "  " << id << ") " << option << '\n';
 }
 
 void Menu::Option(int id, const std::string& option)
 {
-	// shift the integer value up to the correct position in the ascii table
-	char ascii = id + '0';
-	Option(ascii, option);
+    // shift the integer value up to the correct position in the ascii table
+    const char ascii = id + '0';
+    Option(ascii, option);
 }
 
 std::string Menu::Question(const std::string& question)
 {
-	std::cout << "  " << question << ": ";
-	return Utils::getLineFromUser();
+    std::cout << "  " << question << ": ";
+    return Utils::getLineFromUser();
 }
 
 void Menu::BlockingMessage(const std::string& message)
 {
-	std::cout << "  " << message;
-	Utils::getLineFromUser();
+    std::cout << "  " << message;
+    Utils::getLineFromUser();
 }
 
-void Menu::Header()
+void Menu::Header() const
 {
-
 #if defined _WIN32 || defined _WIN64
-	// we are running on windows so use CLS to clear the screen
-	system("CLS");
+    // we are running on windows so use CLS to clear the screen
+    system("CLS");
 #else
 	// we are running on mac or linux so use CLEAR to clear the screen
 	system("CLEAR");
 #endif
 
-	std::cout << '\n';
-	std::cout << "  -= " << title_ << " =-  \n";
-	std::cout << '\n';
+    std::cout << '\n';
+    std::cout << "  -= " << title_ << " =-  \n";
+    std::cout << '\n';
 }
 
 void Menu::Footer()
 {
-	std::cout << '\n';
-	std::cout << '\n';
-	std::cout << "  >>> ";
+    std::cout << '\n';
+    std::cout << '\n';
+    std::cout << "  >>> ";
 }
