@@ -1,36 +1,37 @@
 #include "MainMenu.h"
 #include "LoginUserMenu.h"
+namespace Menu {
 
-MainMenu::MainMenu(const std::string& title, Application* app) : Menu(title, app)
-{
-    Paint(); // required in constructor
-}
-
-void MainMenu::OutputOptions()
-{
-    Option('S', "Browse Store");
-
-    if (app->IsUserLoggedIn())
+    MainMenu::MainMenu(const std::string& title, Application* app) : Menu(title, app)
     {
-        Option('P', "View Profile");
-        Option('L', "Logout");
+        Paint(); // required in constructor
     }
-    else
-    {
-        Option('L', "Login");
-    }
-}
 
-bool MainMenu::HandleChoice(const char choice)
-{
-    switch (choice)
+    void MainMenu::OutputOptions()
     {
-    case 'S':
+        Option('S', "Browse Store");
+
+        if (app->IsUserLoggedIn())
+        {
+            Option('P', "View Profile");
+            Option('L', "Logout");
+        }
+        else
+        {
+            Option('L', "Login");
+        }
+    }
+
+    bool MainMenu::HandleChoice(const char choice)
+    {
+        switch (choice)
+        {
+        case 'S':
         {
             StoreMenu("STORE", app);
             break;
         }
-    case 'L':
+        case 'L':
         {
             if (app->IsUserLoggedIn())
             {
@@ -46,7 +47,7 @@ bool MainMenu::HandleChoice(const char choice)
             }
             break;
         }
-    case 'P':
+        case 'P':
         {
             if (app->IsUserLoggedIn())
             {
@@ -56,12 +57,13 @@ bool MainMenu::HandleChoice(const char choice)
             }
             break;
         }
-    default:
+        default:
         {
             BlockingMessage("Undefined case");
             break;
         }
-    }
+        }
 
-    return false;
-}
+        return false;
+    }
+};

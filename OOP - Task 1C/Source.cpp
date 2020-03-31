@@ -84,7 +84,7 @@ void mainMenu()
 
     while (wantsToExit == false)
     {
-        MainMenu("Main", &app);
+        Menu::MainMenu("Main", &app);
     }
 }
 
@@ -95,7 +95,7 @@ void main()
 
     // TODO: app.Load();
 
-    MainMenu("Main", &app); // TODO: replace with proper menu system
+    Menu::MainMenu("Main", &app); // TODO: replace with proper menu system
 
     // TODO: app.Save();
 }
