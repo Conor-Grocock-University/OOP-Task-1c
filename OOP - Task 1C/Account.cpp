@@ -7,14 +7,20 @@ Account::Account(const std::string& email, const std::string& password, const st
 
 Account::~Account()
 {
-    for (int i = 0; i < 3; ++i)
-    {
-        delete users[i];
-    }
+	for (int i = 0; i < 3; ++i)
+	{
+		delete users[i];
+	}
 }
 
 
-std::string Account::getEmail() const
+// function to return a vector containing an email/password combination for validation
+const std::vector<std::string> Account::GetLoginCredentials() const
 {
-    return email;
+	std::vector<std::string> login(1); // creating a 2-item vector to store a username/password combination
+
+	login[0] = email;
+	login[1] = password;
+
+	return login;
 }

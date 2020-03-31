@@ -19,12 +19,6 @@
     <Filter Include="Source Files\User">
       <UniqueIdentifier>{eb2ce069-f216-4bb9-b2c5-e1a1fcdc69d9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Menu">
-      <UniqueIdentifier>{152e55b6-90dc-4817-afed-220d4b3657f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Menu">
-      <UniqueIdentifier>{6e3568ec-572f-4fdd-99c0-87954fe71207}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -57,18 +51,6 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="StoreMenu.cpp">
-      <Filter>Source Files\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="LoginUserMenu.cpp">
-      <Filter>Source Files\Menu</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -97,18 +79,6 @@
     </ClInclude>
     <ClInclude Include="Account.h">
       <Filter>Header Files\User</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Header Files\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="StoreMenu.h">
-      <Filter>Header Files\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="LoginUserMenu.h">
-      <Filter>Header Files\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

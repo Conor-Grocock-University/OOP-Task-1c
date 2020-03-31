@@ -17,13 +17,14 @@ public:
 
     Store& GetStore();
 
-    bool LoginAccount(const std::string& email, const std::string& password);
-    bool LoginUser(const std::string& username, const std::string& password);
-    void LogoutUser();
+		bool LoginAccount(const std::string& email, const std::string& password);
+		bool LoginUser(const std::string& username, const std::string& password);
+		void LogoutUser();
+		
+		std::vector<Account* > accounts;
 
-    Account* accounts[1] = {}; // TODO: this needs changing to a dynamic collection
-private:
-    Store store;
-    Account* currentAccount;
-    User* currentUser;
+	private:
+		Store store;
+		Account* currentAccount;
+		User* currentUser;
 };
