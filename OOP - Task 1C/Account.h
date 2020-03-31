@@ -9,6 +9,8 @@ class Account
 		Account(const std::string&, const std::string&, const std::string&);
 		~Account();
 		User* users[3] = { }; // TODO: replace with custom List<T> class
+
+        std::string getEmail() const;
 	private:
 		std::string email;
 		std::string password;
