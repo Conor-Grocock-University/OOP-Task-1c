@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "List.h"
 
 Application::Application() : currentAccount(nullptr), currentUser(nullptr)
 {
