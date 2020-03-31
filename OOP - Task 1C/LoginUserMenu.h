@@ -7,5 +7,9 @@ namespace Menu {
         LoginUserMenu(const std::string& title, Application* app);
         void OutputOptions() final;
         bool HandleChoice(char choice) final;
+        bool processUserSelection(char choice);
+        bool processAccountSelection(char choice);
+        void presentUsers();
+        void presentAccounts();
     };
 };

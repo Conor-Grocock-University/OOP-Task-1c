@@ -9,16 +9,34 @@ namespace Menu {
     void LoginUserMenu::OutputOptions()
     {
         if (app->IsAccountLoggedIn())
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                // adding 1 so the display is nicer for the user
-                Option(i + 1, app->GetCurrentAccount()->users[i]->GetUsername());
-            }
-        }
+            presentUsers();
+        else
+            presentAccounts();
     }
 
     bool LoginUserMenu::HandleChoice(char choice)
+    {
+
+        if (app->IsAccountLoggedIn())
+            return processUserSelection(choice);
+        
+        return processAccountSelection(choice);
+    }
+
+
+    bool LoginUserMenu::processAccountSelection(char choice)
+    {
+        const int selected = choice - '1';
+
+        const std::string* email = &app->accounts[selected]->getEmail();
+        const std::string password = Question("Password");
+
+        const bool success = app->LoginAccount(*email, password);
+        if (!success) BlockingMessage("Incorrect password");
+        return success;
+    }
+
+    bool LoginUserMenu::processUserSelection(char choice)
     {
         const int selected = choice - '1';
 
@@ -28,5 +46,22 @@ namespace Menu {
         const bool success = app->LoginUser(*username, password);
         if (!success) BlockingMessage("Incorrect password");
         return success;
+    }
+
+    void LoginUserMenu::presentUsers()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            // adding 1 so the display is nicer for the user
+            Option(i + 1, app->GetCurrentAccount()->users[i]->GetUsername());
+        }
+    }
+
+    void LoginUserMenu::presentAccounts()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            Option(i + 1, app->accounts[i]->getEmail());
+        }
     }
 };
