@@ -42,41 +42,7 @@ void createHardcodedTestData()
     app.accounts[0]->users[0] = u1;
     app.accounts[0]->users[1] = u2;
     app.accounts[0]->users[2] = u3;
-
-    // TODO: We need a login menu for accounts, for now we log in the only account
-    app.LoginAccount("alice@shu.ac.uk", "password");
 }
-
-//void loginUserMenu()
-//{
-//	bool readyToGoBack = false;
-//
-//	while (readyToGoBack == false)
-//	{
-//		/*int choice = showLoginUserMenuAndGetUserChoice(app.GetCurrentAccount());*/
-//
-//		switch (choice)
-//		{
-//			case 'B': {
-//				readyToGoBack = true;
-//			} break;
-//			default: {
-//				int index = choice - '1';
-//
-//				if (index >= 0 && index < 3) // TODO: Hardcoded numbers, change when using List<T>
-//				{
-//					std::string username = app.GetCurrentAccount()->users[index]->GetUsername();
-//
-//					std::cout << "  Enter password for " << username << ": ";
-//					if (app.LoginUser(username, Utils::getLineFromUser()))
-//					{
-//						readyToGoBack = true;
-//					}
-//				}
-//			} break;
-//		}
-//	}
-//}
 
 void mainMenu()
 {
