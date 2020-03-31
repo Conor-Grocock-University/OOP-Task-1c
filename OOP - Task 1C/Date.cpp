@@ -10,19 +10,25 @@ Date::Date(std::string date)
 	size_t pos = 0;
 	std::string dates[3] = {}; // creating a fixed 3 item array of strings which will be the day / month / year
 	int i = 0; // incrementor
+	try
+	{
+		while ((pos = date.find(delimiter)) != std::string::npos) { // while there are "/" characters in the string
+			dates[i] = date.substr(0, pos); // storing the first, second & third split strings in the array
+			date.erase(0, pos + delimiter.length()); // removing the first position of the string (DD/MM/YYYY becomes MM/YYYY etc.)
 
-	while ((pos = date.find(delimiter)) != std::string::npos) { // while there are "/" characters in the string
-		dates[i] = date.substr(0, pos); // storing the first, second & third split strings in the array
-		date.erase(0, pos + delimiter.length()); // removing the first position of the string (DD/MM/YYYY becomes MM/YYYY etc.)
-
-		i++;
+			i++;
+		}
+	
+		// storing correct dates in variables
+		day = std::stoi(dates[0]);
+		month = std::stoi(dates[1]);
+		year = std::stoi(dates[2]);
+		CheckDates(); // checking to see if the dates are valid
 	}
-
-	// storing correct dates in variables
-	day = std::stoi(dates[0]);
-	month = std::stoi(dates[1]);
-	year = std::stoi(dates[2]);
-	CheckDates(); // checking to see if the dates are valid
+	catch (...) // catching any exceptions (if the dates aren't numbers for example)
+	{
+		std::cout << "ERROR PARSING DATES!";
+	}
 }
 
 // destructor
@@ -82,18 +88,18 @@ bool Date::CheckDay()
 Date* Date::CurrentDate()
 {
 	time_t rawtime; // creating time obj (usually a timestamp)
-	struct tm* currentDate; // creating currentDate obj
+	struct tm* dateStruct; // creating currentDate obj
 	char buffer[80];		// creating a large enough buffer
 
 	time(&rawtime);
-	currentDate = localtime(&rawtime);
+	dateStruct = localtime(&rawtime);
 
-	strftime(buffer, sizeof(buffer), "%d/%m/%Y", currentDate); // formatting time into DD/MM/YYYY format
+	strftime(buffer, sizeof(buffer), "%d/%m/%Y", dateStruct); // formatting time into DD/MM/YYYY format
 	std::string dateString(buffer);   // converting to string
 
-	 date = new Date(dateString); // creating new date object (ptr)
+	 currentDate = new Date(dateString); // creating new date object (ptr)
 
-	return date; // returning current date object
+	return currentDate; // returning current date object
 }
 
 const int Date::GetYear() 

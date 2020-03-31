@@ -19,6 +19,6 @@ private:
 	int day;
 	int month;
 	int year;
-	static Date* currentDate;
+	static Date* currDate;
 };
 
