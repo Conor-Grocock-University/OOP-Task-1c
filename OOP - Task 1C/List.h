@@ -138,12 +138,10 @@ T& List<T>::operator [] (int index)
 
     for (Node<T>* pn = head; pn != nullptr; pn = pn->next)
     {
-        if (size < index){
-            size++;
-        }
-        if (size == index) {
+        if (size == index){
             return pn->item;
         }
+        size++;
     }
 }
 
