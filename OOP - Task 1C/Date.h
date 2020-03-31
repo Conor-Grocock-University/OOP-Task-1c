@@ -13,12 +13,13 @@ public:
 	bool CheckMonth();
 	bool CheckDay();
 	const int GetYear();
-	
+	const int GetMonth();
+	const int GetDay();
 private:
 
 	int day;
 	int month;
 	int year;
-	static Date* currDate;
+	static Date* currentDate;
 };
 

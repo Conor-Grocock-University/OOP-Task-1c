@@ -107,6 +107,14 @@ const int Date::GetYear()
 {
 	return year;
 }
+const int Date::GetMonth()
+{
+	return month;
+}
+const int Date::GetDay()
+{
+	return day;
+}
 const std::string Date::ToFormattedString() const
 {
 	return std::to_string(day) + "/" + std::to_string(month) + "/" + std::to_string(year); // formatting to "DD/MM/YYYY"
