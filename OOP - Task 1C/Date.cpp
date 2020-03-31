@@ -1,6 +1,7 @@
 #include "Date.h"
 #include <string>
 #include <iostream>
+#include <ctime>
 
 Date::Date(std::string date)
 {
@@ -28,9 +29,22 @@ Date::~Date()
 {
 } 
 
-const Date Date::CurrentDate()
+Date* Date::CurrentDate()
 {
-	return Date; // returning current timestamp
+
+	time_t rawtime; // creating time obj (usually a timestamp)
+	struct tm* currentDate; // creating currentDate obj
+	char buffer[80];		// creating a large enough buffer
+
+	time(&rawtime);
+	currentDate = localtime(&rawtime);
+
+	strftime(buffer, sizeof(buffer), "%d/%m/%Y", currentDate); // formatting time into DD/MM/YYYY format
+	std::string dateString(buffer);   // converting to string
+
+	Date* date = new Date(dateString); // creating new date object (ptr)
+
+	return date; // returning current date object
 }
 
 

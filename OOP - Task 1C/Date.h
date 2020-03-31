@@ -6,7 +6,7 @@ public:
 
 	Date(std::string);
 	~Date();
-	static const Date CurrentDate(); // static function to get current date
+	static Date* CurrentDate(); // static function to get current date
 	const std::string ToFormattedString() const;
 	
 private:
