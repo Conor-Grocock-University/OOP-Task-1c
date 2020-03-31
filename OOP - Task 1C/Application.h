@@ -22,8 +22,7 @@ class Application
 		void LogoutUser();
 		
 		std::vector<Account* > accounts;
-		//Account* accounts[1] = { }; // TODO: this needs changing to a dynamic collection
-		//std::vector<std::string> login(1);
+
 	private:
 		Store store;
 		Account* currentAccount;
