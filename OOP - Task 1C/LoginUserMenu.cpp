@@ -28,7 +28,7 @@ namespace Menu {
     {
         const int selected = choice - '1';
 
-        const std::string* email = &app->accounts[selected]->getEmail();
+        const std::string* email = &app->accounts[selected]->GetLoginCredentials()[0];
         const std::string password = Question("Password");
 
         const bool success = app->LoginAccount(*email, password);
@@ -61,7 +61,7 @@ namespace Menu {
     {
         for (int i = 0; i < 1; i++)
         {
-            Option(i + 1, app->accounts[i]->getEmail());
+            Option(i + 1, app->accounts[i]->GetLoginCredentials()[0]);
         }
     }
 };
