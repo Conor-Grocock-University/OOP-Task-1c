@@ -48,11 +48,6 @@ Date::Date(char date[])
 
 }
 
-// destructor
-Date::~Date()
-{
-} 
-
 // validity checks for dates
 bool Date::CheckDates()
 {

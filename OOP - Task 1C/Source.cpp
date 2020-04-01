@@ -24,9 +24,9 @@ void createHardcodedTestData()
 	app.GetStore().games[8] = new Game("Brothers", "Split your brain into two thumbs.", 799, 15);
 
 	// Create some users
-	Player* u1 = new Admin("Alice", "password", "2018-06-16");
-	Player* u2 = new Player("Bob", "password", "2018-09-19");
-	Player* u3 = new Player("Charlie", "password", "2018-09-24");
+	Player* u1 = new Admin("Alice", "password", new Date("2018-06-16"));
+	Player* u2 = new Player("Bob", "password", new Date("2018-09-19"));
+	Player* u3 = new Player("Charlie", "password", new Date("2018-09-24"));
 
 	// With some games in their library
 	u1->library[0] = new LibraryItem("2018-06-17", app.GetStore().games[7]);
