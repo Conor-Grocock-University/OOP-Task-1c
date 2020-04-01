@@ -61,7 +61,7 @@ namespace Menu {
 
     void LoginUserMenu::presentAccounts()
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < app->accounts.length(); i++)
         {
             Option(i + 1, app->accounts[i]->GetLoginCredentials()[0]);
         }
