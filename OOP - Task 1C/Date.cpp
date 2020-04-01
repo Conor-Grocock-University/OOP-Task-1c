@@ -15,7 +15,7 @@ Date::Date(char date[])
 	try
 	{
 		for (int i = 0; i < length; i++) {
-			if (date[i] == '/') { // if the next char is '/'
+			if (date[i] == '/' || date[i] == '-') { // if the next char is '/'
 				sepCount++;
 				countFromSep = 0;
 				continue;	// continue looping
