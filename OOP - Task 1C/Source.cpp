@@ -48,16 +48,6 @@ void createHardcodedTestData()
 	app.LoginAccount("alice@shu.ac.uk", "password");
 }
 
-void mainMenu()
-{
-    const bool wantsToExit = false;
-
-    while (wantsToExit == false)
-    {
-        Menu::MainMenu("Main", &app);
-    }
-}
-
 void main()
 {
     // TODO: Remove call to dummy data, instead use Load and Save
