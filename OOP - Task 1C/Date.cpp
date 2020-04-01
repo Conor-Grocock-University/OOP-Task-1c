@@ -3,33 +3,49 @@
 #include <iostream>
 #include <ctime>
 
-Date::Date(std::string date)
+Date::Date(char date[])
 {
-	std::string delimiter = "/"; // creating a delimiter that will be used to split the string
+	int length = 10; // hardcoded length value as the date should only be 10 characters DD/MM/YYYY
+	int sepCount = 0; // increments when a '/' is found
+	int countFromSep = 0; // increments each loop
+	char dayCh[2];
+	char monthCh[2];
+	char yearCh[4];
 
-	size_t pos = 0;
-	std::string dates[3] = {}; // creating a fixed 3 item array of strings which will be the day / month / year
-	int i = 0; // incrementor
 	try
 	{
-		while ((pos = date.find(delimiter)) != std::string::npos) { // while there are "/" characters in the string
-			dates[i] = date.substr(0, pos); // storing the first, second & third split strings in the array
-			date.erase(0, pos + delimiter.length()); // removing the first position of the string (DD/MM/YYYY becomes MM/YYYY etc.)
+		for (int i = 0; i < length; i++) {
+			if (date[i] == '/') { // if the next char is '/'
+				sepCount++;
+				countFromSep = 0;
+				continue;	// continue looping
+			}
 
-			i++;
+			switch (sepCount) {
+			case 0: {
+				dayCh[countFromSep] = date[i]; // storing day 
+			}
+			case 1: {
+				monthCh[countFromSep] = date[i]; // storing month
+			}
+			case 2: {
+				yearCh[countFromSep] = date[i]; // storing year
+
+			}
+				  countFromSep++;
+			}
 		}
-	
-		// storing correct dates in variables
-		day = std::stoi(dates[0]);
-		month = std::stoi(dates[1]);
-		year = std::stoi(dates[2]);
-		currentDate = CurrentDate(); // creating an instance of current date
-		CheckDates(); // checking to see if the dates are valid
+
+		/* converting chars to int */
+		day = atoi(dayCh);
+		month = atoi(monthCh);
+		year = atoi(yearCh);
 	}
-	catch (...) // catching any exceptions (if the dates aren't numbers for example)
+	catch (...) // catching any exception
 	{
-		std::cout << "ERROR PARSING DATES!";
+		std::cout << "ERROR PARSING DATES"; 
 	}
+
 }
 
 // destructor

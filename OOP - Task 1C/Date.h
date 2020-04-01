@@ -4,7 +4,7 @@ class Date {
 
 public:
 
-	Date(std::string);
+	Date(char[]);
 	~Date();
 	static Date* CurrentDate(); // static function to get current date
 	const std::string ToFormattedString() const;
