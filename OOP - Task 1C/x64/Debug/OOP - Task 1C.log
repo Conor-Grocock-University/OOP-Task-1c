@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  Account.cpp
   Admin.cpp
   Application.cpp
@@ -10,3 +11,9 @@
   Utils.cpp
   Generating Code...
   OOP - Task 1C.vcxproj -> D:\UniYear2\OOP\Assignment 2\OOP-task-1c\x64\Debug\OOP - Task 1C.exe
+=======
+﻿  Application.cpp
+C:\Users\lawre\OneDrive - Sheffield Hallam University\Software Engineering year 2\OOP\OOP-GP-2\OOP-task-1c\OOP - Task 1C\List.h(146): warning C4715: 'List<Account *>::operator[]': not all control paths return a value
+C:\Users\lawre\OneDrive - Sheffield Hallam University\Software Engineering year 2\OOP\OOP-GP-2\OOP-task-1c\OOP - Task 1C\List.h(146): warning C4715: 'List<User *>::operator[]': not all control paths return a value
+  OOP - Task 1C.vcxproj -> C:\Users\lawre\OneDrive - Sheffield Hallam University\Software Engineering year 2\OOP\OOP-GP-2\OOP-task-1c\x64\Debug\OOP - Task 1C.exe
+>>>>>>> better-handling-of-collections

@@ -1,15 +1,16 @@
 #include "Application.h"
 
+
 Application::Application() : currentAccount(nullptr), currentUser(nullptr)
 {
 }
 
 Application::~Application()
 {
-    for (int i = 0; i < 1; ++i)
-    {
-        delete accounts[i];
-    }
+	for (int i = 0; i < accounts.length(); ++i)
+	{
+		delete accounts[i];
+	}
 }
 
 bool Application::IsUserLoggedIn() const

@@ -7,8 +7,8 @@ Player::Player(const std::string& username, const std::string& password, const s
 
 Player::~Player()
 {
-    for (int i = 0; i < 2; ++i)
-    {
-        delete library[i];
-    }
+	for (int i = 0; i < library.length(); ++i)
+	{
+		delete library[i];
+	}
 }
