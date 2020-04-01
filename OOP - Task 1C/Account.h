@@ -9,6 +9,7 @@ class Account
 {
 	public:
 		Account(const std::string&, const std::string&, const Date&);
+		~Account();
 		User* users[3] = { }; // TODO: replace with custom List<T> class
 	private:
 		std::string email;
