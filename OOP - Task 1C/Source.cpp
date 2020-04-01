@@ -43,9 +43,6 @@ void createHardcodedTestData()
 	app.accounts[0]->users.addAtEnd(u1);
 	app.accounts[0]->users.addAtEnd(u2);
 	app.accounts[0]->users.addAtEnd(u3);
-
-	// TODO: We need a login menu for accounts, for now we log in the only account
-	app.LoginAccount("alice@shu.ac.uk", "password");
 }
 
 void main()

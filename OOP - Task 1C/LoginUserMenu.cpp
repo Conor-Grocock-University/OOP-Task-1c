@@ -28,11 +28,13 @@ namespace Menu {
     {
         const int selected = choice - '1';
 
-        const std::string* email = &app->accounts[selected]->GetLoginCredentials()[0];
+        const std::string email = app->accounts[selected]->GetLoginCredentials()[0];
         const std::string password = Question("Password");
 
-        const bool success = app->LoginAccount(*email, password);
+        const bool success = app->LoginAccount(email, password);
         if (!success) BlockingMessage("Incorrect password");
+
+        LoginUserMenu("Select user", app);
         return success;
     }
 

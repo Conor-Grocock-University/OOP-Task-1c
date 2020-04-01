@@ -40,7 +40,7 @@ Store& Application::GetStore()
 
 bool Application::LoginAccount(const std::string& email, const std::string& password)
 {
-	for (int i = 0; i <= accounts.size(); i++) // looping through vector to verify login credentials
+	for (int i = 0; i <= accounts.length() - 1; i++) // looping through vector to verify login credentials
 	{
 		Account* temp = accounts[i]; // temp account for looping
 		std::vector<std::string> logins = temp->GetLoginCredentials();
