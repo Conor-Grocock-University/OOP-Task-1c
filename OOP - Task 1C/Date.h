@@ -8,6 +8,7 @@ public:
 	~Date();
 	static Date* CurrentDate(); // static function to get current date
 	const std::string ToFormattedString() const;
+	int GetDaysInMonth();
 	bool CheckDates();
 	bool CheckYear();
 	bool CheckMonth();

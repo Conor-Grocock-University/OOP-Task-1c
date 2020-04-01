@@ -83,38 +83,42 @@ bool Date::CheckMonth()
 
 bool Date::CheckDay()
 {
-	if (day == 0) { return false; }
-	else if (month == 4 || month == 6 || month == 9 || month == 11) // if month is April, June, Sep or Nov
-	{
-		if (day <= 30) { return true; }
-		else { return false; }
-	}
-	else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) // if month is Jan, Mar, May, Jul, Aug, Oct or Dec
-	{
-		if (day <= 31) { return true; }
-		else { return true; }
-	}
-	else if (month == 2) // if month is Feb
-	{
-		if (day <= 29) { return true; }
-		else { return false; }
-	}
+	if (day >= 1 && day <= GetDaysInMonth()) { return true; }
 	else { return false; }
+}
+
+/*Function to get the days in each month */
+int Date::GetDaysInMonth()
+{
+	//leap year condition, if month is feb
+	if (month ==  2)
+	{
+		if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))
+			return 29;
+		else
+			return 28;
+	}
+	//months which have 30 days
+	else if (month == 4 || month == 6 || month == 9 || month == 11)
+		return 30;
+	else
+		return 31; // all other months have 30 days
 }
 
 Date* Date::CurrentDate()
 {
 	time_t rawtime; // creating time obj (usually a timestamp)
 	struct tm* dateStruct; // creating currentDate obj
-	char buffer[80];		// creating a large enough buffer
+	char buffer[11];		// creating a large enough buffer
 
 	time(&rawtime);
 	dateStruct = localtime(&rawtime);
 
 	strftime(buffer, sizeof(buffer), "%d/%m/%Y", dateStruct); // formatting time into DD/MM/YYYY format
-	std::string dateString(buffer);   // converting to string
+	
 
-	 currentDate = new Date(dateString); // creating new date object (ptr)
+
+	 currentDate = new Date(buffer); // creating new date object (ptr)
 
 	return currentDate; // returning current date object
 }
