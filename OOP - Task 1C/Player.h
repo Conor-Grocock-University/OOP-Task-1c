@@ -3,7 +3,6 @@
 #include <string>
 #include "LibraryItem.h"
 #include "User.h"
-#include "Date.h"
 #include "List.h"
 
 class Player : public User
