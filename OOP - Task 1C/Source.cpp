@@ -5,6 +5,7 @@
 #include "User.h"
 #include "Player.h"
 #include "Admin.h"
+#include "DataParser.h"
 #include "Utils.h"
 #include "MainMenu.h"
 
@@ -38,10 +39,10 @@ void createHardcodedTestData()
     u3->library[0] = new LibraryItem("2018-09-30", app.GetStore().games[6]);
 
     // Make an account and attach the users
-    app.accounts[0] = new Account("alice@shu.com", "password", "2018-06-16");
+    app.accounts.push_back(new Account("alice@shu.com", "password", "2018-06-16"));
     app.accounts[0]->users[0] = u1;
-    app.accounts[0]->users[1] = u2;
-    app.accounts[0]->users[2] = u3;
+    //app.accounts[0]->users[1] = u2;
+    //app.accounts[0]->users[2] = u3;
 }
 
 void mainMenu()
@@ -59,9 +60,11 @@ void main()
     // TODO: Remove call to dummy data, instead use Load and Save
     createHardcodedTestData();
 
-    // TODO: app.Load();
+    data::DataParser dp;
+    dp.parseFile();
+    //app.load();
 
-    Menu::MainMenu("Main", &app); // TODO: replace with proper menu system
+    ////Menu::MainMenu("Main", &app); // TODO: replace with proper menu system
 
-    // TODO: app.Save();
+    //app.save();
 }

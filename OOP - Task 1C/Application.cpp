@@ -1,5 +1,9 @@
 #include "Application.h"
 
+#include <fstream>
+#include <iostream>
+#include "DataParser.h"
+
 Application::Application() : currentAccount(nullptr), currentUser(nullptr)
 {
 }
@@ -65,3 +69,12 @@ void Application::LogoutUser()
 {
     currentUser = nullptr;
 }
+
+void Application::load() const
+{
+}
+
+void Application::save()
+{
+}
+

@@ -24,3 +24,8 @@ const std::vector<std::string> Account::GetLoginCredentials() const
 
 	return login;
 }
+
+std::string Account::getEmail() const
+{
+	return email;
+}
