@@ -24,24 +24,24 @@ void createHardcodedTestData()
 	app.GetStore().games[8] = new Game("Brothers", "Split your brain into two thumbs.", 799, 15);
 
 	// Create some users
-	Player* u1 = new Admin("Alice", "password", Date("2018-06-16"));
-	Player* u2 = new Player("Bob", "password", Date("2018-09-19"));
-	Player* u3 = new Player("Charlie", "password", Date("2018-09-24"));
+	Player* u1 = new Admin("Alice", "password", Date("16-09-2018"));
+	Player* u2 = new Player("Bob", "password", Date("13-09-2018"));
+	Player* u3 = new Player("Charlie", "password", Date("24-09-2018"));
 
 	// With some games in their library
-	u1->library[0] = new LibraryItem(Date("2018-06-17"), app.GetStore().games[7]);
-	u1->library[0] = new LibraryItem(Date("2018-06-18"), app.GetStore().games[1]);
-	u2->library[0] = new LibraryItem(Date("2018-09-19"), app.GetStore().games[2]);
-	u2->library[0] = new LibraryItem(Date("2018-09-19"), app.GetStore().games[3]);
-	u3->library[0] = new LibraryItem(Date("2018-09-24"), app.GetStore().games[3]);
-	u3->library[0] = new LibraryItem(Date("2018-09-30"), app.GetStore().games[6]);
+	u1->library[0] = new LibraryItem(Date("17-09-2019"), app.GetStore().games[7]);
+	u1->library[0] = new LibraryItem(Date("18-06-2018"), app.GetStore().games[1]);
+	u2->library[0] = new LibraryItem(Date("19-09-2018"), app.GetStore().games[2]);
+	u2->library[0] = new LibraryItem(Date("19-09-2018"), app.GetStore().games[3]);
+	u3->library[0] = new LibraryItem(Date("24-09-2018"), app.GetStore().games[3]);
+	u3->library[0] = new LibraryItem(Date("30-09-2018"), app.GetStore().games[6]);
 
 	// Make an account and attach the users
 	app.accounts[0] = new Account("alice@shu.com", "password", Date("2018-06-16"));
 	app.accounts[0]->users[0] = u1;
 	app.accounts[0]->users[1] = u2;
 	app.accounts[0]->users[2] = u3;
-
+	
 	// TODO: We need a login menu for accounts, for now we log in the only account
 	app.LoginAccount("alice@shu.ac.uk", "password");
 }

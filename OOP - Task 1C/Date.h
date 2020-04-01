@@ -5,9 +5,10 @@ class Date {
 public:
 
 	Date(char[]);
-	static Date* CurrentDate(); // static function to get current date
+	static Date CurrentDate(); // static function to get current date
 	const std::string ToFormattedString() const;
 	int GetDaysInMonth();
+	int GetCurrentYear();
 	bool CheckDates();
 	bool CheckYear();
 	bool CheckMonth();
@@ -20,6 +21,5 @@ private:
 	int day;
 	int month;
 	int year;
-	static Date* currentDate;
 };
 

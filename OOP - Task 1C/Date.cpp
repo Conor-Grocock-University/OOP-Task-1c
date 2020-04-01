@@ -2,15 +2,15 @@
 #include <string>
 #include <iostream>
 #include <ctime>
-
+#include <cstdlib>
 Date::Date(char date[])
 {
 	int length = 10; // hardcoded length value as the date should only be 10 characters DD/MM/YYYY
 	int sepCount = 0; // increments when a '/' is found
 	int countFromSep = 0; // increments each loop
-	char dayCh[2];
-	char monthCh[2];
-	char yearCh[4];
+	char dayCh[1];
+	char monthCh[1];
+	char yearCh[3];
 
 	try
 	{
@@ -40,6 +40,7 @@ Date::Date(char date[])
 		day = atoi(dayCh);
 		month = atoi(monthCh);
 		year = atoi(yearCh);
+
 	}
 	catch (...) // catching any exception
 	{
@@ -67,7 +68,7 @@ bool Date::CheckDates()
 
 bool Date::CheckYear()
 {
-	if (year > currentDate->GetYear()) { return true; } // if the year is after the current year (in the future)
+	if (year > GetCurrentYear()) { return true; } // if the year is after the current year (in the future)
 	else { return false; }
 }
 bool Date::CheckMonth()
@@ -100,7 +101,15 @@ int Date::GetDaysInMonth()
 		return 31; // all other months have 30 days
 }
 
-Date* Date::CurrentDate()
+int Date::GetCurrentYear()
+{
+	struct tm newtime;
+	time_t now = time(0);
+	localtime_s(&newtime, &now);
+	return 	newtime.tm_year + 1900;
+
+}
+Date Date::CurrentDate()
 {
 	struct tm newtime;
 	time_t now = time(0);
@@ -122,7 +131,7 @@ Date* Date::CurrentDate()
 	dates[9] = (year % 10) + '0';
 
 
-	 currentDate = new Date(dates); // creating new date object (ptr)
+	Date currentDate = Date(dates); // creating new date object (ptr)
 
 	return currentDate; // returning current date object
 }

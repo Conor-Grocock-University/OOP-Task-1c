@@ -10,5 +10,5 @@ class LibraryItem
 		~LibraryItem();
 	private:
 		const Game *game;
-		const Date purchased;  // TODO: replace with custom Date class, currently YYYY-MM-DD
+		const Date purchased; 
 };
