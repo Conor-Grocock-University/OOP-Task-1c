@@ -8,9 +8,9 @@ Date::Date(char date[])
 	int length = 10; // hardcoded length value as the date should only be 10 characters DD/MM/YYYY
 	int sepCount = 0; // increments when a '/' is found
 	int countFromSep = 0; // increments each loop
-	char dayCh[1];
-	char monthCh[1];
-	char yearCh[3];
+	char dayCh[1] = "";
+	char monthCh[1] = "";
+	char yearCh[3] = "";
 
 	try
 	{
