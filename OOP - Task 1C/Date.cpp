@@ -107,18 +107,27 @@ int Date::GetDaysInMonth()
 
 Date* Date::CurrentDate()
 {
-	time_t rawtime; // creating time obj (usually a timestamp)
-	struct tm* dateStruct; // creating currentDate obj
-	char buffer[11];		// creating a large enough buffer
+	struct tm newtime;
+	time_t now = time(0);
+	localtime_s(&newtime, &now);
+	int month = 1 + newtime.tm_mon;
+	int day = newtime.tm_mday;
+	int year = newtime.tm_year + 1900;
+	char dates[10];
 
-	time(&rawtime);
-	dateStruct = localtime(&rawtime);
+	dates[0] = (day / 10) + '0';
+	dates[1] = (day % 10) + '0';
+	dates[2] = '/';
+	dates[3] = (month / 10) + '0';
+	dates[4] = (month % 10) + '0';
+	dates[5] = '/';
+	dates[6] = (year / 1000) + '0';
+	dates[7] = (year / 100) % 10 + '0';
+	dates[8] = (year / 10) % 10 + '0';
+	dates[9] = (year % 10) + '0';
 
-	strftime(buffer, sizeof(buffer), "%d/%m/%Y", dateStruct); // formatting time into DD/MM/YYYY format
-	
 
-
-	 currentDate = new Date(buffer); // creating new date object (ptr)
+	 currentDate = new Date(dates); // creating new date object (ptr)
 
 	return currentDate; // returning current date object
 }
