@@ -12,3 +12,13 @@ Player::~Player()
 		delete library[i];
 	}
 }
+
+int Player::GetCredit()
+{
+	return credit;
+}
+
+void Player::AddCredit(int deposit)
+{
+	credit += deposit;
+}
