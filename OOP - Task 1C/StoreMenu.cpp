@@ -8,15 +8,27 @@ namespace Menu {
 
     void StoreMenu::OutputOptions()
     {
-        for (int i = 0; i < games.size(); i++)
+        if (searchedGames == nullptr) // if there are no searched games
         {
-            // adding 1 so the display is nicer for the user
-            Option(i + 1, games[i]);
-        }
+            for (int i = 0; i < app->GetStore().games.length(); i++)
+            {
+                // adding 1 so the display is nicer for the user
+                Option(i + 1, app->GetStore().games[i]->GetName());
+            }
 
-        Line();
-        Option('N', "Search By Name");
-        Option('P', "Search By Price");
+            Line();
+            Option('N', "Search By Name");
+            Option('P', "Search By Price");
+        }
+        else
+        {
+            for (int i = 0; i < searchedGames.length(); i++)
+            {
+                // adding 1 so the display is nicer for the user
+                Option(i + 1, searchedGames[i]->GetName());
+            }
+
+        }
     }
 
 
@@ -27,7 +39,7 @@ namespace Menu {
         // this reverses the + 1 above and lets us do the range check below
         const int index = choice - '1';
 
-        if (index >= 0 && index < games.size())
+        if (index >= 0 && index < app->GetStore().games.length())
         {
             BlockingMessage("Not implemented, press return to continue");
             // go to game detail page
@@ -36,8 +48,8 @@ namespace Menu {
         switch (choice)
         {
             case 'N':
-
-                
+                searchedGames = app->GetStore().SearchByName(Question("Enter Game Title")); // populating the store menus list of games with the searched games
+                OutputOptions();
                 break;
             case 'P':
                 break;
