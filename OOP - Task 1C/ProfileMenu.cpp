@@ -1,36 +1,47 @@
 #include "ProfileMenu.h"
 #include "LoginUserMenu.h"
 
-Menu::ProfileMenu::ProfileMenu(const std::string username, Application* app) :Menu(username, app)
-{
-    Paint(); // required in constructor
-}
-
-void Menu::ProfileMenu::OutputOptions()
-{
-    Option('A', "Add credit");
-
-
-
-
-}
-
-bool Menu::ProfileMenu::HandleChoice(char choice)
-{
-    switch (choice)
+namespace Menu{
+    ProfileMenu::ProfileMenu(const std::string username, Application* app) :Menu(username, app)
     {
+        Paint(); // required in constructor
 
+    }
 
-       case 'A':
-          // app->accounts.
-           return true;
-           break;
+    
+    
+    void ProfileMenu::OutputOptions()
+    {
+        Player* player = (Player*)app->GetCurrentUser();
+        
+        std::cout << "Credit: " << char(156) << player->GetCredit() << "\n";
+        Option('T', "Deposit 10 Pounds");
+        Option('F', "Deposit 50 Pounds");
+        Option('O', "Deposit 100 Pounds");
+    }
+
+    bool ProfileMenu::HandleChoice(char choice)
+    {
+        Player* player = (Player*)app->GetCurrentUser();
+        switch (choice)
+        {
+        case 'T':
+            player->AddCredit(10);
+            break;
+        case 'F':
+            player->AddCredit(50);
+            break;
+        case 'O':
+            player->AddCredit(100);
+            break;
         default:
         {
             BlockingMessage("Undefined case");
             break;
         }
 
+        }
+        return false;
     }
-}
 
+};
