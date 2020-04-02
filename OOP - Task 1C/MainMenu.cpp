@@ -48,7 +48,7 @@ namespace Menu {
             else if (app->IsAccountLoggedIn())
             {
                 const std::string answer = Question("Logout of Account?");
-                if (answer == "Y" || answer == "Y")
+                if (answer == "y" || answer == "Y")
                 {
                     app->LogoutAccount();
                 }
