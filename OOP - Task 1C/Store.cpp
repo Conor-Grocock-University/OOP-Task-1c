@@ -26,3 +26,16 @@ List<Game*> Store::SearchByName(std::string &searchText)
 	return searchedGames;
 }
 
+List<Game*> Store::SearchByPriceRange(int& min, int& max)
+{
+	List<Game*> searchedGames;
+	for (int i = 0; i < games.length(); i++)
+	{
+		if (Utils::withinPriceRange(min, max, games[i]->GetCost()))
+		{
+			searchedGames.addInFront(games[i]);
+		}
+	}
+
+	return searchedGames;
+}
