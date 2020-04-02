@@ -14,13 +14,8 @@ Account::~Account()
 }
 
 
-// function to return a vector containing an email/password combination for validation
-const std::vector<std::string> Account::GetLoginCredentials() const
+// function to return a struct containing an email/password combination for validation
+const AccountLogins Account::GetAccountLogins() const
 {
-	std::vector<std::string> login(2); // creating a 2-item vector to store a username/password combination
-
-	login[0] = email;
-	login[1] = password;
-
-	return login;
+	return { email, password };
 }
