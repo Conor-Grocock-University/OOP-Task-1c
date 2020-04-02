@@ -15,8 +15,10 @@ namespace Menu {
         }
 
         Line();
-        Option('S', "Search Store");
+        Option('N', "Search By Name");
+        Option('P', "Search By Price");
     }
+
 
     bool StoreMenu::HandleChoice(char choice)
     {
@@ -30,10 +32,14 @@ namespace Menu {
             BlockingMessage("Not implemented, press return to continue");
             // go to game detail page
         }
+
         switch (choice)
         {
-            case 'S':
+            case 'N':
 
+                
+                break;
+            case 'P':
                 break;
         }
         return false;
