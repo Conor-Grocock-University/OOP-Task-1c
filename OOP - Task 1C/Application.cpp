@@ -41,11 +41,10 @@ Store& Application::GetStore()
 bool Application::LoginAccount(const std::string& email, const std::string& password)
 {
 	for (int i = 0; i <= accounts.length() - 1; i++) // looping through vector to verify login credentials
-	{
-		Account* temp = accounts[i]; // temp account for looping
-		std::vector<std::string> logins = temp->GetLoginCredentials();
+	{		
+		AccountLogins logins = accounts[i]->GetAccountLogins();
 
-		if (email == logins[0] && password == logins[1])
+		if (email == logins.email && password == logins.password)
 		{
 			currentAccount = accounts[i]; // set current account only if credentials are correct
 			return true; // return true if login credentials match
@@ -56,10 +55,18 @@ bool Application::LoginAccount(const std::string& email, const std::string& pass
 
 bool Application::LoginUser(const std::string& username, const std::string& password)
 {
-    // TODO: This currently always logs you in as the first user
-    currentUser = currentAccount->users[0];
 
-    return true;
+	for (int i = 0; i <= currentAccount->users.length() - 1; i++)
+	{
+		UserLogins logins = currentAccount->users[i]->GetUserLogins(); // getting user logins
+
+		if (username == logins.username && password == logins.password)
+		{
+			currentUser = currentAccount->users[i];
+			return true;
+		}
+	}
+    return false;
 }
 
 void Application::LogoutUser()
