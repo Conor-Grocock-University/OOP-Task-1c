@@ -52,6 +52,12 @@ namespace Menu {
                 OutputOptions();
                 break;
             case 'P':
+                // storing question outputs in local variable as can't pass through 2 calls to the question 
+                int min;
+                int max;
+
+                searchedGames = app->GetStore().SearchByPriceRange(Utils::toInt(Question("Enter Minimum Value")), Utils::toInt(Question("Enter Maximum Value")));
+                OutputOptions();
                 break;
         }
         return false;
