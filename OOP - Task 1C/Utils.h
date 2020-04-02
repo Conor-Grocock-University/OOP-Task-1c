@@ -11,5 +11,6 @@ public:
     static char getCharFromUser();
     static bool startsWith(std::string&, std::string);
     static std::string toUpper(std::string& text);
+    static bool withinPriceRange(int&, int&, int);
     // TODO: 1 versions of ToUpper
 };
