@@ -11,5 +11,4 @@ class Store
 		List<Game*> SearchByName(std::string&);
 		List<Game*> games;
 	private:
-		std::string& gameName;
 };
