@@ -52,7 +52,7 @@ namespace Menu {
 
     void LoginUserMenu::presentUsers()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < app->GetCurrentAccount()->users.length(); i++)
         {
             // adding 1 so the display is nicer for the user
             Option(i + 1, app->GetCurrentAccount()->users[i]->GetUsername());
