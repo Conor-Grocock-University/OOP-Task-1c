@@ -13,6 +13,9 @@ namespace Menu {
             // adding 1 so the display is nicer for the user
             Option(i + 1, games[i]);
         }
+
+        Line();
+        Option('S', "Search Store");
     }
 
     bool StoreMenu::HandleChoice(char choice)
@@ -27,7 +30,12 @@ namespace Menu {
             BlockingMessage("Not implemented, press return to continue");
             // go to game detail page
         }
+        switch (choice)
+        {
+            case 'S':
 
+                break;
+        }
         return false;
     }
 };
