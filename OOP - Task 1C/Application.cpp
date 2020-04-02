@@ -66,3 +66,8 @@ void Application::LogoutUser()
 {
     currentUser = nullptr;
 }
+
+void Application::LogoutAccount()
+{
+	currentAccount = nullptr;
+}

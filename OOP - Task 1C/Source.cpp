@@ -43,6 +43,11 @@ void createHardcodedTestData()
 	app.accounts[0]->users.addAtEnd(u1);
 	app.accounts[0]->users.addAtEnd(u2);
 	app.accounts[0]->users.addAtEnd(u3);
+
+	app.accounts.addInFront(new Account("chris@shu.com", "ballsack", "13-09-2020"));
+	app.accounts[0]->users.addAtEnd(u3);
+	app.accounts[0]->users.addAtEnd(u1);
+	app.accounts[0]->users.addAtEnd(u2);
 }
 
 void main()
