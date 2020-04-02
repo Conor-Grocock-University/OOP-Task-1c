@@ -26,6 +26,9 @@ bool Utils::startsWith(std::string& searchText, std::string gameName)
 bool Utils::withinPriceRange(int& min, int& max, int gamePrice)
 {
 	return ((gamePrice - max) * (gamePrice - min) <= 0); // if the price is within the range of min and max values
-
 }
 
+int Utils::toInt(std::string& number)
+{
+	return std::stoi(number);
+}
