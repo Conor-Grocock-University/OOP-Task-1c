@@ -1,7 +1,7 @@
 #include "Account.h"
 
-Account::Account(const std::string& email, const std::string& password, const std::string& created)
-    : email(email), password(password), created(created)
+Account::Account(const std::string& email, const std::string& password, const Date& created)
+	: email(email), password(password), created(created)
 {
 }
 
@@ -12,7 +12,6 @@ Account::~Account()
 		delete users[i];
 	}
 }
-
 
 // function to return a struct containing an email/password combination for validation
 const AccountLogins Account::GetAccountLogins() const
