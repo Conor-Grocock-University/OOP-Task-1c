@@ -1,17 +1,28 @@
 #pragma once
 
 #include <string>
-#include "Player.h"
 #include <vector>
+
+#include "Player.h"
 #include "Date.h"
+#include "List.h"
+
+struct AccountLogins
+{
+	std::string email;
+	std::string password;
+};
 
 class Account
 {
+	
 	public:
 		Account(const std::string&, const std::string&, const Date&);
 		~Account();
-		User* users[3] = { }; // TODO: replace with custom List<T> class
+		const AccountLogins GetAccountLogins() const; // creating a vector which will contain a users username/password for validation
+		List<User*> users;
 	private:
+		
 		std::string email;
 		std::string password;
 		Date created;  

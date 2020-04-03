@@ -13,3 +13,9 @@ const std::string& User::GetUsername() const
 {
 	return username;
 }
+
+const UserLogins User::GetUserLogins() const
+{
+
+	return { username, password };
+}
