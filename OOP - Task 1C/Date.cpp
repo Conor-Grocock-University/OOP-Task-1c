@@ -3,14 +3,14 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-Date::Date(char date[])
+Date::Date(const char date[])
 {
 	int length = 10; // hardcoded length value as the date should only be 10 characters DD/MM/YYYY
 	int sepCount = 0; // increments when a '/' is found
 	int countFromSep = 0; // increments each loop
-	char dayCh[1] = "";
-	char monthCh[1] = "";
-	char yearCh[3] = "";
+	char dayCh[2] = "";
+	char monthCh[2] = "";
+	char yearCh[4] = "";
 
 	try
 	{
@@ -23,12 +23,15 @@ Date::Date(char date[])
 
 			switch (sepCount) {
 			case 0: {
+					assert(countFromSep < 2);
 				dayCh[countFromSep] = date[i]; // storing day 
 			}
 			case 1: {
+					assert(countFromSep < 2);
 				monthCh[countFromSep] = date[i]; // storing month
 			}
 			case 2: {
+					assert(countFromSep < 4);
 				yearCh[countFromSep] = date[i]; // storing year
 
 			}
