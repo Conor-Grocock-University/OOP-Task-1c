@@ -1,5 +1,6 @@
 #include "MainMenu.h"
 #include "LoginUserMenu.h"
+#include "ProfileMenu.h"
 namespace Menu {
 
     MainMenu::MainMenu(const std::string& title, Application* app) : Menu(title, app)
@@ -35,7 +36,7 @@ namespace Menu {
         {
             if (app->IsUserLoggedIn())
             {
-                const std::string answer = Question("Are you sure?");
+                const std::string answer = Question("Are you sure? Y/N");
                 if (answer == "y" || answer == "Y")
                 {
                     app->LogoutUser();
@@ -51,9 +52,13 @@ namespace Menu {
         {
             if (app->IsUserLoggedIn())
             {
-                BlockingMessage("Not implemented, press return to continue");
+               /* BlockingMessage("Not implemented, press return to continue");
                 // this needs to go to a profile page - similar to StoreMenu
                 // notice the if - this only works if somebody is logged in
+                */
+                   
+                ProfileMenu(app->GetCurrentUser()->GetUsername(),app);
+             
             }
             break;
         }

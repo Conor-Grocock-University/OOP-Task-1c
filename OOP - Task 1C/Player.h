@@ -11,5 +11,10 @@ class Player : public User
 		Player(const std::string&, const std::string&, const std::string&);
 		~Player();
 		List<LibraryItem*> library;
+		//Player* getUser
+		int GetCredit();
+		void AddCredit(int deposit);
+		bool BuyGame(Game* game);
 	private:
+		int credit = 0;
 };

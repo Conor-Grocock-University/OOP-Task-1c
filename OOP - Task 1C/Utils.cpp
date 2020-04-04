@@ -1,4 +1,5 @@
 #include "Utils.h"
+#include <cstdio>
 
 std::string Utils::getLineFromUser()
 {
@@ -11,3 +12,5 @@ char Utils::getCharFromUser()
 {
     return toupper(getLineFromUser()[0]);
 }
+
+

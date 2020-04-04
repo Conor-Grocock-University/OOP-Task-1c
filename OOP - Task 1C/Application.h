@@ -15,7 +15,7 @@ public:
     bool IsUserLoggedIn() const;
     Account* GetCurrentAccount() const;
     User* GetCurrentUser() const;
-
+	
     Store& GetStore();
 
 		bool LoginAccount(const std::string& email, const std::string& password);
