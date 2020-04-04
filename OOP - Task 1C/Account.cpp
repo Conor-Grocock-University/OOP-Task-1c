@@ -18,3 +18,8 @@ const AccountLogins Account::GetAccountLogins() const
 {
 	return { email, password };
 }
+
+List<User*> Account::GetUsers()
+{
+	return users;
+}

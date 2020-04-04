@@ -20,10 +20,12 @@ class Account
 		Account(const std::string&, const std::string&, const Date&);
 		~Account();
 		const AccountLogins GetAccountLogins() const; // creating a vector which will contain a users username/password for validation
+		List<User*> GetUsers();
 		List<User*> users;
 	private:
 		
 		std::string email;
 		std::string password;
 		Date created;  
+
 };
