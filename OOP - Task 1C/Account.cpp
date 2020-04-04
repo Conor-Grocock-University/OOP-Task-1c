@@ -36,7 +36,7 @@ void Account::AddAdmin(const std::string& username, const std::string& password)
 User* Account::GetUser(const std::string& username)
 {
 	User* user = nullptr;
-	for (int i = 0; i <= users.length(); i++)
+	for (int i = 0; i <= users.length() - 1; i++)
 	{
 		if (users[i]->GetUserLogins().username == username)
 		{
@@ -46,4 +46,7 @@ User* Account::GetUser(const std::string& username)
 	return user;
 }
 
-
+void Account::DeletePlayer(User* user)
+{
+	users.deleteOne(user);
+}

@@ -25,6 +25,8 @@ class Account
 		void AddPlayer(const std::string&, const std::string&);
 		void AddAdmin(const std::string&, const std::string&);
 		User* GetUser(const std::string&);
+		void DeletePlayer(User*);
+
 		List<User*> users;
 	private:
 		
