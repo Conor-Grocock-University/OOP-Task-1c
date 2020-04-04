@@ -29,13 +29,25 @@ void Utils::recursiveToUpper(char* str)
 
 std::string Utils::toLowerString(std::string& str)
 {
-	for (int i = 0; str[i] != '\0'; i++)
+	for (int i = 0; str[i] != '\0'; i++) // for each time that str[index] is not null (end of string)
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')    //checking for uppercase characters
-			str[i] = str[i] + 32;         //converting uppercase to lowercase
+		if (str[i] >= 'A' && str[i] <= 'Z')    // checking for uppercase characters
+			str[i] = str[i] + 32;         // converting uppercase to lowercase
 	}
+	return str; 
+}
+
+std::string Utils::toUpperString(std::string& str)
+{
+	for (int i = 0; str[i] != '\0'; i++)	// for each time that str[index] is not end of string
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')   //checking for lowercase characters
+			str[i] = str[i] - 32;        // converting lowercase to uppercase
+	}
+
 	return str;
 }
+
 
 
 bool Utils::startsWith(std::string& searchText, std::string gameName)
