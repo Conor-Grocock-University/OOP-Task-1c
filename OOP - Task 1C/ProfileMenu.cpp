@@ -50,6 +50,8 @@ namespace Menu {
 			if (answer == "Y" || answer == "y")
 			{
 				app->GetCurrentAccount()->AddAdmin(username, password); // creating new admin
+				BlockingMessage("Player " + username + " created!");
+
 			}
 			///TODO: Admin controls
 			else
