@@ -63,11 +63,13 @@ public:
     void deleteOne(const T&);                // delete first occurrence of item
     int length() const;                      // return length
     bool contains(const T&) const;           // check if an item is in list
+
 private:
     Node<T>* head;                           // point onto first item (nullptr if empty)
     Node<T>* end() const;                    // return address of last item (nullptr if empty)
-    void destroy();                          // delete all items in list
     void copy(const List<T>&);               // make a deep copy of the list
+    void destroy();                          // delete all items in list
+
 };
 
 // List implementation

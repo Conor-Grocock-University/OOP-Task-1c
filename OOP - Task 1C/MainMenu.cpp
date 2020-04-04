@@ -17,6 +17,10 @@ namespace Menu {
             Option('P', "View Profile");
             Option('L', "Logout");
         }
+        else if (app->IsAccountLoggedIn())
+        {
+            Option('L', "Logout of Account");
+        }
         else
         {
             Option('L', "Login");
@@ -40,6 +44,14 @@ namespace Menu {
                 if (answer == "y" || answer == "Y")
                 {
                     app->LogoutUser();
+                }
+            }
+            else if (app->IsAccountLoggedIn())
+            {
+                const std::string answer = Question("Logout of Account?");
+                if (answer == "y" || answer == "Y")
+                {
+                    app->LogoutAccount();
                 }
             }
             else

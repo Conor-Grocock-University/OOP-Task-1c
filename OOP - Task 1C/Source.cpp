@@ -25,24 +25,29 @@ void createHardcodedTestData()
 	app.GetStore().games.addAtEnd(new Game("NUVAVULT", "A game where 2D and 3D collide.", 299, 18));
 	app.GetStore().games.addAtEnd(new Game("Brothers", "Split your brain into two thumbs.", 799, 15));
 
-    // Create some users
-    Player* u1 = new Admin("Alice", "password", "2018-06-16");
-    Player* u2 = new Player("Bob", "password", "2018-09-19");
-    Player* u3 = new Player("Charlie", "password", "2018-09-24");
+	// Create some users
+	Player* u1 = new Admin("Alice", "password", Date("16-09-2018"));
+	Player* u2 = new Player("Bob", "password", Date("13-09-2018"));
+	Player* u3 = new Player("Charlie", "password", Date("24-09-2018"));
 
 	// With some games in their library
-	u1->library.addInFront(new LibraryItem("2018-06-17", app.GetStore().games[7]));
-	u1->library.addInFront(new LibraryItem("2018-06-18", app.GetStore().games[1]));
-	u2->library.addInFront(new LibraryItem("2018-09-19", app.GetStore().games[2]));
-	u2->library.addInFront( new LibraryItem("2018-09-19", app.GetStore().games[3]));
-	u3->library.addInFront(new LibraryItem("2018-09-24", app.GetStore().games[3]));
-	u3->library.addInFront( new LibraryItem("2018-09-30", app.GetStore().games[6]));
+	u1->library.addAtEnd(new LibraryItem(Date("17-09-2019"), app.GetStore().games[7]));
+	u1->library.addAtEnd(new LibraryItem(Date("18-06-2018"), app.GetStore().games[1]));
+	u2->library.addAtEnd(new LibraryItem(Date("19-09-2018"), app.GetStore().games[2]));
+	u2->library.addAtEnd(new LibraryItem(Date("19-09-2018"), app.GetStore().games[3]));
+	u3->library.addAtEnd(new LibraryItem(Date("24-09-2018"), app.GetStore().games[3]));
+	u3->library.addAtEnd(new LibraryItem(Date("30-09-2018"), app.GetStore().games[6]));
 
 	// Make an account and attach the users
-	app.accounts.addInFront(new Account("alice@shu.com", "password", "2018-06-16"));
+	app.accounts.addAtEnd(new Account("alice@shu.com", "password", Date("16-06-2018")));
 	app.accounts[0]->users.addAtEnd(u1);
 	app.accounts[0]->users.addAtEnd(u2);
 	app.accounts[0]->users.addAtEnd(u3);
+	
+	app.accounts.addAtEnd(new Account("chris@shu.com", "ballsack", "13-09-2020"));
+	app.accounts[1]->users.addAtEnd(u3);
+	app.accounts[1]->users.addAtEnd(u1);
+	app.accounts[1]->users.addAtEnd(u2);
 }
 
 void main()
