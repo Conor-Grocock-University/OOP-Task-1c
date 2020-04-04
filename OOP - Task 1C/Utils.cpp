@@ -27,6 +27,17 @@ void Utils::recursiveToUpper(char* str)
 	}
 }
 
+std::string Utils::toLowerString(std::string& str)
+{
+	for (int i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')    //checking for uppercase characters
+			str[i] = str[i] + 32;         //converting uppercase to lowercase
+	}
+	return str;
+}
+
+
 bool Utils::startsWith(std::string& searchText, std::string gameName)
 {
 	return toUpper(gameName).find(toUpper(searchText)) == 0; // if the search text is found at the beginning of game name (if the game name starts with search text)

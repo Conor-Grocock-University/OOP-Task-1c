@@ -12,6 +12,7 @@ public:
     static bool startsWith(std::string&, std::string);
     static std::string toUpper(std::string& text);
     static void recursiveToUpper(char*);
+    static std::string toLowerString(std::string&);
     static bool withinPriceRange(int&, int&, int);
     static int toInt(std::string&);
         // TODO: 1 versions of ToUpper
