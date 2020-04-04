@@ -21,6 +21,7 @@ class Account
 		~Account();
 		const AccountLogins GetAccountLogins() const; // creating a vector which will contain a users username/password for validation
 		List<User*> GetUsers();
+		void AddPlayer(const std::string&, const std::string&);
 		List<User*> users;
 	private:
 		
