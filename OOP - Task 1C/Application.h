@@ -13,6 +13,7 @@ public:
 
     bool IsAccountLoggedIn() const;
     bool IsUserLoggedIn() const;
+    bool IsUserAdmin(User* user) const;
     Account* GetCurrentAccount() const;
     User* GetCurrentUser() const;
 	
@@ -20,6 +21,10 @@ public:
 
 		bool LoginAccount(const std::string& email, const std::string& password);
 		bool LoginUser(const std::string& username, const std::string& password);
+		bool DeleteUser(User* user);
+		void presentUsers();
+		void presentAccounts();
+		void CreateNewUser(const std::string& username, const std::string& password);
 		void LogoutUser();
 		void LogoutAccount();
 		List<Account*> accounts;

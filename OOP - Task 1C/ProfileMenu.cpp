@@ -1,3 +1,4 @@
+#include "Application.h"
 #include "ProfileMenu.h"
 #include "LoginUserMenu.h"
 
@@ -12,6 +13,13 @@ namespace Menu{
     
     void ProfileMenu::OutputOptions()
     {
+        if (app->IsUserAdmin(app->GetCurrentUser()) == true)
+        {
+            Option('A', "Create New Player");
+            Option('B', "Delete Player");
+        }
+
+
         Player* player = (Player*)app->GetCurrentUser();
         
         std::cout << "Credit: " << char(156);
@@ -27,6 +35,19 @@ namespace Menu{
         Player* player = (Player*)app->GetCurrentUser();
         switch (choice)
         {
+            if (app->IsUserAdmin(player))
+            {
+
+        case 'A':
+            ///
+            ///TODO: Admin controls
+            ///
+            LoginUserMenu::presentUsers();
+            break;
+        case 'B':
+
+            break;
+            }
         case 'T':
             player->AddCredit(10);
             break;
@@ -45,5 +66,5 @@ namespace Menu{
         }
         return false;
     }
-
+    
 };
