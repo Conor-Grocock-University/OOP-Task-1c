@@ -14,6 +14,7 @@ class Player : public User
 		//Player* getUser
 		int GetCredit();
 		void AddCredit(int deposit);
+		bool BuyGame(Game* game);
 	private:
 		int credit = 0;
 };

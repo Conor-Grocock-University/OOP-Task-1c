@@ -14,7 +14,9 @@ namespace Menu{
     {
         Player* player = (Player*)app->GetCurrentUser();
         
-        std::cout << "Credit: " << char(156) << player->GetCredit() << "\n";
+        std::cout << "Credit: " << char(156);
+        printf("%.2f", (double)player->GetCredit());
+        std::cout << "\n";
         Option('T', "Deposit 10 Pounds");
         Option('F', "Deposit 50 Pounds");
         Option('O', "Deposit 100 Pounds");

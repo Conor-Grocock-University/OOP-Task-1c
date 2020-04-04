@@ -36,7 +36,7 @@ namespace Menu {
         {
             if (app->IsUserLoggedIn())
             {
-                const std::string answer = Question("Are you sure?");
+                const std::string answer = Question("Are you sure? Y/N");
                 if (answer == "y" || answer == "Y")
                 {
                     app->LogoutUser();
