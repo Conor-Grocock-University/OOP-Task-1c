@@ -28,3 +28,7 @@ void Account::AddPlayer(const std::string& username, const std::string& password
 {
 	users.addInFront(new Player(username, password, Date::CurrentDate()));
 }
+void Account::AddAdmin(const std::string& username, const std::string& password)
+{
+	users.addInFront(new Admin(username, password, Date::CurrentDate()));
+}
