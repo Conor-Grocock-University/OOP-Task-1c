@@ -32,3 +32,18 @@ void Account::AddAdmin(const std::string& username, const std::string& password)
 {
 	users.addInFront(new Admin(username, password, Date::CurrentDate()));
 }
+
+User* Account::GetUser(const std::string& username)
+{
+	User* user = nullptr;
+	for (int i = 0; i <= users.length(); i++)
+	{
+		if (users[i]->GetUserLogins().username == username)
+		{
+			user = users[i];
+		}
+	}
+	return user;
+}
+
+
