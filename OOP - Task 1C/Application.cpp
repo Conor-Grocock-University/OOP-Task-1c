@@ -86,22 +86,6 @@ bool Application::LoginUser(const std::string& username, const std::string& pass
     return false;
 }
 
-bool Application::DeleteUser(User* user)
-{
-	try
-	{
-		currentAccount->users.deleteOne(user);
-		return true;
-	}
-	catch (const std::exception&)
-	{
-		return false;
-	}
-}
-
-void Application::CreateNewUser(const std::string& username, const std::string& password)
-{
-}
 
 void Application::LogoutUser()
 {
