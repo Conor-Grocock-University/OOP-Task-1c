@@ -6,6 +6,7 @@ namespace Menu {
     {
     public:
         ProfileMenu(const std::string username, Application* app);
+
         void OutputOptions() final;
         bool HandleChoice(char choice) final;
 

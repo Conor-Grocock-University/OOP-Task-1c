@@ -15,7 +15,7 @@ class Player : public User
 		List<LibraryItem*> library;
 		int GetCredit();
 		void AddCredit(int deposit);
-		bool BuyGame(Game* game);
+		bool BuyGame(const Game* game);
 	private:
 		int credit = 0;
 };

@@ -4,10 +4,11 @@ namespace Menu{
     class GameDetails : public Menu
     {
     public:
-        GameDetails(const std::string& title, Application* app, static int i);
+        //GameDetails(const std::string& title, Application* app);
+        GameDetails(const std::string& title,const Game* game, Application* app);
         void OutputOptions() final;
         bool HandleChoice(char choice) final;
-        int index;
+        const Game* game;
     };
 }
 

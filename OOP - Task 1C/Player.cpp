@@ -23,7 +23,7 @@ void Player::AddCredit(int deposit)
 	credit += deposit;
 }
 
-bool Player::BuyGame(Game* game)
+bool Player::BuyGame(const Game* game)
 {
 		if (game->GetCost() <= credit)
 		{
