@@ -60,9 +60,7 @@ void main()
     // TODO: Remove call to dummy data, instead use Load and Save
     createHardcodedTestData();
 
-    data::DataParser dp;
-    dp.parseFile();
-    //app.load();
+    app.load();
 
     ////Menu::MainMenu("Main", &app); // TODO: replace with proper menu system
 

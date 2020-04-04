@@ -72,6 +72,8 @@ void Application::LogoutUser()
 
 void Application::load() const
 {
+    data::DataParser dp(*this);
+    dp.parseFile();
 }
 
 void Application::save()
