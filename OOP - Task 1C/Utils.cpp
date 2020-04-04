@@ -17,6 +17,16 @@ std::string Utils::toUpper(std::string& text)
 	std::transform(text.begin(), text.end(), text.begin(), ::toupper);
 	return text;
 }
+
+
+void Utils::recursiveToUpper(char* str)
+{
+	if (*str != '\0') {
+		*str = toupper(*str);  // do this char
+		recursiveToUpper(str + 1); // recursively do the remaining chars
+	}
+}
+
 bool Utils::startsWith(std::string& searchText, std::string gameName)
 {
 	return toUpper(gameName).find(toUpper(searchText)) == 0; // if the search text is found at the beginning of game name (if the game name starts with search text)
