@@ -50,7 +50,7 @@ namespace Menu {
         return success;
     }
 
-    void LoginUserMenu::presentUsers(Application* app)
+    void LoginUserMenu::presentUsers()
     {
         for (int i = 0; i < app->GetCurrentAccount()->users.length(); i++)
         {
@@ -59,7 +59,7 @@ namespace Menu {
         }
     }
 
-    void LoginUserMenu::presentAccounts(Application* app)
+    void LoginUserMenu::presentAccounts()
     {
         for (int i = 0; i < app->accounts.length(); i++)
         {
