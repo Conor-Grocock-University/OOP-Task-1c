@@ -14,7 +14,8 @@ const std::string& LibraryItem::GetGameName()
 	return game->GetName();
 }
 
-const Date& LibraryItem::GetDateOfPurchase()
+Date& LibraryItem::GetDateOfPurchase()
 {
 	return purchased;
 }
+

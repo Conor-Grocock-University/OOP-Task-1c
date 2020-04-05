@@ -9,8 +9,8 @@ class LibraryItem
 		LibraryItem(const Date,const Game*);
 		~LibraryItem();
 		const std::string& GetGameName();
-		const Date& GetDateOfPurchase();
+		Date& GetDateOfPurchase();
 	private:
 		const Game* game;
-		const Date purchased; 
+		Date purchased; 
 };
