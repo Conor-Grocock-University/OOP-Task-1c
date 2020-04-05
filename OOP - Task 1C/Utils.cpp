@@ -28,6 +28,13 @@ void Utils::recursiveToUpper(char* str)
 	}
 }
 
+
+bool Utils::SortByName(LibraryItem* left, LibraryItem* right)
+{
+	return left->GetGameName() < right->GetGameName();
+}
+
+
 std::string Utils::toLowerString(std::string& str)
 {
 	for (int i = 0; str[i] != '\0'; i++) // for each time that str[index] is not null (end of string)
@@ -66,5 +73,7 @@ int Utils::toInt(std::string& number)
 {
 	return std::stoi(number);
 }
+
+
 
 
