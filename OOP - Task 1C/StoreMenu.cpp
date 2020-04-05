@@ -13,7 +13,7 @@ namespace Menu {
             for (int i = 0; i < app->GetStore().games.length(); i++)
             {
                 // adding 1 so the display is nicer for the user
-                Option(i + 1, app->GetStore().games[i]->GetName());
+                Option(i + 1, Utils::toUpperString(app->GetStore().games[i]->GetName()));
             }
 
             Line();
@@ -25,7 +25,7 @@ namespace Menu {
             for (int i = 0; i < searchedGames.length(); i++)
             {
                 // adding 1 so the display is nicer for the user
-                Option(i + 1, searchedGames[i]->GetName());
+                Option(i + 1, Utils::toUpperString(searchedGames[i]->GetName()));
             }
 
         }
