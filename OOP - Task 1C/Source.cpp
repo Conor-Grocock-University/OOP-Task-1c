@@ -31,12 +31,12 @@ void createHardcodedTestData()
 	Player* u3 = new Player("Charlie", "password", Date("24-09-2018"));
 
 	// With some games in their library
-	u1->library.addAtEnd(new LibraryItem(Date("17-09-2019"), app.GetStore().games[7]));
-	u1->library.addAtEnd(new LibraryItem(Date("18-06-2018"), app.GetStore().games[1]));
-	u2->library.addAtEnd(new LibraryItem(Date("19-09-2018"), app.GetStore().games[2]));
-	u2->library.addAtEnd(new LibraryItem(Date("19-09-2018"), app.GetStore().games[3]));
-	u3->library.addAtEnd(new LibraryItem(Date("24-09-2018"), app.GetStore().games[3]));
-	u3->library.addAtEnd(new LibraryItem(Date("30-09-2018"), app.GetStore().games[6]));
+	u1->library.push_back(new LibraryItem(Date("17-09-2019"), app.GetStore().games[7]));
+	u1->library.push_back(new LibraryItem(Date("18-06-2018"), app.GetStore().games[1]));
+	u2->library.push_back(new LibraryItem(Date("19-09-2018"), app.GetStore().games[2]));
+	u2->library.push_back(new LibraryItem(Date("19-09-2018"), app.GetStore().games[3]));
+	u3->library.push_back(new LibraryItem(Date("24-09-2018"), app.GetStore().games[3]));
+	u3->library.push_back(new LibraryItem(Date("30-09-2018"), app.GetStore().games[6]));
 
 	// Make an account and attach the users
 	app.accounts.addAtEnd(new Account("alice@shu.com", "password", Date("16-06-2018")));
