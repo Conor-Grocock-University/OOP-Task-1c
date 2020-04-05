@@ -1,8 +1,7 @@
 #include "Application.h"
 
-#include <fstream>
-#include <iostream>
 #include "DataParser.h"
+
 
 Application::Application() : currentAccount(nullptr), currentUser(nullptr)
 {
@@ -10,10 +9,10 @@ Application::Application() : currentAccount(nullptr), currentUser(nullptr)
 
 Application::~Application()
 {
-    for (int i = 0; i < 1; ++i)
-    {
-        delete accounts[i];
-    }
+	for (int i = 0; i < accounts.length(); ++i)
+	{
+		delete accounts[i];
+	}
 }
 
 bool Application::IsUserLoggedIn() const
@@ -43,12 +42,11 @@ Store& Application::GetStore()
 
 bool Application::LoginAccount(const std::string& email, const std::string& password)
 {
-	for (int i = 0; i <= accounts.size(); i++) // looping through vector to verify login credentials
-	{
-		Account* temp = accounts[i]; // temp account for looping
-		std::vector<std::string> logins = temp->GetLoginCredentials();
+	for (int i = 0; i <= accounts.length() - 1; i++) // looping through vector to verify login credentials
+	{		
+		AccountLogins logins = accounts[i]->GetAccountLogins();
 
-		if (email == logins[0] && password == logins[1])
+		if (email == logins.email && password == logins.password)
 		{
 			currentAccount = accounts[i]; // set current account only if credentials are correct
 			return true; // return true if login credentials match
@@ -59,10 +57,18 @@ bool Application::LoginAccount(const std::string& email, const std::string& pass
 
 bool Application::LoginUser(const std::string& username, const std::string& password)
 {
-    // TODO: This currently always logs you in as the first user
-    currentUser = currentAccount->users[0];
 
-    return true;
+	for (int i = 0; i <= currentAccount->users.length() - 1; i++)
+	{
+		UserLogins logins = currentAccount->users[i]->GetUserLogins(); // getting user logins
+
+		if (username == logins.username && password == logins.password)
+		{
+			currentUser = currentAccount->users[i];
+			return true;
+		}
+	}
+    return false;
 }
 
 void Application::LogoutUser()
@@ -70,13 +76,19 @@ void Application::LogoutUser()
     currentUser = nullptr;
 }
 
-void Application::load() const
+void Application::LogoutAccount()
 {
-    data::DataParser dp(*this);
-    dp.parseFile();
+	currentAccount = nullptr;
 }
 
-void Application::save()
+void Application::save() const
 {
+	
 }
+void Application::load() const
+{
+	data::DataParser dp(*this);
+	dp.parseFile();
+}
+
 

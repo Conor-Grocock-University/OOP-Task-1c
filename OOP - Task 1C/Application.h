@@ -3,6 +3,7 @@
 #include "Account.h"
 #include "User.h"
 #include "Store.h"
+#include "List.h"
 
 class Application
 {
@@ -17,15 +18,14 @@ public:
 
     Store& GetStore();
 
-	bool LoginAccount(const std::string& email, const std::string& password);
-	bool LoginUser(const std::string& username, const std::string& password);
-	void LogoutUser();
-	
-    void save();
-    void processGame(const std::vector<char*>& lines) const;
-    void load() const;
+    bool LoginAccount(const std::string& email, const std::string& password);
+    bool LoginUser(const std::string& username, const std::string& password);
+    void LogoutUser();
+    void LogoutAccount();
+    List<Account*> accounts;
 
-    std::vector<Account* > accounts;
+    void save() const;
+    void load() const;
 
 private:
 	Store store;

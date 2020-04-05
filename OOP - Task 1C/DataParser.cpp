@@ -29,10 +29,10 @@ namespace data
 				accounts.push_back(processAccount(std::vector<std::string>(lines.begin() + i, lines.begin() + i + 4)));
 				userIndex = 0;
 			}
-			if (line == "ACCOUNT-PLAYER")
-				accounts.back->users[userIndex] = processAccountPlayer(std::vector<std::string>(lines.begin() + i, lines.begin() + i + 4));
-			if (line == "ACCOUNT-ADMIN")
-				accounts.back->users[userIndex] = processAccountAdmin(std::vector<std::string>(lines.begin() + i, lines.begin() + i + 4));
+			//if (line == "ACCOUNT-PLAYER")
+				//accounts.back().users.addAtEnd(processAccountPlayer(std::vector<std::string>(lines.begin() + i, lines.begin() + i + 4)));
+			//if (line == "ACCOUNT-ADMIN")
+				//accounts.back().users.addAtEnd(processAccountPlayer(processAccountAdmin(std::vector<std::string>(lines.begin() + i, lines.begin() + i + 4));
 
 
 		}
@@ -51,14 +51,13 @@ namespace data
 		return Game(dataLines[2], dataLines[3], std::stoi(dataLines[4]), std::stoi(dataLines[5]));
 	}
 
-
-	Account processAccount(const std::vector<std::string>& dataLines)
+	Account DataParser::processAccount(const std::vector<std::string>& dataLines) const
 	{
 		// 0 - Created date
 		// 1 - Email
 		// 2 - Password
 
-		Account account = Account(dataLines[1], dataLines[1], dataLines[2]);
+		Account account = Account(dataLines[1], dataLines[1], Date(dataLines[0].c_str()));
 		return account;
 	}
 
@@ -69,7 +68,7 @@ namespace data
 		// 2 - Password
 		// 3 - Credits - ???
 
-		Player player = Player(cses[1], cses[2], cses[0]);
+		Player player = Player(cses[1], cses[2], Date(cses[0].c_str()));
 		return player;
 	}
 
@@ -81,7 +80,7 @@ namespace data
 		// 2 - Password
 		// 3 - Credits - ???
 
-		Admin admin = Admin(dataLines[1], dataLines[2], dataLines[0]);
+		Admin admin = Admin(dataLines[1], dataLines[2], Date(dataLines[0].c_str()));
 		return admin;
 	}
 }

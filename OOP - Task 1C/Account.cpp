@@ -1,31 +1,20 @@
 #include "Account.h"
 
-Account::Account(const std::string& email, const std::string& password, const std::string& created)
-    : email(email), password(password), created(created)
+Account::Account(const std::string& email, const std::string& password, const Date& created)
+	: email(email), password(password), created(created)
 {
 }
 
 Account::~Account()
 {
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < users.length(); ++i)
 	{
 		delete users[i];
 	}
 }
 
-
-// function to return a vector containing an email/password combination for validation
-const std::vector<std::string> Account::GetLoginCredentials() const
+// function to return a struct containing an email/password combination for validation
+const AccountLogins Account::GetAccountLogins() const
 {
-	std::vector<std::string> login(1); // creating a 2-item vector to store a username/password combination
-
-	login[0] = email;
-	login[1] = password;
-
-	return login;
-}
-
-std::string Account::getEmail() const
-{
-	return email;
+	return { email, password };
 }

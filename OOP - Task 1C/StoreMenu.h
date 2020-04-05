@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Menu.h"
-
+#include "Store.h"
 #include <string>
 #include <vector>
 
@@ -13,6 +13,6 @@ namespace Menu {
         void OutputOptions() final;
         bool HandleChoice(char choice) final;
     private:
-        std::vector<std::string> games = { "Factorio", "The Witness", "INSIDE", "Brothers" };
+        List<Game*> searchedGames = nullptr;
     };
 };

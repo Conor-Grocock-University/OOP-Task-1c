@@ -28,11 +28,13 @@ namespace Menu {
     {
         const int selected = choice - '1';
 
-        const std::string* email = &app->accounts[selected]->getEmail();
+        const std::string email = app->accounts[selected]->GetAccountLogins().email;
         const std::string password = Question("Password");
 
-        const bool success = app->LoginAccount(*email, password);
+        const bool success = app->LoginAccount(email, password);
         if (!success) BlockingMessage("Incorrect password");
+
+        LoginUserMenu("Select user", app);
         return success;
     }
 
@@ -50,7 +52,7 @@ namespace Menu {
 
     void LoginUserMenu::presentUsers()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < app->GetCurrentAccount()->users.length(); i++)
         {
             // adding 1 so the display is nicer for the user
             Option(i + 1, app->GetCurrentAccount()->users[i]->GetUsername());
@@ -59,9 +61,9 @@ namespace Menu {
 
     void LoginUserMenu::presentAccounts()
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < app->accounts.length(); i++)
         {
-            Option(i + 1, app->accounts[i]->getEmail());
+            Option(i + 1, app->accounts[i]->GetAccountLogins().email);
         }
     }
 };
