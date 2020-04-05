@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "Admin.h"
 
 
 Application::Application() : currentAccount(nullptr), currentUser(nullptr)
@@ -16,6 +17,22 @@ Application::~Application()
 bool Application::IsUserLoggedIn() const
 {
     return currentUser != nullptr;
+}
+
+bool Application::IsUserAdmin(User* user) const
+{
+	try
+	{
+		if(dynamic_cast<Admin*>(user)== NULL)
+		{ 
+			return false;
+		}
+	}
+	catch (const std::bad_cast)
+	{
+		return false;
+	}
+	return true;
 }
 
 bool Application::IsAccountLoggedIn() const
@@ -68,6 +85,7 @@ bool Application::LoginUser(const std::string& username, const std::string& pass
 	}
     return false;
 }
+
 
 void Application::LogoutUser()
 {

@@ -1,4 +1,5 @@
 #include "StoreMenu.h"
+#include "GameDetails.h"
 namespace Menu {
 
     StoreMenu::StoreMenu(const std::string& title, Application* app) : Menu(title, app)
@@ -38,13 +39,20 @@ namespace Menu {
         // this puts '1' as 0, '2' as 1, '3' as 2, '4' as 3, etc.
         // this reverses the + 1 above and lets us do the range check below
         const int index = choice - '1';
-
         if (index >= 0 && index < app->GetStore().games.length())
         {
-            BlockingMessage("Not implemented, press return to continue");
             // go to game detail page
-        }
 
+            if (searchedGames == nullptr)
+            {
+                GameDetails(app->GetStore().games[index]->GetName(), app->GetStore().games[index], app);
+            }
+            else
+            {
+                GameDetails(searchedGames[index]->GetName(), searchedGames[index], app);
+            }
+        }
+        
         switch (choice)
         {
             case 'N':

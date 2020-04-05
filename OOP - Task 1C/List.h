@@ -52,7 +52,7 @@ public:
     ~List();                                 // destructor
     List<T>& operator = (const List<T>&);    // copy assignment operator
     bool operator == (const List<T>&) const; // compare with content of another list
-    T& operator [] (int i);
+    T& operator [] (int i);                  // index operator
     bool isEmpty() const;                    // check if list is empty
     const T first() const;                   // return first item (MUST be non-empty)
     const T last() const;                    // return last item (MUST be non-empty)

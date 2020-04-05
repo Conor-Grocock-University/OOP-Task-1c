@@ -1,4 +1,5 @@
 #include "Utils.h"
+#include <cstdio>
 
 std::string Utils::getLineFromUser()
 {
@@ -32,3 +33,5 @@ int Utils::toInt(std::string& number)
 {
 	return std::stoi(number);
 }
+
+

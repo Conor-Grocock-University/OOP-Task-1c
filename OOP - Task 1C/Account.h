@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Player.h"
+#include "Admin.h"
 #include "Date.h"
 #include "List.h"
 
@@ -20,10 +21,17 @@ class Account
 		Account(const std::string&, const std::string&, const Date&);
 		~Account();
 		const AccountLogins GetAccountLogins() const; // creating a vector which will contain a users username/password for validation
+		List<User*> GetUsers();
+		void AddPlayer(const std::string&, const std::string&);
+		void AddAdmin(const std::string&, const std::string&);
+		User* GetUser(const std::string&);
+		void DeletePlayer(User*);
+
 		List<User*> users;
 	private:
 		
 		std::string email;
 		std::string password;
 		Date created;  
+
 };

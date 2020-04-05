@@ -6,9 +6,9 @@
 class LibraryItem
 {
 	public:
-		LibraryItem(const Date&, Game*);
+		LibraryItem(const Date&,const Game*);
 		~LibraryItem();
 	private:
-		const Game *game;
+		const Game* game;
 		const Date purchased; 
 };

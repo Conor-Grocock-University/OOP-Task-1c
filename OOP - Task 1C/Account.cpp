@@ -18,3 +18,35 @@ const AccountLogins Account::GetAccountLogins() const
 {
 	return { email, password };
 }
+
+List<User*> Account::GetUsers()
+{
+	return users;
+}
+
+void Account::AddPlayer(const std::string& username, const std::string& password)
+{
+	users.addInFront(new Player(username, password, Date::CurrentDate()));
+}
+void Account::AddAdmin(const std::string& username, const std::string& password)
+{
+	users.addInFront(new Admin(username, password, Date::CurrentDate()));
+}
+
+User* Account::GetUser(const std::string& username)
+{
+	User* user = nullptr;
+	for (int i = 0; i <= users.length() - 1; i++)
+	{
+		if (users[i]->GetUserLogins().username == username)
+		{
+			user = users[i];
+		}
+	}
+	return user;
+}
+
+void Account::DeletePlayer(User* user)
+{
+	users.deleteOne(user);
+}
