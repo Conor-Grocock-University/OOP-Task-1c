@@ -1,6 +1,6 @@
 #pragma once
 #include "Menu.h"
-
+#include <algorithm>
 namespace Menu {
     class ProfileMenu : public Menu
     {
