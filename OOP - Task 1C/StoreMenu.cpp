@@ -41,7 +41,6 @@ namespace Menu {
         const int index = choice - '1';
         if (index >= 0 && index < app->GetStore().games.length())
         {
-            //BlockingMessage("Not implemented, press return to continue");
             // go to game detail page
 
             if (searchedGames == nullptr)
