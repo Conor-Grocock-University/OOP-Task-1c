@@ -54,6 +54,7 @@ namespace Menu {
 		std::string answer;
 		std::string username;
 		std::string password;
+
 		switch (choice)
 		{
 			if (app->IsUserAdmin(player))
@@ -93,10 +94,9 @@ namespace Menu {
 				OutputOptions();
 			}
 
-
-			
 			break;
 			}
+
 		case 'T':
 			player->AddCredit(10);
 			break;
@@ -105,6 +105,13 @@ namespace Menu {
 			break;
 		case 'O':
 			player->AddCredit(100);
+			break;
+
+		case 'N':
+			sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
+			OutputOptions();
+
+
 			break;
 		default:
 		{
@@ -115,7 +122,6 @@ namespace Menu {
 		}
 		return false;
 	}
-
 	
-
+	
 };
