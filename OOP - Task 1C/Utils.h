@@ -18,5 +18,6 @@ public:
     static bool withinPriceRange(int&, int&, int);
     static int toInt(std::string&);
     static bool SortByName(LibraryItem*, LibraryItem*);
+    static bool SortByDate(LibraryItem*, LibraryItem*);
         // TODO: 1 versions of ToUpper
 };
