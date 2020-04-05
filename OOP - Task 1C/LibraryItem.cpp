@@ -8,3 +8,8 @@ LibraryItem::LibraryItem(const Date& date,const Game* game)
 LibraryItem::~LibraryItem()
 {
 }
+
+std::string LibraryItem::GetGameName()
+{
+	return game->GetName();
+}
