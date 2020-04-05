@@ -81,14 +81,16 @@ void Application::LogoutAccount()
 	currentAccount = nullptr;
 }
 
-void Application::save() const
+void Application::save()
 {
 	
 }
-void Application::load() const
+void Application::load()
 {
 	data::DataParser dp(*this);
 	dp.parseFile();
+	accounts = dp.getAccounts();
+	store.games = dp.getGames();
 }
 
 

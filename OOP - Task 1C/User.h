@@ -1,8 +1,9 @@
 #pragma once
 
 #include <string>
-#include <vector>
 #include "Date.h"
+#include "LibraryItem.h"
+#include "List.h"
 
 struct UserLogins
 {
@@ -17,6 +18,7 @@ class User
 		virtual ~User();
 		const std::string& GetUsername() const;
 		const UserLogins GetUserLogins() const;
+		List<LibraryItem*> library;
 	private:
 		std::string username;
 		std::string password;

@@ -24,8 +24,8 @@ public:
     void LogoutAccount();
     List<Account*> accounts;
 
-    void save() const;
-    void load() const;
+    void save();
+    void load();
 
 private:
 	Store store;

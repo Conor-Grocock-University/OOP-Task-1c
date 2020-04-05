@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 class Utils
 {
@@ -13,5 +14,7 @@ public:
     static std::string toUpper(std::string& text);
     static bool withinPriceRange(int&, int&, int);
     static int toInt(std::string&);
-        // TODO: 1 versions of ToUpper
+	
+    static std::vector<std::string> Utils::splitVector(const std::vector<std::string>& original, int start, int end);
 };
+
