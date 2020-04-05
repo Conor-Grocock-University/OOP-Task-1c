@@ -33,8 +33,10 @@ void createHardcodedTestData()
 	// With some games in their library
 	u1->library.push_back(new LibraryItem(Date("17-09-2019"), app.GetStore().games[7]));
 	u1->library.push_back(new LibraryItem(Date("18-06-2018"), app.GetStore().games[1]));
+
 	u2->library.push_back(new LibraryItem(Date("19-09-2018"), app.GetStore().games[2]));
 	u2->library.push_back(new LibraryItem(Date("19-09-2018"), app.GetStore().games[3]));
+
 	u3->library.push_back(new LibraryItem(Date("24-09-2018"), app.GetStore().games[3]));
 	u3->library.push_back(new LibraryItem(Date("30-09-2018"), app.GetStore().games[6]));
 

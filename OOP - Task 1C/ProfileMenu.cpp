@@ -18,8 +18,7 @@ namespace Menu {
 			Option('C', "Create New Player");
 			Option('D', "Delete Player");
 		}
-
-
+		
 		Player* player = (Player*)app->GetCurrentUser();
 
 		std::cout << "Credit: " << char(156);
@@ -28,6 +27,17 @@ namespace Menu {
 		Option('T', "Deposit 10 Pounds");
 		Option('F', "Deposit 50 Pounds");
 		Option('O', "Deposit 100 Pounds");
+		Line();
+
+		if (player->library.empty() == false) // if the player has owned games
+		{
+			Line("Owned Games: ");
+			Line();
+			for (int i =0; i <= player->library.size() -1 ; i++)
+			{
+				Option(i + 1, player->library[i]->GetGameName());
+			}
+		}
 	}
 
 
