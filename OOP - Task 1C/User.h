@@ -18,6 +18,7 @@ class User
 		virtual ~User();
 		const std::string& GetUsername() const;
 		const UserLogins GetUserLogins() const;
+		const Date GetCreated() const;
 		List<LibraryItem*> library;
 	private:
 		std::string username;

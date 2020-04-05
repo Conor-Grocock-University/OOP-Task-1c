@@ -19,3 +19,8 @@ const UserLogins User::GetUserLogins() const
 
 	return { username, password };
 }
+
+const Date User::GetCreated() const
+{
+	return created;
+}

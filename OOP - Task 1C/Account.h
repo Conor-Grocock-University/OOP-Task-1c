@@ -21,6 +21,8 @@ class Account
 		~Account();
 		const AccountLogins GetAccountLogins() const; // creating a vector which will contain a users username/password for validation
 		List<User*> users;
+
+		const Date& getCreated() const;
 	private:
 		
 		std::string email;
