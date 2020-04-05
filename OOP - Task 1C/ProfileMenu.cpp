@@ -109,9 +109,11 @@ namespace Menu {
 
 		case 'N':
 			sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
-			OutputOptions();
 
+			break;
 
+		case 'P':
+			sort(player->library.begin(), player->library.end(), Utils::SortByDate);
 			break;
 		default:
 		{
