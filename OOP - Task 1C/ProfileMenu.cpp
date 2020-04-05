@@ -53,7 +53,6 @@ namespace Menu {
 				BlockingMessage("Player " + username + " created!");
 
 			}
-			///TODO: Admin controls
 			else
 			{
 				app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
