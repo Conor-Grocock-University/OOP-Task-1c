@@ -28,7 +28,7 @@ bool Player::BuyGame(const Game* game)
 		if (game->GetCost() <= credit)
 		{
 			credit -= game->GetCost();
-			library.addAtEnd(new LibraryItem("09/11/2001", game));
+			library.addAtEnd(new LibraryItem(Date::CurrentDate(), game));
 			return true;
 		}
 		else
