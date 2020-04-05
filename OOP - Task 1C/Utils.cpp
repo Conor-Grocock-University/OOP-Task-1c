@@ -37,7 +37,7 @@ std::string Utils::toLowerString(std::string& str)
 	return str; 
 }
 
-std::string Utils::toUpperString(std::string& str)
+std::string Utils::toUpperString(std::string str)
 {
 	for (int i = 0; str[i] != '\0'; i++)	// for each time that str[index] is not end of string
 	{
