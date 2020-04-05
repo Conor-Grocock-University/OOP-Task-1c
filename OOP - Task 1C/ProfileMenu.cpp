@@ -33,11 +33,18 @@ namespace Menu {
 		{
 			Line("Owned Games: ");
 			Line();
+
 			for (int i =0; i <= player->library.size() -1 ; i++)
 			{
 				Option(i + 1, player->library[i]->GetGameName());
 			}
+
+			Line();
+			Option('N', "Sort By Name");
+			Option('P', "Sort By Date of Purchase");
 		}
+
+
 	}
 
 
