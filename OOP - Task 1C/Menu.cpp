@@ -7,6 +7,12 @@ namespace Menu {
     {
     }
 
+    Menu::Menu(const std::string& title, const Game* game, Application* app) : app(app), title_(title)
+    {
+    }
+
+ 
+
     void Menu::Paint()
     {
         bool readyToGoBack = false;

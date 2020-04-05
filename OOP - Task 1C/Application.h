@@ -13,9 +13,10 @@ public:
 
     bool IsAccountLoggedIn() const;
     bool IsUserLoggedIn() const;
+    bool IsUserAdmin(User* user) const;
     Account* GetCurrentAccount() const;
     User* GetCurrentUser() const;
-
+	
     Store& GetStore();
 
     bool LoginAccount(const std::string& email, const std::string& password);

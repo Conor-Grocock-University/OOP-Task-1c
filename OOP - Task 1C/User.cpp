@@ -1,4 +1,5 @@
 #include "User.h"
+#include "Player.h"
 
 User::User(const std::string& username, const std::string& password, const Date& created)
 	: username(username), password(password), created(created)
