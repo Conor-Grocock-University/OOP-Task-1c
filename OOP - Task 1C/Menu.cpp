@@ -83,7 +83,7 @@ namespace Menu {
 #endif
 
         std::cout << '\n';
-        std::cout << "  -= " << title_ << " =-  \n";
+        std::cout << "  -= " << Utils::toUpperString(title_) << " =-  \n";
         std::cout << '\n';
     }
 

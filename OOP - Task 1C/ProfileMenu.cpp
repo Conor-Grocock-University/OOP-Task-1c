@@ -22,9 +22,10 @@ namespace Menu {
 
 		Player* player = (Player*)app->GetCurrentUser();
 
+		Line();
 		std::cout << "Credit: " << char(156);
 		printf("%.2f", (double)player->GetCredit());
-		std::cout << "\n";
+		Line();
 		Option('T', "Deposit 10 Pounds");
 		Option('F', "Deposit 50 Pounds");
 		Option('O', "Deposit 100 Pounds");
