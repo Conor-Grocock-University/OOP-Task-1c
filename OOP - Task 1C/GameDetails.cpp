@@ -40,21 +40,24 @@ namespace Menu {
 
         case 'A':
             if (app->IsUserLoggedIn()) {
-                const std::string answer = Question("Are you sure? Y/N");
-                if (answer == "y" || answer == "Y")
+                if (!player->OwnsGame(game)) // if player does not own the current game
                 {
-
-                    if (player->BuyGame(game))
+                    const std::string answer = Question("Are you sure? Y/N");
+                    if (answer == "y" || answer == "Y")
                     {
-                        BlockingMessage("Game Purchased");
 
-                    }
-                    else
-                    {
-                        BlockingMessage("Insufficient Funds");
+                        if (player->BuyGame(game))
+                        {
+                            BlockingMessage("Game Purchased");
 
+                        }
+                        else
+                        {
+                            BlockingMessage("Insufficient Funds");
+
+                        }
                     }
-                }
+                } else { BlockingMessage("Game already owned!");  }
                 break;
             }
         default:

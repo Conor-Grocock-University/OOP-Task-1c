@@ -24,6 +24,11 @@ int Game::GetCost() const
     return cost/100;
 }
 
+int Game::GetCreditValue() const
+{
+    return cost;
+}
+
 int Game::GetAgeRating() const
 {
     return ageRating;

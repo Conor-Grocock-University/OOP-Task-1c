@@ -11,6 +11,7 @@ public:
     const std::string& GetName() const;
     const std::string& GetDescription() const;
     int GetCost() const;
+    int GetCreditValue() const;
     int GetAgeRating() const;
 
 private:
