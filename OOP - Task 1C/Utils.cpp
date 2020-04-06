@@ -36,11 +36,11 @@ bool Utils::SortByName(LibraryItem* left, LibraryItem* right)
 
 bool Utils::SortByDate(LibraryItem* left, LibraryItem* right)
 {
-	if (left->GetDateOfPurchase().GetYear() < right->GetDateOfPurchase().GetYear()) { return true; }
-	else if (left->GetDateOfPurchase().GetYear() == right->GetDateOfPurchase().GetYear()) {
-		if (left->GetDateOfPurchase().GetMonth() < right->GetDateOfPurchase().GetMonth()) { return true; }
-		else if (left->GetDateOfPurchase().GetMonth() == right->GetDateOfPurchase().GetMonth()) {
-			if (left->GetDateOfPurchase().GetDay() < right->GetDateOfPurchase().GetDay()) { return true; }
+	if (left->GetDateOfPurchase().GetYear() < right->GetDateOfPurchase().GetYear()) { return true; } // if the left hand item has a year that is less than the right side year
+	else if (left->GetDateOfPurchase().GetYear() == right->GetDateOfPurchase().GetYear()) {			 // if both items have the same year
+		if (left->GetDateOfPurchase().GetMonth() < right->GetDateOfPurchase().GetMonth()) { return true; } // if the left hand item has a month that is less than the right side month
+		else if (left->GetDateOfPurchase().GetMonth() == right->GetDateOfPurchase().GetMonth()) {		// if both items have the same month
+			if (left->GetDateOfPurchase().GetDay() < right->GetDateOfPurchase().GetDay()) { return true; }	// if the left item has a day that is less than the right side day
 			else {return false;}
 		} else { return false; }
 	} else	{ return false;}
