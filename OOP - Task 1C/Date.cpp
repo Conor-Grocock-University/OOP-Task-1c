@@ -156,3 +156,8 @@ const std::string Date::ToFormattedString() const
 {
 	return std::to_string(day) + "/" + std::to_string(month) + "/" + std::to_string(year); // formatting to "DD/MM/YYYY"
 }
+
+const std::string Date::ToFormattedString(char seperator) const
+{
+	return std::to_string(day) + seperator + std::to_string(month) + seperator + std::to_string(year); // formatting to "DD/MM/YYYY"
+}
