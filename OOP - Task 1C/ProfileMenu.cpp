@@ -120,8 +120,15 @@ namespace Menu {
 		case 'A':
 			Line("Enter game to add to Guests games by entering corresponding number: ");
 			const int index = Utils::getCharFromUser() - '1';
-			app->GetCurrentAccount()->GetGuest()->AddGame(player->GetOwnedGames()[index]->GetGame());
-			BlockingMessage(player->GetOwnedGames()[index]->GetGameName() + "  added to Guests Games!");
+			if (index <= player->GetOwnedGames().size() - 1)
+			{
+				app->GetCurrentAccount()->GetGuest()->AddGame(player->GetOwnedGames()[index]->GetGame());
+				BlockingMessage(player->GetOwnedGames()[index]->GetGameName() + "  added to Guests Games!");
+			}
+			else {
+				BlockingMessage("Enter corresponding number to game you wish to add");
+			}
+			
 			break;
 			}
 
