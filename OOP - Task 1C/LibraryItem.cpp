@@ -19,3 +19,7 @@ Date& LibraryItem::GetDateOfPurchase()
 	return purchased;
 }
 
+const Game* LibraryItem::GetGame()
+{
+	return game;
+}
