@@ -1,4 +1,6 @@
 #pragma once
+#include <fstream>
+
 #include "Admin.h"
 #include "Application.h"
 
@@ -7,21 +9,21 @@ namespace data
 	class DataWriter
 	{
 	public:
-		DataWriter(const Application& app);
+		DataWriter(Application& app);
+		void writeToLineToFile(const std::vector<std::string>& lines);
 		//~DataParser();
 
 		void writeFile();
 	private:
-		const std::vector<std::string>& writeGame(Game*) const;
-		const std::vector<std::string>& writeAccount(Account*) const;
-		const std::vector<std::basic_string<char>>& writeAccountPlayer(Player*);
-		const std::vector<std::basic_string<char>>& writeAccountAdmin(Admin*);
-		const std::vector<std::basic_string<char>>& writeOwnedGame(LibraryItem*);
+		void writeGame(Game*);
+		void writeAccount(Account*);
+		void writeAccountPlayer(Player*);
+		void writeAccountAdmin(Admin*);
+		void writeOwnedGame(LibraryItem*);
 
 	private:
-		bool error;
-		//std::ofstream file;
-		std::vector<std::string> lines;
+		std::ofstream file;
+		Application* app;
 	};
 }
 
