@@ -34,7 +34,7 @@ namespace data
 			else if (line == "ACCOUNT-ADMIN")
 				accounts.last()->users.addAtEnd(processAccountAdmin(Utils::splitVector(lines, i, 5)));
 			else if (line == "LIBRARY-ITEM")
-				accounts.last()->users.last()->library.addAtEnd(processOwnedGame(Utils::splitVector(lines, i, 3), games));
+				accounts.last()->users.last()->library.push_back(processOwnedGame(Utils::splitVector(lines, i, 4), games));
 		}
 	}
 
@@ -101,6 +101,7 @@ namespace data
 		// 0 - Cat
 		// 1 - Game id
 		// 2 - Purchase date
+		// 3 - Playtime
 		
 		Game* selected = nullptr;
 		for (int i = 0; i < games.length(); ++i)
@@ -109,6 +110,6 @@ namespace data
 				selected = games[i];
 		}
 		
-		return new LibraryItem(Date(dataLines[2].c_str()), selected);
+		return new LibraryItem(Date(dataLines[2].c_str()), selected, std::stoi(dataLines[3]));
 	}
 }

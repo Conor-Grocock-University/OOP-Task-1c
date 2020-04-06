@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <vector>
+
 #include "Date.h"
 #include "LibraryItem.h"
 #include "List.h"
@@ -19,7 +21,7 @@ class User
 		const std::string& GetUsername() const;
 		const UserLogins GetUserLogins() const;
 		const Date GetCreated() const;
-		List<LibraryItem*> library;
+		std::vector<LibraryItem*> library;
 	private:
 		std::string username;
 		std::string password;

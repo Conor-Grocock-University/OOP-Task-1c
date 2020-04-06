@@ -41,8 +41,8 @@ namespace data
 				else
 					writeAccountPlayer(dynamic_cast<Player*>(user));
 
-				List<LibraryItem*> library = user->library;
-				for (int lib_index = 0; lib_index < library.length(); lib_index++)
+				std::vector<LibraryItem*> library = user->library;
+				for (int lib_index = 0; lib_index < library.size(); lib_index++)
 					writeOwnedGame(library[lib_index]);
 			}
 		}
@@ -114,7 +114,7 @@ namespace data
 		// Until then I've hard coded the dates
 		fileLines.push_back(library_item->GetPurchaseDate().ToFormattedString('-'));
 		//fileLines.push_back("24-09-2017");
-		fileLines.push_back("0");
+		fileLines.push_back(std::to_string(library_item->GetPlaytime()));
 
 		writeToLineToFile(fileLines);
 	}

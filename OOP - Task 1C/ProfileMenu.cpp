@@ -28,12 +28,12 @@ namespace Menu {
 		Option('O', "Deposit 100 Pounds");
 		Line();
 
-		if (player->library.isEmpty() == false) // if the player has owned games
+		if (player->library.size() != 0) // if the player has owned games
 		{
 			Line("Owned Games: ");
 			Line();
 
-			for (int i =0; i <= player->library.length() -1 ; i++)
+			for (int i =0; i <= player->library.size() -1 ; i++)
 				Option(i + 1, player->library[i]->GetGame()->GetName() + " - Purchased - " + player->library[i]->GetPurchaseDate().ToFormattedString());
 
 			Line();
@@ -52,7 +52,7 @@ namespace Menu {
 
 		switch (choice)
 		{
-		case 'C':
+		case 'C': {
 			username = Question("Enter username for new Player");
 			password = Question("Enter password for Player " + username);
 			answer = Question("Is " + username + " an Admin? Y/N");
@@ -64,7 +64,8 @@ namespace Menu {
 			else
 				app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
 			break;
-		case 'D':
+		}
+		case 'D': {
 			username = Question("Enter username of Player you wish to delete");
 			User* user = app->GetCurrentAccount()->GetUser(username);
 			if (user != nullptr)
@@ -76,25 +77,31 @@ namespace Menu {
 			else
 				OutputOptions();
 			break;
-
-		case 'T':
+		}
+		case 'T': {
 			player->AddCredit(10);
 			break;
-		case 'F':
+		}
+		case 'F': {
 			player->AddCredit(50);
 			break;
-		case 'O':
+		}
+		case 'O': {
 			player->AddCredit(100);
 			break;
-		case 'N':
-			std::sort(player->library.first(), player->library.last(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
+		}
+		case 'N': {
+			std::sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
 			break;
-		case 'P':
-			std::sort(player->library.first(), player->library.last(), Utils::SortByDate);
+		}
+		case 'P': {
+			std::sort(player->library.begin(), player->library.end(), Utils::SortByDate);
 			break;
-		default:
+		}
+		default: {
 			BlockingMessage("Undefined case");
 			break;
+		}
 		}
 		return false;
 	}
