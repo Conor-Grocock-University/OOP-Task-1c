@@ -30,9 +30,9 @@ namespace data
 			else if (line == "ACCOUNT")
 				accounts.addAtEnd(processAccount(Utils::splitVector(lines, i, 4)));
 			else if (line == "ACCOUNT-PLAYER")
-				accounts.last()->users.addAtEnd(processAccountPlayer(Utils::splitVector(lines, i, 4)));
+				accounts.last()->users.addAtEnd(processAccountPlayer(Utils::splitVector(lines, i, 5)));
 			else if (line == "ACCOUNT-ADMIN")
-				accounts.last()->users.addAtEnd(processAccountAdmin(Utils::splitVector(lines, i, 4)));
+				accounts.last()->users.addAtEnd(processAccountAdmin(Utils::splitVector(lines, i, 5)));
 			else if (line == "LIBRARY-ITEM")
 				accounts.last()->users.last()->library.addAtEnd(processOwnedGame(Utils::splitVector(lines, i, 3), games));
 		}
@@ -78,8 +78,9 @@ namespace data
 		// 2 - Name
 		// 3 - Password
 		// 4 - Credits - ???
-
-		return new Player(cses[2], cses[3], Date(cses[1].c_str()));
+		Player* player = new Player(cses[2], cses[3], Date(cses[1].c_str()));
+		player->AddCredit(std::stoi(cses[4]));
+		return player;
 	}
 
 	Admin* DataParser::processAccountAdmin(const std::vector<std::basic_string<char>>& dataLines)
@@ -90,7 +91,9 @@ namespace data
 		// 3 - Password
 		// 4 - Credits - ???
 
-		return new Admin(dataLines[2], dataLines[3], Date(dataLines[1].c_str()));
+		Admin* admin = new Admin(dataLines[2], dataLines[3], Date(dataLines[1].c_str()));
+		admin->AddCredit(std::stoi(dataLines[4]));
+		return admin;
 	}
 
 	LibraryItem* DataParser::processOwnedGame(const std::vector<std::basic_string<char>>& dataLines, List<Game*> games) const
