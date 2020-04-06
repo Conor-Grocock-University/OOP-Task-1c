@@ -24,10 +24,10 @@ List<User*> Account::GetUsers()
 	return users;
 }
 
-User* Account::GetGuest()
+/*User* Account::GetGuest()
 {
 	return guest;
-}
+}*/
 
 void Account::AddPlayer(const std::string& username, const std::string& password)
 {
@@ -49,6 +49,19 @@ User* Account::GetUser(const std::string& username)
 		}
 	}
 	return user;
+}
+
+Guest* Account::GetGuest()
+{
+	Guest* guest;
+	for(int i =0; i <= users.length() - 1; i++)
+	{
+		if (users[i]->GetUsername() == "Guest")
+		{
+			guest = (Guest*)users[i];
+			return guest;
+		}
+	}
 }
 
 void Account::DeletePlayer(User* user)
