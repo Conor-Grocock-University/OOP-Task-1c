@@ -37,6 +37,15 @@ bool Player::BuyGame(const Game* game)
 		}
 }
 
+bool Player::OwnsGame(const Game* game)
+{
+	for (LibraryItem* item : library)
+	{
+		if (item->GetGame() == game) { return true; }
+	}
+	return false;
+}
+
 std::vector<LibraryItem*> Player::GetOwnedGames()
 {
 	return library;
