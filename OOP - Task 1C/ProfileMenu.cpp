@@ -9,8 +9,6 @@ namespace Menu {
 
 	}
 
-
-
 	void ProfileMenu::OutputOptions()
 	{
 		Player* player;
@@ -19,6 +17,7 @@ namespace Menu {
 		{
 			Option('C', "Create New Player");
 			Option('D', "Delete Player");
+			Option('A', "Add Game To Guest Profile");
 		}
 
 		User* userType = (User*)app->GetCurrentUser();
@@ -74,7 +73,9 @@ namespace Menu {
 
 	bool ProfileMenu::HandleChoice(char choice)
 	{
+
 		Player* player = (Player*)app->GetCurrentUser();
+		User* user;
 		std::string answer;
 		std::string username;
 		std::string password;
@@ -104,7 +105,7 @@ namespace Menu {
 			break;
 		case 'D':
 			username = Question("Enter username of Player you wish to delete");
-			User* user = app->GetCurrentAccount()->GetUser(username);
+			user = app->GetCurrentAccount()->GetUser(username);
 			if (user != nullptr)
 			{
 				answer = Question("Delete Player " + user->GetUsername() + " Y/N");
@@ -113,11 +114,14 @@ namespace Menu {
 					app->GetCurrentAccount()->DeletePlayer(user);
 				}
 			}
-			else
-			{
-				OutputOptions();
-			}
 
+			break;
+
+		case 'A':
+			Line("Enter game to add to Guests games by entering corresponding number: ");
+			const int index = Utils::getCharFromUser() - '1';
+			app->GetCurrentAccount()->GetGuest()->AddGame(player->GetOwnedGames()[index]->GetGame());
+			BlockingMessage(player->GetOwnedGames()[index]->GetGameName() + "  added to Guests Games!");
 			break;
 			}
 
