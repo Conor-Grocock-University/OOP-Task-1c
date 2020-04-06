@@ -34,6 +34,4 @@ class Account
 		std::string email;
 		std::string password;
 		Date created;
-		//User* guest;
-
 };

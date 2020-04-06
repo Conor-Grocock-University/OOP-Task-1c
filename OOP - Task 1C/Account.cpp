@@ -24,11 +24,6 @@ List<User*> Account::GetUsers()
 	return users;
 }
 
-/*User* Account::GetGuest()
-{
-	return guest;
-}*/
-
 void Account::AddPlayer(const std::string& username, const std::string& password)
 {
 	users.addInFront(new Player(username, password, Date::CurrentDate()));
