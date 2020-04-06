@@ -3,14 +3,14 @@
 
 std::string Utils::getLineFromUser()
 {
-    std::string input;
-    std::getline(std::cin, input);
-    return input;
+	std::string input;
+	std::getline(std::cin, input);
+	return input;
 }
 
 char Utils::getCharFromUser()
 {
-    return toupper(getLineFromUser()[0]);
+	return toupper(getLineFromUser()[0]);
 }
 
 std::string Utils::toUpper(std::string& text)
@@ -28,6 +28,26 @@ void Utils::recursiveToUpper(char* str)
 	}
 }
 
+
+bool Utils::SortByName(LibraryItem* left, LibraryItem* right)
+{
+	return left->GetGameName() < right->GetGameName();
+}
+
+bool Utils::SortByDate(LibraryItem* left, LibraryItem* right)
+{
+	if (left->GetDateOfPurchase().GetYear() < right->GetDateOfPurchase().GetYear()) { return true; }
+	else if (left->GetDateOfPurchase().GetYear() == right->GetDateOfPurchase().GetYear()) {
+		if (left->GetDateOfPurchase().GetMonth() < right->GetDateOfPurchase().GetMonth()) { return true; }
+		else if (left->GetDateOfPurchase().GetMonth() == right->GetDateOfPurchase().GetMonth()) {
+			if (left->GetDateOfPurchase().GetDay() < right->GetDateOfPurchase().GetDay()) { return true; }
+			else {return false;}
+		} else { return false; }
+	} else	{ return false;}
+
+}
+
+
 std::string Utils::toLowerString(std::string& str)
 {
 	for (int i = 0; str[i] != '\0'; i++) // for each time that str[index] is not null (end of string)
@@ -35,7 +55,7 @@ std::string Utils::toLowerString(std::string& str)
 		if (str[i] >= 'A' && str[i] <= 'Z')    // checking for uppercase characters
 			str[i] = str[i] + 32;         // converting uppercase to lowercase
 	}
-	return str; 
+	return str;
 }
 
 std::string Utils::toUpperString(std::string str)
@@ -66,5 +86,7 @@ int Utils::toInt(std::string& number)
 {
 	return std::stoi(number);
 }
+
+
 
 

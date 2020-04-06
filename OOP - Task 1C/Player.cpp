@@ -7,7 +7,7 @@ Player::Player(const std::string& username, const std::string& password, const D
 
 Player::~Player()
 {
-	for (int i = 0; i < library.length(); ++i)
+	for (int i = 0; i < library.size(); ++i)
 	{
 		delete library[i];
 	}
@@ -28,12 +28,16 @@ bool Player::BuyGame(const Game* game)
 		if (game->GetCost() <= credit)
 		{
 			credit -= game->GetCost();
-			library.addAtEnd(new LibraryItem(Date::CurrentDate(), game));
+			library.push_back(new LibraryItem(Date::CurrentDate(), game));
 			return true;
 		}
 		else
 		{
 			return false;
 		}
+}
 
+std::vector<LibraryItem*> Player::GetOwnedGames()
+{
+	return library;
 }
