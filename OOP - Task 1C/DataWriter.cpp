@@ -112,8 +112,8 @@ namespace data
 		fileLines.push_back(std::to_string(library_item->GetGame()->GetId()));
 		// TODO: Fix issue with dates being way off
 		// Until then I've hard coded the dates
-		// fileLines.push_back(library_item->GetPurchaseDate().ToFormattedString('/'));
-		fileLines.push_back("24-09-2017");
+		fileLines.push_back(library_item->GetPurchaseDate().ToFormattedString('/'));
+		//fileLines.push_back("24-09-2017");
 		fileLines.push_back("0");
 
 		writeToLineToFile(fileLines);

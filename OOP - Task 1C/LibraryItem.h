@@ -10,8 +10,8 @@ class LibraryItem
 		~LibraryItem();
 
 		const Game* GetGame() const;
-		const Date& GetPurchaseDate() const;
+		const Date GetPurchaseDate() const;
 	private:
 		const Game* game;
-		const Date& purchased; 
+		const Date purchased; 
 };

@@ -14,7 +14,7 @@ const Game* LibraryItem::GetGame() const
 	return game;
 }
 
-const Date& LibraryItem::GetPurchaseDate() const
+const Date LibraryItem::GetPurchaseDate() const
 {
 	return purchased;
 }
