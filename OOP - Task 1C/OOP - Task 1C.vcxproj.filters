@@ -75,6 +75,9 @@
     <ClCompile Include="GameDetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Guest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="GameDetails.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Guest.h">
+      <Filter>Header Files\User</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
