@@ -102,7 +102,7 @@ namespace data
 		Game* selected = nullptr;
 		for (int i = 0; i < games.length(); ++i)
 		{
-			if (games[i]->getId() == std::stoi(dataLines[1]))
+			if (games[i]->GetId() == std::stoi(dataLines[1]))
 				selected = games[i];
 		}
 		
