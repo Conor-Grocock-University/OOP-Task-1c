@@ -11,7 +11,7 @@ class Guest : public User
 public:
 	Guest();
 	~Guest();
-	void AddGame(Game* game);
+	void AddGame(const Game* game);
 	std::vector<LibraryItem*> GetLibrary() const;
 
 private:

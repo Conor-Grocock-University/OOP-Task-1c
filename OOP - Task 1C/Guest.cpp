@@ -8,7 +8,7 @@ Guest::~Guest()
 {
 }
 
-void Guest::AddGame(Game* game)
+void Guest::AddGame(const Game* game)
 {
 	library.push_back(new LibraryItem(Date::CurrentDate(), game)); 
 }
