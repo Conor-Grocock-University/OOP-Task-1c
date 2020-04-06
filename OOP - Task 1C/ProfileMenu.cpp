@@ -13,39 +13,62 @@ namespace Menu {
 
 	void ProfileMenu::OutputOptions()
 	{
+		Player* player;
+		Guest* guest;
 		if (app->IsUserAdmin(app->GetCurrentUser()) == true)
 		{
 			Option('C', "Create New Player");
 			Option('D', "Delete Player");
 		}
-		
-		Player* player = (Player*)app->GetCurrentUser();
 
-		Line();
-		std::cout << "Credit: " << char(156);
-		printf("%.2f", (double)player->GetCredit());
-		Line();
-		Option('T', "Deposit 10 Pounds");
-		Option('F', "Deposit 50 Pounds");
-		Option('O', "Deposit 100 Pounds");
-		Line();
-
-		if (player->library.empty() == false) // if the player has owned games
+		User* userType = (User*)app->GetCurrentUser();
+		if (dynamic_cast<Player*>(userType))
 		{
-			Line("Owned Games: ");
+			player = (Player*)userType;
 			Line();
+			std::cout << "Credit: " << char(156);
+			printf("%.2f", (double)player->GetCredit());
+			Line();
+			Option('T', "Deposit 10 Pounds");
+			Option('F', "Deposit 50 Pounds");
+			Option('O', "Deposit 100 Pounds");
+			Line();
+			Line("Owned Games: ");
 
-			for (int i =0; i <= player->library.size() -1 ; i++)
+			if (player->library.empty() == false) // if the player has owned games
 			{
-				Option(i + 1, player->library[i]->GetGameName() + " - Purchased - " + player->library[i]->GetDateOfPurchase().ToFormattedString());
+				Line();
+
+				for (int i = 0; i <= player->library.size() - 1; i++)
+				{
+					Option(i + 1, player->library[i]->GetGameName() + " - Purchased - " + player->library[i]->GetDateOfPurchase().ToFormattedString());
+				}
+
+				Line();
+				Option('N', "Sort By Name");
+				Option('P', "Sort By Date of Purchase");
 			}
 
-			Line();
-			Option('N', "Sort By Name");
-			Option('P', "Sort By Date of Purchase");
 		}
+		else if (dynamic_cast<Guest*>(userType))
+		{
+			guest = (Guest*)userType;
 
+			Line("Owned Games: ");
 
+			if (guest->GetLibrary().empty() == false) // if the player has owned games
+			{
+				Line();
+
+				for (int i = 0; i <= guest->GetLibrary().size() - 1; i++)
+				{
+					Option(i + 1, guest->GetLibrary()[i]->GetGameName());
+				}
+
+				Line();
+				Option('N', "Sort By Name");
+			}
+		}
 	}
 
 
@@ -98,6 +121,7 @@ namespace Menu {
 			break;
 			}
 
+
 		case 'T':
 			player->AddCredit(10);
 			break;
@@ -125,6 +149,6 @@ namespace Menu {
 		}
 		return false;
 	}
-	
-	
+
+
 };
