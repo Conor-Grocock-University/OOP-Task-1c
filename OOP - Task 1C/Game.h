@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include <string>
 
 class Game
@@ -13,7 +12,7 @@ public:
     const std::string& GetDescription() const;
     int GetCost() const;
     int GetAgeRating() const;
-    int getId();
+    int GetId() const;
 
 private:
     std::string name;

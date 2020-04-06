@@ -66,13 +66,8 @@ int Utils::toInt(std::string& number)
 {
 	return std::stoi(number);
 }
-<<<<<<< HEAD
 
 std::vector<std::string> Utils::splitVector(const std::vector<std::string>& original, int start, int end)
 {
 	return std::vector<std::string>(original.begin() + start, original.begin() + start + end);
 }
-=======
-
-
->>>>>>> master

@@ -29,7 +29,7 @@ int Game::GetAgeRating() const
     return ageRating;
 }
 
-int Game::getId()
+int Game::GetId() const
 {
     return id;
 }
