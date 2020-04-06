@@ -44,13 +44,9 @@ namespace Menu {
             // go to game detail page
 
             if (searchedGames == nullptr)
-            {
                 GameDetails(app->GetStore().games[index]->GetName(), app->GetStore().games[index], app);
-            }
             else
-            {
                 GameDetails(searchedGames[index]->GetName(), searchedGames[index], app);
-            }
         }
         
         switch (choice)

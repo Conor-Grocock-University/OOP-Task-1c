@@ -35,5 +35,13 @@ bool Player::BuyGame(const Game* game)
 		{
 			return false;
 		}
+}
 
+bool Player::OwnsGame(const Game* game)
+{
+	for (int item_index = 0; item_index < library.length(); ++item_index)
+	{
+		if (library[item_index]->GetGame() == game) { return true; }		
+	}
+	return false;
 }

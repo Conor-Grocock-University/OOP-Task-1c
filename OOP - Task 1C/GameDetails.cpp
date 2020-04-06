@@ -19,14 +19,15 @@ namespace Menu {
     {
         //displaying the game price
         int price = game->GetCost();
-        std::cout << "Price: " << char(156);
+        std::cout << "  Price: " << char(156);
         printf("%.2f", (double)price); //Price to two decimal places
-        std::cout << "\n\n";
-        std::cout << "Description: " << game->GetDescription(); // Game description
-        std::cout << "\n\n";
+        Line();
+        Line("Description: " + game->GetDescription()); // Game description
+        Line();
 
         if (app->IsUserLoggedIn()) {
-            std::cout << "Your Credit: " << char(156) << dynamic_cast<Player*>(app->GetCurrentUser())->GetCredit() << "\n";
+            std::cout << "Your Credit: " << char(156) << dynamic_cast<Player*>(app->GetCurrentUser())->GetCredit();
+            Line();
             Option('A', "Buy Game");
         }
     }
@@ -39,21 +40,24 @@ namespace Menu {
 
         case 'A':
             if (app->IsUserLoggedIn()) {
-                const std::string answer = Question("Are you sure? Y/N");
-                if (answer == "y" || answer == "Y")
+                if (!player->OwnsGame(game)) // if player does not own the current game
                 {
-
-                    if (player->BuyGame(game))
+                    const std::string answer = Question("Are you sure? Y/N");
+                    if (answer == "y" || answer == "Y")
                     {
-                        BlockingMessage("Game Purchased");
 
-                    }
-                    else
-                    {
-                        BlockingMessage("Insufficient Funds");
+                        if (player->BuyGame(game))
+                        {
+                            BlockingMessage("Game Purchased");
 
+                        }
+                        else
+                        {
+                            BlockingMessage("Insufficient Funds");
+
+                        }
                     }
-                }
+                } else { BlockingMessage("Game already owned!");  }
                 break;
             }
         default:

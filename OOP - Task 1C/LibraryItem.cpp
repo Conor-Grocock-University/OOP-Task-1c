@@ -1,6 +1,6 @@
 #include "LibraryItem.h"
 
-LibraryItem::LibraryItem(const Date& date,const Game* game)
+LibraryItem::LibraryItem(const Date date,const Game* game)
 	: game(game), purchased(date)
 {
 }
@@ -14,7 +14,7 @@ const Game* LibraryItem::GetGame() const
 	return game;
 }
 
-const Date LibraryItem::GetPurchaseDate() const
+Date LibraryItem::GetPurchaseDate() const
 {
 	return purchased;
 }

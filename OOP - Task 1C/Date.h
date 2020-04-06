@@ -14,9 +14,9 @@ public:
 	bool CheckYear();
 	bool CheckMonth();
 	bool CheckDay();
-	const int GetYear();
-	const int GetMonth();
-	const int GetDay();
+	int GetYear();
+	int GetMonth();
+	int GetDay();
 private:
 
 	int day;

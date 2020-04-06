@@ -140,15 +140,15 @@ Date Date::CurrentDate()
 	return currentDate; // returning current date object
 }
 
-const int Date::GetYear() 
+int Date::GetYear()
 {
 	return year;
 }
-const int Date::GetMonth()
+int Date::GetMonth()
 {
 	return month;
 }
-const int Date::GetDay()
+int Date::GetDay()
 {
 	return day;
 }

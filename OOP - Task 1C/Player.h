@@ -14,9 +14,11 @@ class Player : public User
 		~Player();
 	
 		List<LibraryItem*> library;
+
 		int GetCredit();
 		void AddCredit(int deposit);
 		bool BuyGame(const Game* game);
+		bool OwnsGame(const Game*);
 	private:
 		int credit = 0;
 };

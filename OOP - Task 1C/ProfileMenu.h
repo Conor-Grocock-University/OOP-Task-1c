@@ -1,5 +1,8 @@
 #pragma once
 #include "Menu.h"
+#include <algorithm>
+
+#include<vector>
 
 namespace Menu {
     class ProfileMenu : public Menu

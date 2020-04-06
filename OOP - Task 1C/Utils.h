@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include "LibraryItem.h"
 
 class Utils
 {
@@ -13,11 +14,14 @@ public:
     static bool startsWith(std::string&, std::string);
     static std::string toUpper(std::string& text);
     static void recursiveToUpper(char*);
-    static std::string toLowerString(std::string&);
+    static std::string toLowerString(std::string); // we don't want to pass by reference as we don't want to altar the base string value
     static std::string toUpperString(std::string);
     static bool withinPriceRange(int&, int&, int);
     static int toInt(std::string&);
+
+	static std::vector<std::string> Utils::splitVector(const std::vector<std::string>& original, int start, int end);
 	
-    static std::vector<std::string> Utils::splitVector(const std::vector<std::string>& original, int start, int end);
+    static bool SortByName(LibraryItem*, LibraryItem*);
+    static bool SortByDate(LibraryItem*, LibraryItem*);
 };
 
