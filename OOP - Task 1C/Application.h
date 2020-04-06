@@ -13,7 +13,7 @@ public:
 
     bool IsAccountLoggedIn() const;
     bool IsUserLoggedIn() const;
-    bool IsUserAdmin(User* user) const;
+    static bool IsUserAdmin(User* user);
     Account* GetCurrentAccount() const;
     User* GetCurrentUser() const;
 	

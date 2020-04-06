@@ -2,6 +2,7 @@
 #include "Admin.h"
 
 #include "DataParser.h"
+#include "DataWriter.h"
 
 
 Application::Application() : currentAccount(nullptr), currentUser(nullptr)
@@ -21,14 +22,12 @@ bool Application::IsUserLoggedIn() const
     return currentUser != nullptr;
 }
 
-bool Application::IsUserAdmin(User* user) const
+bool Application::IsUserAdmin(User* user)
 {
 	try
 	{
 		if(dynamic_cast<Admin*>(user)== NULL)
-		{ 
 			return false;
-		}
 	}
 	catch (const std::bad_cast)
 	{
@@ -101,7 +100,7 @@ void Application::LogoutAccount()
 
 void Application::save()
 {
-	
+	data::DataWriter dw(*this);
 }
 void Application::load()
 {
