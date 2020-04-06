@@ -13,12 +13,6 @@ char Utils::getCharFromUser()
 	return toupper(getLineFromUser()[0]);
 }
 
-std::string Utils::toUpper(std::string& text)
-{
-	std::transform(text.begin(), text.end(), text.begin(), ::toupper);
-	return text;
-}
-
 
 void Utils::recursiveToUpper(char* str)
 {
@@ -48,7 +42,15 @@ bool Utils::SortByDate(LibraryItem* left, LibraryItem* right)
 }
 
 
-std::string Utils::toLowerString(std::string& str)
+
+std::string Utils::toUpper(std::string& text)
+{
+	std::transform(text.begin(), text.end(), text.begin(), ::toupper);
+	return text;
+}
+
+
+std::string Utils::toLowerString(std::string str)
 {
 	for (int i = 0; str[i] != '\0'; i++) // for each time that str[index] is not null (end of string)
 	{

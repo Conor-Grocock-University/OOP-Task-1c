@@ -13,7 +13,7 @@ public:
     static bool startsWith(std::string&, std::string);
     static std::string toUpper(std::string& text);
     static void recursiveToUpper(char*);
-    static std::string toLowerString(std::string&);
+    static std::string toLowerString(std::string); // we don't want to pass by reference as we don't want to altar the base string value
     static std::string toUpperString(std::string);
     static bool withinPriceRange(int&, int&, int);
     static int toInt(std::string&);
