@@ -25,13 +25,15 @@ class Account
 		void AddPlayer(const std::string&, const std::string&);
 		void AddAdmin(const std::string&, const std::string&);
 		User* GetUser(const std::string&);
+		User* GetGuest();
 		void DeletePlayer(User*);
-
+		
 		List<User*> users;
 	private:
 		
 		std::string email;
 		std::string password;
 		Date created;  
+		User* guest;
 
 };
