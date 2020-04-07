@@ -30,17 +30,17 @@ bool Utils::SortByName(LibraryItem* left, LibraryItem* right)
 
 bool Utils::SortByDate(LibraryItem* left, LibraryItem* right)
 {
-	if (left->GetPurchaseDate().GetYear() == right->GetPurchaseDate().GetYear())			   // if both items have the same year
-		if (left->GetPurchaseDate().GetMonth() == right->GetPurchaseDate().GetMonth())	       // if both items have the same month
-			if (left->GetPurchaseDate().GetDay() == right->GetPurchaseDate().GetDay())	       // if both items have the same month
-				return true;
-	
-	if (left->GetPurchaseDate().GetYear()  < right->GetPurchaseDate().GetYear())  return true; // if the left hand item has a year that is less than the right side year
-	if (left->GetPurchaseDate().GetMonth() < right->GetPurchaseDate().GetMonth()) return true; // if the left hand item has a month that is less than the right side month
-	if (left->GetPurchaseDate().GetDay()   < right->GetPurchaseDate().GetDay())   return true; // if the left item has a day that is less than the right side day
-	
-	
+	if (left->GetPurchaseDate().GetYear() < right->GetPurchaseDate().GetYear()) { return true; }
+	else if (left->GetPurchaseDate().GetYear() == right->GetPurchaseDate().GetYear()) {
+		if (left->GetPurchaseDate().GetMonth() < right->GetPurchaseDate().GetMonth()) { return true; }
+		else if (left->GetPurchaseDate().GetMonth() == right->GetPurchaseDate().GetMonth()) {
+			if (left->GetPurchaseDate().GetDay() < right->GetPurchaseDate().GetDay()) { return true; }
+			
+		}
+
+	}
 	return false;
+
 }
 
 std::string Utils::toUpper(std::string& text)
