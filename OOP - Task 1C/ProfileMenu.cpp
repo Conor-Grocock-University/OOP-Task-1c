@@ -58,6 +58,7 @@ namespace Menu {
 		std::string answer;
 		std::string username;
 		std::string password;
+		int gameChoice;
 
 		switch (choice)
 		{
@@ -101,12 +102,15 @@ namespace Menu {
 			break;
 			}
 		case 'G':
-			answer = Utils::toInt(Question("Which game would you like to play? Enter Number: "));
+			gameChoice = Utils::toInt(Question("Which game would you like to play? Enter Number: "));
 				for (int i = 0; i < player->GetOwnedGames().size(); i++)
 				{
-					 
+					if (gameChoice == i + 1)
+					{
 						player->GetOwnedGames()[i]->addPlayTime();
 						break;
+					}
+						
 					
 				}
 			break;
