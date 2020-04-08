@@ -1,4 +1,5 @@
 #include "Utils.h"
+#include "time.h"
 #include <cstdio>
 
 std::string Utils::getLineFromUser()
@@ -87,6 +88,12 @@ int Utils::toInt(std::string& number)
 	return std::stoi(number);
 }
 
+int Utils::randomWithinRange(int min, int max)
+{
+	srand(time(NULL));
+	int number = rand() % max + min;
+	return number;
+}
 
 
 

@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "ProfileMenu.h"
 #include "LoginUserMenu.h"
+#include "Utils.h"
 
 namespace Menu {
 	ProfileMenu::ProfileMenu(const std::string username, Application* app) :Menu(username, app)
@@ -37,10 +38,11 @@ namespace Menu {
 
 			for (int i =0; i <= player->library.size() -1 ; i++)
 			{
-				Option(i + 1, player->library[i]->GetGameName() + " - Purchased - " + player->library[i]->GetDateOfPurchase().ToFormattedString());
+				Option(i + 1, player->library[i]->GetGameName() + " - Purchased - " + player->library[i]->GetDateOfPurchase().ToFormattedString() + " - Play time - "+std::to_string(player->library[i]->GetPlayTime()));
 			}
 
 			Line();
+			Option('G', "Play Game");
 			Option('N', "Sort By Name");
 			Option('P', "Sort By Date of Purchase");
 		}
@@ -97,7 +99,17 @@ namespace Menu {
 
 			break;
 			}
-
+		case 'G':
+			Question("Which game would you like to play? Enter Number: ");
+				for (int i = 0; i < player->GetOwnedGames().size(); i++)
+				{
+					if (Utils::toInt(answer)==i);
+					{ 
+						player->GetOwnedGames()[i]->addPlayTime();
+						break;
+					}
+				}
+			break;
 		case 'T':
 			player->AddCredit(10);
 			break;
