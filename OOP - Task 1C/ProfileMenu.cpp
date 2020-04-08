@@ -29,6 +29,7 @@ namespace Menu {
 		Option('T', "Deposit 10 Pounds");
 		Option('F', "Deposit 50 Pounds");
 		Option('O', "Deposit 100 Pounds");
+
 		Line();
 
 		if (player->library.empty() == false) // if the player has owned games
@@ -100,14 +101,13 @@ namespace Menu {
 			break;
 			}
 		case 'G':
-			Question("Which game would you like to play? Enter Number: ");
+			answer = Utils::toInt(Question("Which game would you like to play? Enter Number: "));
 				for (int i = 0; i < player->GetOwnedGames().size(); i++)
 				{
-					if (Utils::toInt(answer)==i);
-					{ 
+					 
 						player->GetOwnedGames()[i]->addPlayTime();
 						break;
-					}
+					
 				}
 			break;
 		case 'T':
