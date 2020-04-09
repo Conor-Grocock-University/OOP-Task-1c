@@ -13,7 +13,7 @@ namespace Menu {
 	{
 		Player* player;
 		Guest* guest;
-		if (app->IsUserAdmin(app->GetCurrentUser()) == true)
+		if (app->IsUserAdmin(app->GetCurrentUser()))
 		{
 			Option('C', "Create New Player");
 			Option('D', "Delete Player");
