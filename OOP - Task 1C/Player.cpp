@@ -32,11 +32,13 @@ bool Player::BuyGame(const Game* game)
 			return true;
 		}
 		else
-		{
 			return false;
-		}
 }
 
+void Player::AddGuestGame(LibraryItem* game)
+{
+    guestLibrary.push_back(game);
+}
 bool Player::OwnsGame(const Game* game)
 {
 	for (LibraryItem* item : library)
@@ -46,7 +48,3 @@ bool Player::OwnsGame(const Game* game)
 	return false;
 }
 
-std::vector<LibraryItem*> Player::GetOwnedGames()
-{
-	return library;
-}

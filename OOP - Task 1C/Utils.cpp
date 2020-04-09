@@ -80,7 +80,7 @@ bool Utils::startsWith(std::string& searchText, std::string gameName)
 }
 
 
-bool Utils::withinPriceRange(int& min, int& max, int gamePrice)
+bool Utils::withinPriceRange(double& min, double& max, double gamePrice)
 {
 	return ((gamePrice - max) * (gamePrice - min) <= 0); // if the price is within the range of min and max values
 }
@@ -88,6 +88,43 @@ bool Utils::withinPriceRange(int& min, int& max, int gamePrice)
 int Utils::toInt(std::string& number)
 {
 	return std::stoi(number);
+}
+
+double Utils::toDouble(std::string& number)
+{
+	return std::stod(number);
+}
+bool Utils::isUserAdmin(User* user)
+{
+	try
+	{
+		if (dynamic_cast<Admin*>(user) == NULL)
+			return false;
+	}
+	catch (const std::bad_cast) { return false; }
+	return true;
+}
+
+
+bool Utils::isUserGuest(User* user)
+{
+	try {
+		if (dynamic_cast<Guest*>(user) == NULL)
+			return false;
+	}
+	catch (const std::bad_cast) { return false; }
+	return true;
+}
+
+bool Utils::isUserPlayer(User* user)
+{
+	try
+	{
+		if (dynamic_cast<Player*>(user) == NULL)
+			return false;
+	}
+	catch (const std::bad_cast) { return false; }
+	return true;
 }
 
 int Utils::randomWithinRange(int min, int max)
@@ -103,11 +140,12 @@ std::string Utils::formatPlaytime(const int& minutes)
 	{
 		double rounded = std::floor((((double)minutes / 60) * 100) + .5) / 100;
 		std::string playTime = std::to_string(rounded);
-		rounded < 5 ? playTime.resize(4) : playTime.resize(1);
+		rounded < 5 ? playTime.resize(playTime.find('.') + 2) : playTime.resize(playTime.find('.'));
 		return playTime + " Hours";
 	}else
 		return  std::to_string(minutes) + " Minutes";
 }
+
 
 
 

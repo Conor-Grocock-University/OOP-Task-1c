@@ -37,4 +37,3 @@ const Game* LibraryItem::GetGame()
 {
 	return game;
 }
-

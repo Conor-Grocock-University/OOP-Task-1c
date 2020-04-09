@@ -8,7 +8,7 @@
 #include "Utils.h"
 #include "MainMenu.h"
 #include "List.h"
-
+#include "Guest.h"
 // TODO: Remove from global scope once menu system is integrated
 Application app;
 
@@ -29,6 +29,7 @@ void createHardcodedTestData()
 	Player* u1 = new Admin("Alice", "password", Date("16-09-2018"));
 	Player* u2 = new Player("Bob", "password", Date("13-09-2018"));
 	Player* u3 = new Player("Charlie", "password", Date("24-09-2018"));
+	Guest* guest = new Guest();
 
 	// With some games in their library
 	u1->library.push_back(new LibraryItem(Date("17-09-2019"), app.GetStore().games[7]));
@@ -50,6 +51,7 @@ void createHardcodedTestData()
 	app.accounts[0]->users.addAtEnd(u1);
 	app.accounts[0]->users.addAtEnd(u2);
 	app.accounts[0]->users.addAtEnd(u3);
+	app.accounts[0]->users.addAtEnd(guest);
 	
 	app.accounts.addAtEnd(new Account("chris@shu.com", "ballsack", "13-09-2020"));
 	app.accounts[1]->users.addAtEnd(u3);

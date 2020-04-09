@@ -4,6 +4,8 @@
 #include "User.h"
 #include "Store.h"
 #include "List.h"
+#include "Admin.h"
+#include "Guest.h"
 
 class Application
 {
@@ -13,7 +15,6 @@ public:
 
     bool IsAccountLoggedIn() const;
     bool IsUserLoggedIn() const;
-    bool IsUserAdmin(User* user) const;
     Account* GetCurrentAccount() const;
     User* GetCurrentUser() const;
 	

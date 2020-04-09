@@ -60,7 +60,7 @@ namespace Menu {
                 OutputOptions();
                 break;
             case 'P':
-                searchedGames = app->GetStore().SearchByPriceRange(Utils::toInt(Question("Enter Minimum Value")), Utils::toInt(Question("Enter Maximum Value")));
+                searchedGames = app->GetStore().SearchByPriceRange(Utils::toDouble(Question("Enter Minimum Value")), Utils::toDouble(Question("Enter Maximum Value")));
                 OutputOptions();
                 break;
         }
