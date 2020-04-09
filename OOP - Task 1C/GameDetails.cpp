@@ -42,10 +42,12 @@ namespace Menu {
         {
 
         case 'A':
-            if (app->IsUserLoggedIn() && !Utils::isUserGuest(app->GetCurrentUser())) {
-                const std::string answer = Question("Are you sure? Y/N");
-                if (answer == "y" || answer == "Y")
+            if (app->IsUserLoggedIn()) && !Utils::isUserGuest(app->GetCurrentUser())){
+                if (!player->OwnsGame(game)) // if player does not own the current game
                 {
+                    const std::string answer = Question("Are you sure? Y/N");
+                    if (answer == "y" || answer == "Y")
+                    {
 
                     if (player->BuyGame(game))
                         BlockingMessage("Game Purchased");

@@ -15,6 +15,7 @@ class Player : public User
 		int GetCredit();
 		void AddCredit(int deposit);
 		bool BuyGame(const Game* game);
+		bool OwnsGame(const Game*);
 		std::vector<LibraryItem*> library;
 		std::vector<LibraryItem*> guestLibrary;
 		void AddGuestGame(LibraryItem*);

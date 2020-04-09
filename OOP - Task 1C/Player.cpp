@@ -37,5 +37,14 @@ bool Player::BuyGame(const Game* game)
 
 void Player::AddGuestGame(LibraryItem* game)
 {
-	guestLibrary.push_back(game);
+    guestLibrary.push_back(game);
 }
+bool Player::OwnsGame(const Game* game)
+{
+	for (LibraryItem* item : library)
+	{
+		if (item->GetGame() == game) { return true; }
+	}
+	return false;
+}
+
