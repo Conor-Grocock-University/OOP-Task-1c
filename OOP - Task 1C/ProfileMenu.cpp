@@ -8,7 +8,6 @@ namespace Menu {
 	ProfileMenu::ProfileMenu(const std::string username, Application* app) :Menu(username, app)
 	{
 		Paint(); // required in constructor
-
 	}
 
 
@@ -81,7 +80,6 @@ namespace Menu {
 				app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
 			}
 
-			///
 			break;
 		case 'D':
 			username = Question("Enter username of Player you wish to delete");
