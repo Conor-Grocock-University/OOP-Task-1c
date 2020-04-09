@@ -12,15 +12,15 @@ namespace Menu {
 	void ProfileMenu::OutputOptions()
 	{
 		Player* player;
-		Guest* guest;
-		if (app->IsUserAdmin(app->GetCurrentUser()))
+		//Guest* guest;
+		if (Utils::isUserAdmin(app->GetCurrentUser()))
 		{
 			Option('C', "Create New Player");
 			Option('D', "Delete Player");
 			Option('A', "Add Game To Guest Profile");
 		}
 
-		if (app->isUserPlayer(app->GetCurrentUser()))
+		if (Utils::isUserPlayer(app->GetCurrentUser()))
 		{
 			player = (Player*)app->GetCurrentUser();
 			Line();
@@ -48,24 +48,23 @@ namespace Menu {
 			}
 
 		}
-		else if (app->IsUserGuest(app->GetCurrentUser()))
+		else if (Utils::isUserGuest(app->GetCurrentUser()))
 		{
-			guest = (Guest*)app->GetCurrentUser();
+			//guest = (Guest*)app->GetCurrentUser();
 
 			Line("Owned Games: ");
 
-			if (guest->library.empty() == false) // if the player has owned games
-			{
+
 				Line();
 
-				for (int i = 0; i <= guest->library.size() - 1; i++)
+				for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->GetGuestLibrary().size() - 1; i++)
 				{
-					Option(i + 1, guest->library[i]->GetGameName());
+					Option(i + 1, app->GetCurrentAccount()->GetAdmin()->GetGuestLibrary()[i]->GetGameName());
 				}
 
 				Line();
 				Option('N', "Sort By Name");
-			}
+		
 		}
 	}
 
@@ -81,7 +80,7 @@ namespace Menu {
 
 		switch (choice)
 		{
-			if (app->IsUserAdmin(player))
+			if (Utils::isUserAdmin(player))
 			{
 
 		case 'C':
@@ -109,25 +108,25 @@ namespace Menu {
 				{
 					app->GetCurrentAccount()->DeletePlayer(user);
 				}
-			}
 
-			break;
+
+				break;
 
 		case 'A':
 			Line("Enter game to add to Guests games by entering corresponding number: ");
 			const int index = Utils::getCharFromUser() - '1';
 			if (index <= player->GetOwnedGames().size() - 1)
 			{
-				app->GetCurrentAccount()->GetGuest()->AddGame(player->GetOwnedGames()[index]->GetGame());
+				app->GetCurrentAccount()->GetAdmin()->AddGuestGame(player->GetOwnedGames()[index]);
 				BlockingMessage(player->GetOwnedGames()[index]->GetGameName() + "  added to Guests Games!");
 			}
 			else BlockingMessage("Enter corresponding number to game you wish to add");
-			
-			
+
+
 			break;
 			}
 
-
+			}
 		case 'T':
 			player->AddCredit(10);
 			break;
@@ -139,6 +138,11 @@ namespace Menu {
 			break;
 
 		case 'N':
+			if (Utils::isUserGuest(app->GetCurrentUser()))
+			{
+				sort(app->GetCurrentAccount()->GetAdmin()->guestLibrary.begin(), app->GetCurrentAccount()->GetAdmin()->guestLibrary.end(), Utils::SortByName);
+			}
+			else
 			sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
 
 			break;
