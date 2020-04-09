@@ -12,7 +12,6 @@ public:
 	Guest();
 	~Guest();
 	void AddGame(const Game* game);
-	std::vector<LibraryItem*> GetLibrary() const;
 
 private:
 

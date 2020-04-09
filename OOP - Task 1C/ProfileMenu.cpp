@@ -54,13 +54,13 @@ namespace Menu {
 
 			Line("Owned Games: ");
 
-			if (guest->GetLibrary().empty() == false) // if the player has owned games
+			if (guest->library.empty() == false) // if the player has owned games
 			{
 				Line();
 
-				for (int i = 0; i <= guest->GetLibrary().size() - 1; i++)
+				for (int i = 0; i <= guest->library.size() - 1; i++)
 				{
-					Option(i + 1, guest->GetLibrary()[i]->GetGameName());
+					Option(i + 1, guest->library[i]->GetGameName());
 				}
 
 				Line();
