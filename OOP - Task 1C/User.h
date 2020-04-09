@@ -17,7 +17,6 @@ public:
 	virtual ~User();
 	const std::string& GetUsername() const;
 	const UserLogins GetUserLogins() const;
-	std::vector<LibraryItem*> library;
 private:
 	std::string username;
 	std::string password;
