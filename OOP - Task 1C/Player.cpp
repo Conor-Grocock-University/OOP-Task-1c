@@ -35,10 +35,6 @@ bool Player::BuyGame(const Game* game)
 			return false;
 }
 
-std::vector<LibraryItem*> Player::GetOwnedGames()
-{
-	return library;
-}
 void Player::AddGuestGame(LibraryItem* game)
 {
 	guestLibrary.push_back(game);
