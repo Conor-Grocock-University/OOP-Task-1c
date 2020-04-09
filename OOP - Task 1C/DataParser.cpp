@@ -34,12 +34,11 @@ namespace data
 			else if (line == "ACCOUNT-ADMIN")
 				accounts.last()->users.addAtEnd(processAccountAdmin(Utils::splitVector(lines, i, 5)));
 			else if (line == "ACCOUNT-GUEST")
-				accounts.last()->users.addAtEnd(processAccountGuest(Utils::splitVector(lines, i, 4)));
+				accounts.last()->users.addAtEnd(processAccountGuest(Utils::splitVector(lines, i, 2)));
 			else if (line == "LIBRARY-ITEM")
 			{
 				Player* player = (Player*)accounts.last()->users.last();
 				player->library.push_back(processOwnedGame(Utils::splitVector(lines, i, 4), games));
-
 			}
 		}
 	}
