@@ -55,16 +55,16 @@ namespace Menu {
 			Line("Owned Games: ");
 
 
-				Line();
+			Line();
 
-				for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->GetGuestLibrary().size() - 1; i++)
-				{
-					Option(i + 1, app->GetCurrentAccount()->GetAdmin()->GetGuestLibrary()[i]->GetGameName());
-				}
+			for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->guestLibrary.size() - 1; i++)
+			{
+				Option(i + 1, app->GetCurrentAccount()->GetAdmin()->guestLibrary[i]->GetGameName());
+			}
 
-				Line();
-				Option('N', "Sort By Name");
-		
+			Line();
+			Option('N', "Sort By Name");
+
 		}
 	}
 
@@ -80,53 +80,59 @@ namespace Menu {
 
 		switch (choice)
 		{
-			if (Utils::isUserAdmin(player))
-			{
+
 
 		case 'C':
 			///
-			username = Question("Enter username for new Player");
-			password = Question("Enter password for Player " + username);
-			answer = Question("Is " + username + " an Admin? Y/N");
-			if (answer == "Y" || answer == "y")
+			if (Utils::isUserAdmin(player))
 			{
-				app->GetCurrentAccount()->AddAdmin(username, password); // creating new admin
-				BlockingMessage("Player " + username + " created!");
+				username = Question("Enter username for new Player");
+				password = Question("Enter password for Player " + username);
+				answer = Question("Is " + username + " an Admin? Y/N");
+				if (answer == "Y" || answer == "y")
+				{
+					app->GetCurrentAccount()->AddAdmin(username, password); // creating new admin
+					BlockingMessage("Player " + username + " created!");
 
+				}
+				else  app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
 			}
-			else  app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
-
 			///
 			break;
 		case 'D':
-			username = Question("Enter username of Player you wish to delete");
-			user = app->GetCurrentAccount()->GetUser(username);
-			if (user != nullptr)
+			if (Utils::isUserAdmin(player))
 			{
-				answer = Question("Delete Player " + user->GetUsername() + " Y/N");
-				if (answer == "Y" || answer == "y")
+
+				username = Question("Enter username of Player you wish to delete");
+				user = app->GetCurrentAccount()->GetUser(username);
+				if (user != nullptr)
 				{
-					app->GetCurrentAccount()->DeletePlayer(user);
+					answer = Question("Delete Player " + user->GetUsername() + " Y/N");
+					if (answer == "Y" || answer == "y")
+					{
+						app->GetCurrentAccount()->DeletePlayer(user);
+					}
+
 				}
-
-
 				break;
 
 		case 'A':
-			Line("Enter game to add to Guests games by entering corresponding number: ");
-			const int index = Utils::getCharFromUser() - '1';
-			if (index <= player->GetOwnedGames().size() - 1)
+			if (Utils::isUserAdmin(player))
 			{
-				app->GetCurrentAccount()->GetAdmin()->AddGuestGame(player->GetOwnedGames()[index]);
-				BlockingMessage(player->GetOwnedGames()[index]->GetGameName() + "  added to Guests Games!");
+				Line("Enter game to add to Guests games by entering corresponding number: ");
+				const int index = Utils::getCharFromUser() - '1';
+				if (index <= player->GetOwnedGames().size() - 1)
+				{
+					app->GetCurrentAccount()->GetAdmin()->AddGuestGame(player->GetOwnedGames()[index]);
+					BlockingMessage(player->GetOwnedGames()[index]->GetGameName() + "  added to Guests Games!");
+				}
+				else BlockingMessage("Enter corresponding number to game you wish to add");
+
 			}
-			else BlockingMessage("Enter corresponding number to game you wish to add");
-
-
 			break;
-			}
+			
 
-			}
+		}
 		case 'T':
 			player->AddCredit(10);
 			break;
@@ -143,7 +149,7 @@ namespace Menu {
 				sort(app->GetCurrentAccount()->GetAdmin()->guestLibrary.begin(), app->GetCurrentAccount()->GetAdmin()->guestLibrary.end(), Utils::SortByName);
 			}
 			else
-			sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
+				sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
 
 			break;
 
@@ -156,9 +162,9 @@ namespace Menu {
 			break;
 		}
 
-		}
-		return false;
 	}
+	return false;
+}
 
 
 };
