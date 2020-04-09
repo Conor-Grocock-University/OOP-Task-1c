@@ -15,6 +15,5 @@ public:
 	std::vector<LibraryItem*> GetLibrary() const;
 
 private:
-	std::vector<LibraryItem*> library;
 
 };

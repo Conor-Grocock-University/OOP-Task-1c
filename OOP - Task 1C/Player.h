@@ -12,7 +12,6 @@ class Player : public User
 	public:
 		Player(const std::string&, const std::string&, const Date&);
 		~Player();
-		std::vector<LibraryItem*> library;
 		int GetCredit();
 		void AddCredit(int deposit);
 		bool BuyGame(const Game* game);
