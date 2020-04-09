@@ -21,7 +21,7 @@ const std::string& Game::GetDescription() const
 
 double Game::GetCost() const
 {
-    return cost;
+    return cost/100;
 }
 
 int Game::GetAgeRating() const
