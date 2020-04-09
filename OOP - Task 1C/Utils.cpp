@@ -98,23 +98,13 @@ int Utils::randomWithinRange(int min, int max)
 std::string Utils::formatPlaytime(const int& minutes)
 {
 	if (minutes > 59)
-	{	
+	{
 		double rounded = std::floor((((double)minutes / 60) * 100) + .5) / 100;
 		std::string playTime = std::to_string(rounded);
-		if (rounded < 5)
-		{
-			playTime.resize(4);
-		}
-		else
-		{
-			playTime.resize(1);
-		}
+		rounded < 5 ? playTime.resize(4) : playTime.resize(1);
 		return playTime + " Hours";
-	}
-	else
-	{
+	}else
 		return  std::to_string(minutes) + " Minutes";
-	}
 }
 
 
