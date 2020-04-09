@@ -34,14 +34,14 @@ namespace data
 			List<User*> users = account->users;
 			for (int user_index = 0; user_index < users.length(); user_index++)
 			{
-				User* user = users[user_index];
+				Player* player = (Player*)users[user_index];
 				
-				if(Utils::isUserAdmin(user))
-					writeAccountAdmin(dynamic_cast<Admin*>(user));
+				if(Utils::isUserAdmin(player))
+					writeAccountAdmin(dynamic_cast<Admin*>(player));
 				else
-					writeAccountPlayer(dynamic_cast<Player*>(user));
+					writeAccountPlayer(dynamic_cast<Player*>(player));
 
-				std::vector<LibraryItem*> library = user->library;
+				std::vector<LibraryItem*> library = player->library;
 				for (auto& lib_index : library)
 					writeOwnedGame(lib_index);
 			}

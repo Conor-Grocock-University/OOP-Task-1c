@@ -17,7 +17,7 @@ public:
 private:
     std::string name;
     std::string description;
-    int cost;
+    double cost;
     int ageRating;
     int id;
 };
