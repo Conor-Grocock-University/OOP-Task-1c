@@ -32,9 +32,7 @@ bool Player::BuyGame(const Game* game)
 			return true;
 		}
 		else
-		{
 			return false;
-		}
 }
 
 std::vector<LibraryItem*> Player::GetOwnedGames()
