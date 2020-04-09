@@ -74,14 +74,9 @@ namespace Menu {
 		{
 			std::string username = Question("Enter username for new Player");
 			std::string password = Question("Enter password for Player " + username);
-			std::string answer = Question("Is " + username + " an Admin? Y/N");
-			if (answer == "Y" || answer == "y")
-			{
-				app->GetCurrentAccount()->AddAdmin(username, password); // creating new admin
-				BlockingMessage("Player " + username + " created!");
+			app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
+			BlockingMessage("Player " + username + " created!");
 
-			}
-			else app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
 		}
 	}
 
