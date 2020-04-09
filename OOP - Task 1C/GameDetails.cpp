@@ -25,7 +25,7 @@ namespace Menu {
         Line("Description: " + game->GetDescription()); // Game description
         Line();
 
-        if (app->IsUserLoggedIn() && !app->IsUserGuest(app->GetCurrentUser())) { // if user is logged in and user is not a guest
+        if (app->IsUserLoggedIn() && !Utils::isUserGuest(app->GetCurrentUser())) { // if user is logged in and user is not a guest
             
                 std::cout << "Your Credit: " << char(156) << dynamic_cast<Player*>(app->GetCurrentUser())->GetCredit();
                 Line();
@@ -42,7 +42,7 @@ namespace Menu {
         {
 
         case 'A':
-            if (app->IsUserLoggedIn() && !app->IsUserGuest(app->GetCurrentUser())) {
+            if (app->IsUserLoggedIn() && !Utils::isUserGuest(app->GetCurrentUser())) {
                 const std::string answer = Question("Are you sure? Y/N");
                 if (answer == "y" || answer == "Y")
                 {
