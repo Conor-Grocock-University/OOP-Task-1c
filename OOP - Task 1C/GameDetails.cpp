@@ -48,15 +48,11 @@ namespace Menu {
                 {
 
                     if (player->BuyGame(game))
-                    {
                         BlockingMessage("Game Purchased");
 
-                    }
                     else
-                    {
                         BlockingMessage("Insufficient Funds");
 
-                    }
                 }
                 break;
             }
