@@ -33,13 +33,13 @@ namespace Menu {
 			Line();
 			Line("Owned Games: ");
 
-			if (player->GetOwnedGames().empty() == false) // if the player has owned games
+			if (player->library.empty() == false) // if the player has owned games
 			{
 				Line();
 
-				for (int i = 0; i <= player->GetOwnedGames().size() - 1; i++)
+				for (int i = 0; i <= player->library.size() - 1; i++)
 				{
-					LibraryItem* game = player->GetOwnedGames()[i];
+					LibraryItem* game = player->library[i];
 					Option(i + 1, game->GetGame()->GetName() + " - Purchased - " + game->GetPurchaseDate().ToFormattedString() + " - Play time - " + Utils::formatPlaytime(game->GetPlaytime()));
 				}
 
@@ -55,9 +55,9 @@ namespace Menu {
 			Line("Owned Games: ");
 			Line();
 
-			for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->GetGuestLibrary().size() - 1; i++)
+			for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->guestLibrary.size() - 1; i++)
 			{
-				LibraryItem* game = app->GetCurrentAccount()->GetAdmin()->GetGuestLibrary()[i];
+				LibraryItem* game = app->GetCurrentAccount()->GetAdmin()->guestLibrary[i];
 				Option(i + 1, game->GetGame()->GetName() + " - Purchased - " + game->GetPurchaseDate().ToFormattedString() + " - Play time - " + Utils::formatPlaytime(game->GetPlaytime()));
 			}
 
@@ -108,10 +108,10 @@ namespace Menu {
 		{
 			Line("Enter game to add to Guests games by entering corresponding number: ");
 			const int index = Utils::getCharFromUser() - '1';
-			if (index <= player->GetOwnedGames().size() - 1)
+			if (index <= player->library.size() - 1)
 			{
-				app->GetCurrentAccount()->GetAdmin()->AddGuestGame(player->GetOwnedGames()[index]);
-				BlockingMessage(player->GetOwnedGames()[index]->GetGame()->GetName() + "  added to Guests Games!");
+				app->GetCurrentAccount()->GetAdmin()->AddGuestGame(player->library[index]);
+				BlockingMessage(player->library[index]->GetGame()->GetName() + "  added to Guests Games!");
 			}
 			else BlockingMessage("Enter corresponding number to game you wish to add");
 		}
@@ -121,17 +121,17 @@ namespace Menu {
 	{
 		int gameChoice = Utils::toInt(Question("Which game would you like to play? Enter Number: "));
 		
-		std::vector<LibraryItem*>* library;
+		std::vector<LibraryItem*> library;
 		if (Utils::isUserGuest(player))
-			library = &app->GetCurrentAccount()->GetAdmin()->GetGuestLibrary();
+			library = app->GetCurrentAccount()->GetAdmin()->guestLibrary;
 		else
-			library = &player->GetOwnedGames();
+			library = player->library;
 
-		for (int i = 0; i < library->size(); i++)
+		for (int i = 0; i < library.size(); i++)
 		{
 			if (gameChoice == i + 1)
 			{
-				library->at(i)->addPlayTime();
+				library.at(i)->addPlayTime();
 				break;
 			}
 		}
@@ -167,13 +167,13 @@ namespace Menu {
 			}
 			case 'N': {
 				if (Utils::isUserGuest(app->GetCurrentUser()))
-					sort(app->GetCurrentAccount()->GetAdmin()->GetGuestLibrary().begin(), app->GetCurrentAccount()->GetAdmin()->GetGuestLibrary().end(), Utils::SortByName);
+					sort(app->GetCurrentAccount()->GetAdmin()->guestLibrary.begin(), app->GetCurrentAccount()->GetAdmin()->library.end(), Utils::SortByName);
 				else
-					sort(player->GetOwnedGames().begin(), player->GetOwnedGames().end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
+					sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
 				break;
 			}
 			case 'P': {
-				std::sort(player->GetOwnedGames().begin(), player->GetOwnedGames().end(), Utils::SortByDate);
+				std::sort(player->library.begin(), player->library.end(), Utils::SortByDate);
 				break;
 			}
 			default: {

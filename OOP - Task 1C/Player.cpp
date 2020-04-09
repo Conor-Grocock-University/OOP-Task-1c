@@ -37,11 +37,6 @@ void Player::AddGuestGame(LibraryItem* game)
     guestLibrary.push_back(game);
 }
 
-std::vector<LibraryItem*> Player::GetGuestLibrary() const
-{
-	return guestLibrary;
-}
-
 bool Player::OwnsGame(const Game* game)
 {
 	for (int item_index = 0; item_index < library.size(); ++item_index)
@@ -51,7 +46,3 @@ bool Player::OwnsGame(const Game* game)
 	return false;
 }
 
-std::vector<LibraryItem*> Player::GetOwnedGames() const
-{
-	return library;
-}
