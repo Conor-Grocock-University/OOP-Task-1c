@@ -140,7 +140,7 @@ std::string Utils::formatPlaytime(const int& minutes)
 	{
 		double rounded = std::floor((((double)minutes / 60) * 100) + .5) / 100;
 		std::string playTime = std::to_string(rounded);
-		rounded < 5 ? playTime.resize(4) : playTime.resize(1);
+		rounded < 5 ? playTime.resize(playTime.find('.') + 2) : playTime.resize(playTime.find('.'));
 		return playTime + " Hours";
 	}else
 		return  std::to_string(minutes) + " Minutes";
