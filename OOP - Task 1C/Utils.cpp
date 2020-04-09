@@ -1,4 +1,5 @@
 #include "Utils.h"
+#include <iomanip>
 #include <cstdio>
 
 std::string Utils::getLineFromUser()
@@ -100,6 +101,7 @@ bool Utils::isUserAdmin(User* user)
 	return true;
 }
 
+
 bool Utils::isUserGuest(User* user)
 {
 	try {
@@ -119,6 +121,25 @@ bool Utils::isUserPlayer(User* user)
 	}
 	catch (const std::bad_cast) { return false; }
 	return true;
+}
+
+int Utils::randomWithinRange(int min, int max)
+{
+	srand(time(NULL));
+	int number = rand() % max + min;
+	return number;
+}
+
+std::string Utils::formatPlaytime(const int& minutes)
+{
+	if (minutes > 59)
+	{
+		double rounded = std::floor((((double)minutes / 60) * 100) + .5) / 100;
+		std::string playTime = std::to_string(rounded);
+		rounded < 5 ? playTime.resize(4) : playTime.resize(1);
+		return playTime + " Hours";
+	}else
+		return  std::to_string(minutes) + " Minutes";
 }
 
 

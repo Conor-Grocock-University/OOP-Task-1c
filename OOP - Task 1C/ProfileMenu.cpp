@@ -1,12 +1,13 @@
 #include "Application.h"
 #include "ProfileMenu.h"
 #include "LoginUserMenu.h"
+#include "Utils.h"
+#include <iostream>
 
 namespace Menu {
 	ProfileMenu::ProfileMenu(const std::string username, Application* app) :Menu(username, app)
 	{
 		Paint(); // required in constructor
-
 	}
 
 	void ProfileMenu::OutputOptions()
@@ -50,40 +51,33 @@ namespace Menu {
 		}
 		else if (Utils::isUserGuest(app->GetCurrentUser()))
 		{
-			//guest = (Guest*)app->GetCurrentUser();
-
 			Line("Owned Games: ");
-
-
 			Line();
 
 			for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->guestLibrary.size() - 1; i++)
 			{
-				Option(i + 1, app->GetCurrentAccount()->GetAdmin()->guestLibrary[i]->GetGameName());
+				Option(i + 1, app->GetCurrentAccount()->GetAdmin()->guestLibrary[i]->GetGameName() + " - Play time - " + Utils::formatPlaytime(app->GetCurrentAccount()->guestLibrary[i]->GetPlayTimeMinutes()));
 			}
 
 			Line();
+			Option('G', "Play Game");
 			Option('N', "Sort By Name");
 
 		}
 	}
 
-
 	bool ProfileMenu::HandleChoice(char choice)
 	{
-
 		Player* player = (Player*)app->GetCurrentUser();
 		User* user;
 		std::string answer;
 		std::string username;
 		std::string password;
+		int gameChoice;
 
 		switch (choice)
 		{
-
-
 		case 'C':
-			///
 			if (Utils::isUserAdmin(player))
 			{
 				username = Question("Enter username for new Player");
@@ -96,13 +90,12 @@ namespace Menu {
 
 				}
 				else  app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
-			}
-			///
+			}			
+		
 			break;
 		case 'D':
 			if (Utils::isUserAdmin(player))
 			{
-
 				username = Question("Enter username of Player you wish to delete");
 				user = app->GetCurrentAccount()->GetUser(username);
 				if (user != nullptr)
@@ -115,7 +108,7 @@ namespace Menu {
 
 				}
 				break;
-
+            }
 		case 'A':
 			if (Utils::isUserAdmin(player))
 			{
@@ -130,9 +123,31 @@ namespace Menu {
 
 			}
 			break;
-			
-
-		}
+		case 'G':
+			gameChoice = Utils::toInt(Question("Which game would you like to play? Enter Number: "));
+            if(Utils::isUserGuest(player))
+            {
+                for (int i = 0; i < app->GetCurrentAccount()->GetAdmin()->guestLibrary.size(); i++)
+				{
+					if (gameChoice == i + 1)
+					{
+						app->GetCurrentAccount()->GetAdmin()->guestLibrary[i]->addPlayTime();
+						break;
+					}
+				}
+            }
+            else
+            {
+				for (int i = 0; i < player->library.size(); i++)
+				{
+					if (gameChoice == i + 1)
+					{
+						player->library[i]->addPlayTime();
+						break;
+					}
+				}
+            }
+			break;
 		case 'T':
 			player->AddCredit(10);
 			break;

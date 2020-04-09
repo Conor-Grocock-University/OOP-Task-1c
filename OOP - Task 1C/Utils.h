@@ -19,6 +19,8 @@ public:
     static std::string toUpperString(std::string);
     static bool withinPriceRange(double&, double&, double);
     static int toInt(std::string&);
+    static int randomWithinRange(int min, int max);
+    static std::string formatPlaytime(const int& minutes);
     static bool SortByName(LibraryItem*, LibraryItem*);
     static bool SortByDate(LibraryItem*, LibraryItem*);
     static bool isUserAdmin(User* user);
