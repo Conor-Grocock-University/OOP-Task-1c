@@ -15,9 +15,6 @@ public:
 
     bool IsAccountLoggedIn() const;
     bool IsUserLoggedIn() const;
-    bool IsUserAdmin(User* user) const;
-	bool IsUserGuest(User*) const;
-	bool isUserPlayer(User*) const;
     Account* GetCurrentAccount() const;
     User* GetCurrentUser() const;
 	

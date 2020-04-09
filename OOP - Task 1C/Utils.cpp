@@ -87,6 +87,38 @@ int Utils::toInt(std::string& number)
 	return std::stoi(number);
 }
 
+bool Utils::isUserAdmin(User* user)
+{
+	try
+	{
+		if (dynamic_cast<Admin*>(user) == NULL)
+			return false;
+	}
+	catch (const std::bad_cast) { return false; }
+	return true;
+}
+
+bool Utils::isUserGuest(User* user)
+{
+	try {
+		if (dynamic_cast<Guest*>(user) == NULL)
+			return false;
+	}
+	catch (const std::bad_cast) { return false; }
+	return true;
+}
+
+bool Utils::isUserPlayer(User* user)
+{
+	try
+	{
+		if (dynamic_cast<Player*>(user) == NULL)
+			return false;
+	}
+	catch (const std::bad_cast) { return false; }
+	return true;
+}
+
 
 
 

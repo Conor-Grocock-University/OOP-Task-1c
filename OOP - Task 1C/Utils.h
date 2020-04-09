@@ -4,7 +4,9 @@
 #include <iostream>
 #include <algorithm>
 #include "LibraryItem.h"
-
+#include "User.h"
+#include "Admin.h"
+#include "Guest.h"
 class Utils
 {
 public:
@@ -19,5 +21,10 @@ public:
     static int toInt(std::string&);
     static bool SortByName(LibraryItem*, LibraryItem*);
     static bool SortByDate(LibraryItem*, LibraryItem*);
+    static bool isUserAdmin(User* user);
+    static bool isUserGuest(User* user);
+    static bool isUserPlayer(User* user);
+
+
         // TODO: 1 versions of ToUpper
 };

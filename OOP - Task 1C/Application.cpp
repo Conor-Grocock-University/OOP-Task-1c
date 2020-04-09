@@ -18,37 +18,7 @@ bool Application::IsUserLoggedIn() const
     return currentUser != nullptr;
 }
 
-bool Application::IsUserAdmin(User* user) const
-{
-	try
-	{
-		if(dynamic_cast<Admin*>(user)== NULL)
-			return false;	
-	}
-	catch (const std::bad_cast) { return false; }
-	return true;
-}
 
-bool Application::IsUserGuest(User* user) const
-{
-	try {
-		if (dynamic_cast<Guest*>(user) == NULL)
-			return false;
-	}
-	catch (const std::bad_cast) { return false; }
-	return true;
-}
-
-bool Application::isUserPlayer(User* user) const
-{
-	try
-	{
-		if (dynamic_cast<Player*>(user) == NULL)
-			return false;
-	}
-	catch (const std::bad_cast) { return false; }
-	return true;
-}
 
 
 bool Application::IsAccountLoggedIn() const
