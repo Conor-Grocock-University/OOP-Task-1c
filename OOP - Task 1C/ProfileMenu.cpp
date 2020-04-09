@@ -3,7 +3,6 @@
 #include "LoginUserMenu.h"
 #include "Utils.h"
 #include <iostream>
-#include <iomanip>
 
 namespace Menu {
 	ProfileMenu::ProfileMenu(const std::string username, Application* app) :Menu(username, app)
@@ -16,10 +15,6 @@ namespace Menu {
 	
 	void ProfileMenu::OutputOptions()
 	{
-		//std::fixed;
-		std::cout << std::fixed;
-		std::setprecision(2);
-
 		if (app->IsUserAdmin(app->GetCurrentUser()) == true)
 		{
 			Option('C', "Create New Player");
@@ -72,7 +67,6 @@ namespace Menu {
 			{
 
 		case 'C':
-			///
 			username = Question("Enter username for new Player");
 			password = Question("Enter password for Player " + username);
 			answer = Question("Is " + username + " an Admin? Y/N");
