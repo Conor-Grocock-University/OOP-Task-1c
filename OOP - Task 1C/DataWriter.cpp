@@ -36,14 +36,14 @@ namespace data
 			{
 				User* user = users[user_index];
 				
-				if(Application::IsUserAdmin(user))
+				if(Utils::isUserAdmin(user))
 					writeAccountAdmin(dynamic_cast<Admin*>(user));
 				else
 					writeAccountPlayer(dynamic_cast<Player*>(user));
 
 				std::vector<LibraryItem*> library = user->library;
-				for (int lib_index = 0; lib_index < library.size(); lib_index++)
-					writeOwnedGame(library[lib_index]);
+				for (auto& lib_index : library)
+					writeOwnedGame(lib_index);
 			}
 		}
 	}

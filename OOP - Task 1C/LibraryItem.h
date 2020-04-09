@@ -8,7 +8,7 @@ class LibraryItem
 	public:
 		LibraryItem(const Date,const Game*, int = 0);
 		~LibraryItem();
-		const Game* GetGame();
+		const Game* GetGame() const;
 		Date GetPurchaseDate() const;
 		const int GetPlaytime() const;
 		void addPlayTime();

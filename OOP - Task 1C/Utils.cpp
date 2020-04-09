@@ -130,25 +130,18 @@ bool Utils::isUserPlayer(User* user)
 	return true;
 }
 
-int Utils::randomWithinRange(int min, int max)
+int Utils::randomWithinRange(const int min, const int max)
 {
-	srand(time(NULL));
-	int number = rand() % max + min;
-	return number;
+	srand(time(nullptr));
+	return rand() % max + min;
 }
 
 std::string Utils::formatPlaytime(const int& minutes)
 {
-	if (minutes > 59)
-	{
-		double rounded = std::floor((((double)minutes / 60) * 100) + .5) / 100;
-		std::string playTime = std::to_string(rounded);
-		rounded < 5 ? playTime.resize(playTime.find('.') + 2) : playTime.resize(playTime.find('.'));
-		return playTime + " Hours";
-	}else
-		return  std::to_string(minutes) + " Minutes";
+	if (minutes <= 59) return std::to_string(minutes) + " Minutes";
+	
+	const double rounded = std::floor((((double)minutes / 60) * 100) + .5) / 100;
+	std::string playTime = std::to_string(rounded);
+	rounded < 5 ? playTime.resize(playTime.find('.') + 2) : playTime.resize(playTime.find('.'));
+	return playTime + " Hours";
 }
-
-
-
-

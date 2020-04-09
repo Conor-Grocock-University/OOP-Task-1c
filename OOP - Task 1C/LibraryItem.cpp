@@ -1,6 +1,4 @@
 #include "LibraryItem.h"
-#include "time.h"
-#include "stdlib.h"
 #include "Utils.h"
 
 LibraryItem::LibraryItem(const Date date,const Game* game, int playTime)
@@ -12,29 +10,24 @@ LibraryItem::~LibraryItem()
 {
 }
 
+void LibraryItem::addPlayTime()
+{
+	playtime += Utils::randomWithinRange(10, 60);
+}
+
 const Game* LibraryItem::GetGame() const
 {
+
 	return game;
 }
 
-Date& LibraryItem::GetDateOfPurchase()
-{
+Date LibraryItem::GetPurchaseDate() const
+{
 	return purchased;
-}
-
-int LibraryItem::GetPlayTimeMinutes()
-{
-	return playTimeMinutes;
-}
-
-void LibraryItem::addPlayTime()
-{
-	int rand = Utils::randomWithinRange(10, 60);
-	playTimeMinutes +=rand;
 }
 
-const Game* LibraryItem::GetGame()
-{
-	return game;
+const int LibraryItem::GetPlaytime() const
+{
+	return playtime;
 }
 

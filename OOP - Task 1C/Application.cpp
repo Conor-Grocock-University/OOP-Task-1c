@@ -21,22 +21,6 @@ bool Application::IsUserLoggedIn() const
     return currentUser != nullptr;
 }
 
-bool Application::IsUserAdmin(User* user)
-{
-	try
-	{
-		if(dynamic_cast<Admin*>(user)== NULL)
-			return false;
-	}
-	catch (const std::bad_cast)
-	{
-		return false;
-	}
-	return true;
-}
-
-
-
 bool Application::IsAccountLoggedIn() const
 {
     return currentAccount != nullptr;

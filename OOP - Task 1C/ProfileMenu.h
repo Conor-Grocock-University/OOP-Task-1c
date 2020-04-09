@@ -12,8 +12,13 @@ namespace Menu {
 
         void OutputOptions() final;
         bool HandleChoice(char choice) final;
+        void UserPlayGame(Player* player);
 
-        
+        void UserPlayGame(int& gameChoice, Player* player);
+    	
+        void CreateNewPlayer(Player* player);
+        bool DeleteUser(Player* player);
+        void AddGameToGuest(Player* player);
     };
 };
 
