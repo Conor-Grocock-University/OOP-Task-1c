@@ -18,9 +18,8 @@ namespace Menu {
 	void GameDetails::OutputOptions()
 	{
 		//displaying the game price
-		int price = game->GetCost();
 		std::cout << "  Price: " << char(156);
-		printf("%.2f", (double)price); //Price to two decimal places
+		printf("%.2f", game->GetCost()); //Price to two decimal places
 		Line();
 		Line("Description: " + game->GetDescription()); // Game description
 		Line();
