@@ -20,10 +20,9 @@ namespace Menu {
 			Option('A', "Add Game To Guest Profile");
 		}
 
-		User* userType = (User*)app->GetCurrentUser();
-		if (dynamic_cast<Player*>(userType))
+		if (app->isUserPlayer(app->GetCurrentUser()))
 		{
-			player = (Player*)userType;
+			player = (Player*)app->GetCurrentUser();
 			Line();
 			std::cout << "Credit: " << char(156);
 			printf("%.2f", (double)player->GetCredit());
@@ -49,9 +48,9 @@ namespace Menu {
 			}
 
 		}
-		else if (dynamic_cast<Guest*>(userType))
+		else if (app->IsUserGuest(app->GetCurrentUser()))
 		{
-			guest = (Guest*)userType;
+			guest = (Guest*)app->GetCurrentUser();
 
 			Line("Owned Games: ");
 
@@ -96,10 +95,7 @@ namespace Menu {
 				BlockingMessage("Player " + username + " created!");
 
 			}
-			else
-			{
-				app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
-			}
+			else  app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
 
 			///
 			break;
@@ -125,9 +121,8 @@ namespace Menu {
 				app->GetCurrentAccount()->GetGuest()->AddGame(player->GetOwnedGames()[index]->GetGame());
 				BlockingMessage(player->GetOwnedGames()[index]->GetGameName() + "  added to Guests Games!");
 			}
-			else {
-				BlockingMessage("Enter corresponding number to game you wish to add");
-			}
+			else BlockingMessage("Enter corresponding number to game you wish to add");
+			
 			
 			break;
 			}

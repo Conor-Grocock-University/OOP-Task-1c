@@ -39,6 +39,17 @@ bool Application::IsUserGuest(User* user) const
 	return true;
 }
 
+bool Application::isUserPlayer(User* user) const
+{
+	try
+	{
+		if (dynamic_cast<Player*>(user) == NULL)
+			return false;
+	}
+	catch (const std::bad_cast) { return false; }
+	return true;
+}
+
 
 bool Application::IsAccountLoggedIn() const
 {
