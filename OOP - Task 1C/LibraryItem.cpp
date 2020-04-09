@@ -22,7 +22,7 @@ Date& LibraryItem::GetDateOfPurchase()
 	return purchased;
 }
 
-int LibraryItem::GetPlayTime()
+int LibraryItem::GetPlayTimeMinutes()
 {
 	return playTimeMinutes;
 }

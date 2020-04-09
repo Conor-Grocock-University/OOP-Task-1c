@@ -10,7 +10,7 @@ class LibraryItem
 		~LibraryItem();
 		const std::string& GetGameName();
 		Date& GetDateOfPurchase();
-		int GetPlayTime();
+		int GetPlayTimeMinutes();
 		void addPlayTime();
 	private:
 		const Game* game;

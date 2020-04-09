@@ -2,6 +2,8 @@
 #include "ProfileMenu.h"
 #include "LoginUserMenu.h"
 #include "Utils.h"
+#include <iostream>
+#include <iomanip>
 
 namespace Menu {
 	ProfileMenu::ProfileMenu(const std::string username, Application* app) :Menu(username, app)
@@ -11,9 +13,13 @@ namespace Menu {
 	}
 
 
-
+	
 	void ProfileMenu::OutputOptions()
 	{
+		//std::fixed;
+		std::cout << std::fixed;
+		std::setprecision(2);
+
 		if (app->IsUserAdmin(app->GetCurrentUser()) == true)
 		{
 			Option('C', "Create New Player");
@@ -39,7 +45,7 @@ namespace Menu {
 
 			for (int i =0; i <= player->library.size() -1 ; i++)
 			{
-				Option(i + 1, player->library[i]->GetGameName() + " - Purchased - " + player->library[i]->GetDateOfPurchase().ToFormattedString() + " - Play time - "+std::to_string(player->library[i]->GetPlayTime()));
+				Option(i + 1, player->library[i]->GetGameName() + " - Purchased - " + player->library[i]->GetDateOfPurchase().ToFormattedString() + " - Play time - " + Utils::formatPlaytime(player->library[i]->GetPlayTimeMinutes()));
 			}
 
 			Line();
