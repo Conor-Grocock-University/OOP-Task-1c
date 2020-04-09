@@ -59,6 +59,17 @@ Guest* Account::GetGuest()
 	}
 }
 
+Player* Account::GetAdmin()
+{
+	for (int i = 0; i <= users.length() - 1; i++)
+	{
+		if (Utils::isUserAdmin(users[i]))
+			return dynamic_cast<Player*>(users[i]);
+		
+	}
+	return nullptr;
+}
+
 void Account::DeletePlayer(User* user)
 {
 	users.deleteOne(user);
