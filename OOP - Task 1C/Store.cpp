@@ -31,7 +31,7 @@ List<Game*> Store::SearchByPriceRange(int min, int max) // unable to pass by ref
 	List<Game*> searchedGames;
 	for (int i = 0; i < games.length(); i++)
 	{
-		if (Utils::withinPriceRange(min, max, games[i]->GetCost()))
+		if (Utils::withinPriceRange(min, max, games[i]->GetCreditCost()))
 		{
 			searchedGames.addInFront(games[i]);
 		}
