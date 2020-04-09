@@ -7,7 +7,8 @@
 #include "Admin.h"
 #include "Date.h"
 #include "List.h"
-
+#include "Guest.h"
+#include "Utils.h"
 struct AccountLogins
 {
 	std::string email;
@@ -25,8 +26,10 @@ class Account
 		void AddPlayer(const std::string&, const std::string&);
 		void AddAdmin(const std::string&, const std::string&);
 		User* GetUser(const std::string&);
+		Guest* GetGuest();
+		Player* GetAdmin();
 		void DeletePlayer(User*);
-
+		
 		List<User*> users;
 
 		const Date& getCreated() const;
@@ -34,6 +37,5 @@ class Account
 		
 		std::string email;
 		std::string password;
-		Date created;  
-
+		Date created;
 };

@@ -6,66 +6,64 @@
 #include "Menu.h"
 
 namespace Menu {
- 
-
-    GameDetails::GameDetails(const std::string& title,const Game* game, Application* app):game(game),Menu(title,game,app)
-    {
-        Paint();
-    }
 
 
+	GameDetails::GameDetails(const std::string& title, const Game* game, Application* app) :game(game), Menu(title, game, app)
+	{
+		Paint();
+	}
 
-    void GameDetails::OutputOptions()
-    {
-        //displaying the game price
-        int price = game->GetCost();
-        std::cout << "  Price: " << char(156);
-        printf("%.2f", (double)price); //Price to two decimal places
-        Line();
-        Line("Description: " + game->GetDescription()); // Game description
-        Line();
 
-        if (app->IsUserLoggedIn()) {
-            std::cout << "Your Credit: " << char(156) << dynamic_cast<Player*>(app->GetCurrentUser())->GetCredit();
-            Line();
-            Option('A', "Buy Game");
-        }
-    }
 
-    bool GameDetails::HandleChoice(const char choice)
-    {
-        Player* player = (Player*)app->GetCurrentUser();
-        switch (choice)
-        {
+	void GameDetails::OutputOptions()
+	{
+		//displaying the game price
+		std::cout << "  Price: " << char(156);
+		printf("%.2f", game->GetCost()); //Price to two decimal places
+		Line();
+		Line("Description: " + game->GetDescription()); // Game description
+		Line();
 
-        case 'A':
-            if (app->IsUserLoggedIn()) {
-                if (!player->OwnsGame(game)) // if player does not own the current game
-                {
-                    const std::string answer = Question("Are you sure? Y/N");
-                    if (answer == "y" || answer == "Y")
-                    {
+		if (app->IsUserLoggedIn() && !Utils::isUserGuest(app->GetCurrentUser())) { // if user is logged in and user is not a guest
 
-                        if (player->BuyGame(game))
-                        {
-                            BlockingMessage("Game Purchased");
+			std::cout << "Your Credit: " << char(156) << dynamic_cast<Player*>(app->GetCurrentUser())->GetCredit();
+			Line();
+			Option('A', "Buy Game");
 
-                        }
-                        else
-                        {
-                            BlockingMessage("Insufficient Funds");
 
-                        }
-                    }
-                } else { BlockingMessage("Game already owned!");  }
-                break;
-            }
-        default:
-            BlockingMessage("Undefined case");
-            break;
+		}
+	}
 
-        }
-        return false;
-    }
+	bool GameDetails::HandleChoice(const char choice)
+	{
+		Player* player = (Player*)app->GetCurrentUser();
+		switch (choice)
+		{
 
+		case 'A':
+			if (app->IsUserLoggedIn() && !Utils::isUserGuest(app->GetCurrentUser()))
+			{
+				if (!player->OwnsGame(game)) // if player does not own the current game
+				{
+					const std::string answer = Question("Are you sure? Y/N");
+					if (answer == "y" || answer == "Y")
+					{
+
+						if (player->BuyGame(game))
+							BlockingMessage("Game Purchased");
+
+						else
+							BlockingMessage("Insufficient Funds");
+
+					}
+					break;
+				}
+		default:
+			BlockingMessage("Undefined case");
+			break;
+
+			}
+			return false;
+		}
+	}
 };

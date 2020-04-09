@@ -1,5 +1,4 @@
 #include "Application.h"
-#include "Admin.h"
 
 #include "DataParser.h"
 #include "DataWriter.h"
@@ -35,6 +34,8 @@ bool Application::IsUserAdmin(User* user)
 	}
 	return true;
 }
+
+
 
 bool Application::IsAccountLoggedIn() const
 {

@@ -10,8 +10,7 @@ public:
 
     const std::string& GetName() const;
     const std::string& GetDescription() const;
-    int GetCost() const;
-    int GetCreditValue() const;
+    double GetCost() const;
     int GetAgeRating() const;
     int GetId() const;
 
