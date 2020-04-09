@@ -1,16 +1,17 @@
 #include "Application.h"
 #include "ProfileMenu.h"
 #include "LoginUserMenu.h"
+#include "Utils.h"
+#include <iostream>
 
 namespace Menu {
 	ProfileMenu::ProfileMenu(const std::string username, Application* app) :Menu(username, app)
 	{
 		Paint(); // required in constructor
-
 	}
 
 
-
+	
 	void ProfileMenu::OutputOptions()
 	{
 		if (app->IsUserAdmin(app->GetCurrentUser()) == true)
@@ -28,6 +29,7 @@ namespace Menu {
 		Option('T', "Deposit 10 Pounds");
 		Option('F', "Deposit 50 Pounds");
 		Option('O', "Deposit 100 Pounds");
+
 		Line();
 
 		if (player->library.empty() == false) // if the player has owned games
@@ -37,10 +39,11 @@ namespace Menu {
 
 			for (int i =0; i <= player->library.size() -1 ; i++)
 			{
-				Option(i + 1, player->library[i]->GetGameName() + " - Purchased - " + player->library[i]->GetDateOfPurchase().ToFormattedString());
+				Option(i + 1, player->library[i]->GetGameName() + " - Purchased - " + player->library[i]->GetDateOfPurchase().ToFormattedString() + " - Play time - " + Utils::formatPlaytime(player->library[i]->GetPlayTimeMinutes()));
 			}
 
 			Line();
+			Option('G', "Play Game");
 			Option('N', "Sort By Name");
 			Option('P', "Sort By Date of Purchase");
 		}
@@ -55,6 +58,7 @@ namespace Menu {
 		std::string answer;
 		std::string username;
 		std::string password;
+		int gameChoice;
 
 		switch (choice)
 		{
@@ -62,7 +66,6 @@ namespace Menu {
 			{
 
 		case 'C':
-			///
 			username = Question("Enter username for new Player");
 			password = Question("Enter password for Player " + username);
 			answer = Question("Is " + username + " an Admin? Y/N");
@@ -77,7 +80,6 @@ namespace Menu {
 				app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
 			}
 
-			///
 			break;
 		case 'D':
 			username = Question("Enter username of Player you wish to delete");
@@ -97,7 +99,19 @@ namespace Menu {
 
 			break;
 			}
-
+		case 'G':
+			gameChoice = Utils::toInt(Question("Which game would you like to play? Enter Number: "));
+				for (int i = 0; i < player->GetOwnedGames().size(); i++)
+				{
+					if (gameChoice == i + 1)
+					{
+						player->GetOwnedGames()[i]->addPlayTime();
+						break;
+					}
+						
+					
+				}
+			break;
 		case 'T':
 			player->AddCredit(10);
 			break;
