@@ -90,6 +90,10 @@ int Utils::toInt(std::string& number)
 	return std::stoi(number);
 }
 
+double Utils::toDouble(std::string& number)
+{
+	return std::stod(number);
+}
 bool Utils::isUserAdmin(User* user)
 {
 	try
