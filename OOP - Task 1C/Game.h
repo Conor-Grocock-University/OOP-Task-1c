@@ -18,6 +18,6 @@ private:
     int id;
     std::string name;
     std::string description;
-    int cost;
+    double cost;
     int ageRating;
 };
