@@ -79,7 +79,7 @@ bool Utils::startsWith(std::string& searchText, std::string gameName)
 }
 
 
-bool Utils::withinPriceRange(int& min, int& max, int gamePrice)
+bool Utils::withinPriceRange(double& min, double& max, double gamePrice)
 {
 	return ((gamePrice - max) * (gamePrice - min) <= 0); // if the price is within the range of min and max values
 }

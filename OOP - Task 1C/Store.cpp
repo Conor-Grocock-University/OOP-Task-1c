@@ -26,12 +26,12 @@ List<Game*> Store::SearchByName(std::string &searchText)
 	return searchedGames;
 }
 
-List<Game*> Store::SearchByPriceRange(int min, int max) // unable to pass by reference due to error from returned value from Question function
+List<Game*> Store::SearchByPriceRange(double min, double max) // unable to pass by reference due to error from returned value from Question function
 {
 	List<Game*> searchedGames;
 	for (int i = 0; i < games.length(); i++)
 	{
-		if (Utils::withinPriceRange(min, max, games[i]->GetCreditCost()))
+		if (Utils::withinPriceRange(min, max, games[i]->GetCost()))
 		{
 			searchedGames.addInFront(games[i]);
 		}

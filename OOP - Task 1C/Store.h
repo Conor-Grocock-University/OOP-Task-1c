@@ -9,7 +9,7 @@ class Store
 		Store();
 		~Store();
 		List<Game*> SearchByName(std::string&);
-		List<Game*> SearchByPriceRange(int, int);
+		List<Game*> SearchByPriceRange(double, double);
 		List<Game*> games;
 	private:
 };
