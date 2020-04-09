@@ -38,6 +38,8 @@ namespace data
 				
 				if(Utils::isUserAdmin(user))
 					writeAccountAdmin(dynamic_cast<Admin*>(user));
+				else if (Utils::isUserGuest(user))
+					writeAccountGuest(dynamic_cast<Guest*>(user));
 				else
 					writeAccountPlayer(dynamic_cast<Player*>(user));
 
@@ -104,6 +106,16 @@ namespace data
 		writeToLineToFile(fileLines);
 	}
 
+	void DataWriter::writeAccountGuest(Guest* guest)
+	{
+		std::vector<std::string> fileLines;
+
+		fileLines.push_back("ACCOUNT-GUEST");
+		fileLines.push_back(guest->GetCreated().ToFormattedString('/'));
+
+		writeToLineToFile(fileLines);
+	}
+
 	void DataWriter::writeOwnedGame(LibraryItem* library_item)
 	{
 		std::vector<std::string> fileLines;
@@ -113,7 +125,6 @@ namespace data
 		// TODO: Fix issue with dates being way off
 		// Until then I've hard coded the dates
 		fileLines.push_back(library_item->GetPurchaseDate().ToFormattedString('-'));
-		//fileLines.push_back("24-09-2017");
 		fileLines.push_back(std::to_string(library_item->GetPlaytime()));
 
 		writeToLineToFile(fileLines);

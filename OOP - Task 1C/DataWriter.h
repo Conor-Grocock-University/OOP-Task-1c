@@ -10,8 +10,6 @@ namespace data
 	{
 	public:
 		DataWriter(Application& app);
-		void writeToLineToFile(const std::vector<std::string>& lines);
-		//~DataParser();
 
 		void writeFile();
 	private:
@@ -19,8 +17,10 @@ namespace data
 		void writeAccount(Account*);
 		void writeAccountPlayer(Player*);
 		void writeAccountAdmin(Admin*);
+		void writeAccountGuest(Guest*);
 		void writeOwnedGame(LibraryItem*);
 
+		void writeToLineToFile(const std::vector<std::string>& lines);
 	private:
 		std::ofstream file;
 		Application* app;

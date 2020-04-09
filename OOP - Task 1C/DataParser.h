@@ -26,6 +26,7 @@ namespace data
 		Account* processAccount(const std::vector<std::string>& dataLines) const;
 		Player* processAccountPlayer(const std::vector<std::basic_string<char>>& dataLines);
 		Admin* processAccountAdmin(const std::vector<std::basic_string<char>>& dataLines);
+		Guest* processAccountGuest(const std::vector<std::basic_string<char>>& dataLines);
 		LibraryItem* processOwnedGame(const std::vector<std::basic_string<char>>& dataLines, List<Game*> games) const;
 		
 	private:

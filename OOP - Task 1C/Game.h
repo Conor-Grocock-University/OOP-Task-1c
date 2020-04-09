@@ -15,9 +15,9 @@ public:
     int GetId() const;
 
 private:
+    int id;
     std::string name;
     std::string description;
     int cost;
     int ageRating;
-    int id;
 };

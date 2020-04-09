@@ -33,6 +33,8 @@ namespace data
 				accounts.last()->users.addAtEnd(processAccountPlayer(Utils::splitVector(lines, i, 5)));
 			else if (line == "ACCOUNT-ADMIN")
 				accounts.last()->users.addAtEnd(processAccountAdmin(Utils::splitVector(lines, i, 5)));
+			else if (line == "ACCOUNT-GUEST")
+				accounts.last()->users.addAtEnd(processAccountGuest(Utils::splitVector(lines, i, 4)));
 			else if (line == "LIBRARY-ITEM")
 				accounts.last()->users.last()->library.push_back(processOwnedGame(Utils::splitVector(lines, i, 4), games));
 		}
@@ -94,6 +96,14 @@ namespace data
 		Admin* admin = new Admin(dataLines[2], dataLines[3], Date(dataLines[1].c_str()));
 		admin->AddCredit(std::stoi(dataLines[4]));
 		return admin;
+	}
+
+	Guest* DataParser::processAccountGuest(const std::vector<std::basic_string<char>>& dataLines)
+	{
+		// 0 - Cat
+		// 1 - Created date
+
+		return new Guest(Date(dataLines[1].c_str()));
 	}
 
 	LibraryItem* DataParser::processOwnedGame(const std::vector<std::basic_string<char>>& dataLines, List<Game*> games) const

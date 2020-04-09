@@ -9,6 +9,7 @@
 class Guest : public User
 {
 public:
+	Guest(Date& date);
 	Guest();
 	~Guest();
 	void AddGame(const Game* game);
