@@ -52,10 +52,10 @@ namespace Menu {
 		}
 		else if (Utils::isUserGuest(app->GetCurrentUser()))
 		{
-			Line("Owned Games: ");
-			Line();
 			if (!app->GetCurrentAccount()->GetAdmin()->guestLibrary.empty())
 			{
+				Line("Owned Games: ");
+				Line();
 				for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->guestLibrary.size() - 1; i++)
 				{
 					LibraryItem* game = app->GetCurrentAccount()->GetAdmin()->guestLibrary[i];
