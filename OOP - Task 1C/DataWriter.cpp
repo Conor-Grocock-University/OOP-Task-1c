@@ -34,7 +34,7 @@ namespace data
 			List<User*> users = account->users;
 			for (int user_index = 0; user_index < users.length(); user_index++)
 			{
-				Player* player = (Player*)users[user_index];
+				User* player = (User*)users[user_index];
 				
 				if(Utils::isUserAdmin(player))
 					writeAccountAdmin(dynamic_cast<Admin*>(player));
