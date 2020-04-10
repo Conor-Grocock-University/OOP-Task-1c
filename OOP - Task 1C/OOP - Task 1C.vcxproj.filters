@@ -1,24 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\User">
-      <UniqueIdentifier>{442e0f90-1196-45e6-a1d1-26e8f9d99efb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\User">
-      <UniqueIdentifier>{eb2ce069-f216-4bb9-b2c5-e1a1fcdc69d9}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Account.cpp" />
+    <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="DataParser.cpp" />
+    <ClCompile Include="DataWriter.cpp" />
+    <ClCompile Include="Date.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameDetails.cpp" />
+    <ClCompile Include="LibraryItem.cpp" />
+    <ClCompile Include="List.cpp" />
+    <ClCompile Include="LoginUserMenu.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ProfileMenu.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Store.cpp" />
+    <ClCompile Include="StoreMenu.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -130,9 +132,6 @@
     </ClInclude>
     <ClInclude Include="GameDetails.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Guest.h">
-      <Filter>Header Files\User</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

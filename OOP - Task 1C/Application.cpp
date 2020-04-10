@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include "DataParser.h"
+#include "DataWriter.h"
+
 
 Application::Application() : currentAccount(nullptr), currentUser(nullptr)
 {
@@ -17,9 +20,6 @@ bool Application::IsUserLoggedIn() const
 {
     return currentUser != nullptr;
 }
-
-
-
 
 bool Application::IsAccountLoggedIn() const
 {
@@ -82,3 +82,17 @@ void Application::LogoutAccount()
 {
 	currentAccount = nullptr;
 }
+
+void Application::save()
+{
+	data::DataWriter dw(*this);
+}
+void Application::load()
+{
+	data::DataParser dp(*this);
+	dp.parseFile();
+	accounts = dp.getAccounts();
+	store.games = dp.getGames();
+}
+
+

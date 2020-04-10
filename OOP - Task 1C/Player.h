@@ -16,11 +16,11 @@ class Player : public User
 		void AddCredit(int deposit);
 		bool BuyGame(const Game* game);
 		bool OwnsGame(const Game*);
-		std::vector<LibraryItem*> library;
-		std::vector<LibraryItem*> guestLibrary;
 		void AddGuestGame(LibraryItem*);
+		std::vector<LibraryItem*> library;	// libraries need to be public to use the std::sort function
+		std::vector<LibraryItem*> guestLibrary;
 
 	private:
+	
 		int credit = 0;
-
 };

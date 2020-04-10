@@ -25,25 +25,23 @@ void Player::AddCredit(int deposit)
 
 bool Player::BuyGame(const Game* game)
 {
-		if (game->GetCost() <= credit)
-		{
-			credit -= game->GetCost();
-			library.push_back(new LibraryItem(Date::CurrentDate(), game));
-			return true;
-		}
-		else
-			return false;
+	if (game->GetCost()/100 > credit) return false;
+	
+	credit -= game->GetCost()/100;
+	library.push_back(new LibraryItem(Date::CurrentDate(), game));
+	return true;
 }
 
 void Player::AddGuestGame(LibraryItem* game)
 {
     guestLibrary.push_back(game);
 }
+
 bool Player::OwnsGame(const Game* game)
 {
-	for (LibraryItem* item : library)
+	for (int item_index = 0; item_index < library.size(); ++item_index)
 	{
-		if (item->GetGame() == game) { return true; }
+		if (library[item_index]->GetGame() == game) { return true; }		
 	}
 	return false;
 }

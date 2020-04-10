@@ -20,14 +20,17 @@ public:
 	
     Store& GetStore();
 
-		bool LoginAccount(const std::string& email, const std::string& password);
-		bool LoginUser(const std::string& username, const std::string& password);
-		void LogoutUser();
-		void LogoutAccount();
-		List<Account*> accounts;
+    bool LoginAccount(const std::string& email, const std::string& password);
+    bool LoginUser(const std::string& username, const std::string& password);
+    void LogoutUser();
+    void LogoutAccount();
+    List<Account*> accounts;
 
-	private:
-		Store store;
-		Account* currentAccount;
-		User* currentUser;
+    void save();
+    void load();
+
+private:
+	Store store;
+	Account* currentAccount;
+	User* currentUser;
 };

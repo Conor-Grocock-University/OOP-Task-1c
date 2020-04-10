@@ -12,10 +12,10 @@ Date::Date(const char date[])
 	char dayCh[2] = "";
 	char monthCh[2] = "";
 	char yearCh[4] = "";
-
+	 
 	try
 	{
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i < length ; i++) {
 			if (date[i] == '/' || date[i] == '-') { // if the next char is '/'
 				sepCount++;
 				countFromSep = 0;
@@ -23,21 +23,32 @@ Date::Date(const char date[])
 			}
 
 			switch (sepCount) {
-			case 0: {
+ 			case 0: {
 					assert(countFromSep < 2);
 				dayCh[countFromSep] = date[i]; // storing day 
+				break;
 			}
 			case 1: {
 					assert(countFromSep < 2);
 				monthCh[countFromSep] = date[i]; // storing month
+				break;
 			}
 			case 2: {
 					assert(countFromSep < 4);
 				yearCh[countFromSep] = date[i]; // storing year
+				break;
+				
 
 			}
-				  countFromSep++;
+				
 			}
+			countFromSep++;
+			if (countFromSep == 4) {
+				countFromSep = 0;
+				break;
+			}
+				  
+
 		}
 
 		/* converting chars to int */
@@ -50,6 +61,7 @@ Date::Date(const char date[])
 	{
 		std::cout << "ERROR PARSING DATES"; 
 	}
+
 
 }
 
@@ -155,4 +167,9 @@ int Date::GetDay()
 const std::string Date::ToFormattedString() const
 {
 	return std::to_string(day) + "/" + std::to_string(month) + "/" + std::to_string(year); // formatting to "DD/MM/YYYY"
+}
+
+const std::string Date::ToFormattedString(char seperator) const
+{
+	return std::to_string(day) + seperator + std::to_string(month) + seperator + std::to_string(year); // formatting to "DD/MM/YYYY"
 }

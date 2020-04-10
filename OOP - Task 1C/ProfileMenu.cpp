@@ -12,7 +12,6 @@ namespace Menu {
 
 	void ProfileMenu::OutputOptions()
 	{
-		Player* player;
 		//Guest* guest;
 		if (Utils::isUserAdmin(app->GetCurrentUser()))
 		{
@@ -23,7 +22,7 @@ namespace Menu {
 
 		if (Utils::isUserPlayer(app->GetCurrentUser()))
 		{
-			player = (Player*)app->GetCurrentUser();
+			Player* player = (Player*)app->GetCurrentUser();
 			Line();
 			std::cout << "Credit: " << char(156);
 			printf("%.2f", (double)player->GetCredit());
@@ -40,7 +39,8 @@ namespace Menu {
 
 				for (int i = 0; i <= player->library.size() - 1; i++)
 				{
-					Option(i + 1, player->library[i]->GetGameName() + " - Purchased - " + player->library[i]->GetDateOfPurchase().ToFormattedString() + " - Play time - " + Utils::formatPlaytime(player->library[i]->GetPlayTimeMinutes()));
+					LibraryItem* game = player->library[i];
+					Option(i + 1, game->GetGame()->GetName() + " - Purchased - " + game->GetPurchaseDate().ToFormattedString() + " - Play time - " + Utils::formatPlaytime(game->GetPlaytime()));
 				}
 
 				Line();
@@ -57,7 +57,8 @@ namespace Menu {
 
 			for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->guestLibrary.size() - 1; i++)
 			{
-				Option(i + 1, app->GetCurrentAccount()->GetAdmin()->guestLibrary[i]->GetGameName() + " - Play time - " + Utils::formatPlaytime(app->GetCurrentAccount()->GetAdmin()->guestLibrary[i]->GetPlayTimeMinutes()));
+				LibraryItem* game = app->GetCurrentAccount()->GetAdmin()->guestLibrary[i];
+				Option(i + 1, game->GetGame()->GetName() + " - Purchased - " + game->GetPurchaseDate().ToFormattedString() + " - Play time - " + Utils::formatPlaytime(game->GetPlaytime()));
 			}
 
 			Line();
@@ -67,120 +68,120 @@ namespace Menu {
 		}
 	}
 
+	void ProfileMenu::CreateNewPlayer(Player* player)
+	{
+
+		if (Utils::isUserAdmin(player))
+		{
+			std::string username = Question("Enter username for new Player");
+			std::string password = Question("Enter password for Player " + username);
+			app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
+			BlockingMessage("Player " + username + " created!");
+
+		}
+	}
+
+	bool ProfileMenu::DeleteUser(Player* player)
+	{
+		if (Utils::isUserAdmin(player))
+		{
+			const std::string username = Question("Enter username of Player you wish to delete");
+			User* user = app->GetCurrentAccount()->GetUser(username);
+			if (user != nullptr)
+			{
+				const std::string answer = Question("Delete Player " + user->GetUsername() + " Y/N");
+				if (answer == "Y" || answer == "y")
+					app->GetCurrentAccount()->DeletePlayer(user);
+			}
+			return true;
+		}
+		return false;
+	}
+
+	void ProfileMenu::AddGameToGuest(Player* player)
+	{
+		if (Utils::isUserAdmin(player))
+		{
+			Line("Enter game to add to Guests games by entering corresponding number: ");
+			const int index = Utils::getCharFromUser() - '1';
+			if (index <= player->library.size() - 1)
+			{
+				app->GetCurrentAccount()->GetAdmin()->AddGuestGame(player->library[index]);
+				BlockingMessage(player->library[index]->GetGame()->GetName() + "  added to Guests Games!");
+			}
+			else BlockingMessage("Enter corresponding number to game you wish to add");
+		}
+	}
+
+	void ProfileMenu::UserPlayGame(Player* player)
+	{
+		int gameChoice = Utils::toInt(Question("Which game would you like to play? Enter Number: "));
+		
+		std::vector<LibraryItem*> library;
+		if (Utils::isUserGuest(player))
+			library = app->GetCurrentAccount()->GetAdmin()->guestLibrary;
+		else
+			library = player->library;
+
+		for (int i = 0; i < library.size(); i++)
+		{
+			if (gameChoice == i + 1)
+			{
+				library.at(i)->addPlayTime();
+				break;
+			}
+		}
+	}
+
 	bool ProfileMenu::HandleChoice(char choice)
 	{
 		Player* player = (Player*)app->GetCurrentUser();
-		User* user;
-		std::string answer;
-		std::string username;
-		std::string password;
-		int gameChoice;
-
+		
 		switch (choice)
 		{
-		case 'C':
-			if (Utils::isUserAdmin(player))
-			{
-				username = Question("Enter username for new Player");
-				password = Question("Enter password for Player " + username);
-				answer = Question("Is " + username + " an Admin? Y/N");
-				if (answer == "Y" || answer == "y")
-				{
-					app->GetCurrentAccount()->AddAdmin(username, password); // creating new admin
-					BlockingMessage("Player " + username + " created!");
-
-				}
-				else  app->GetCurrentAccount()->AddPlayer(username, password); // creating new player
-			}			
-		
-			break;
-		case 'D':
-			if (Utils::isUserAdmin(player))
-			{
-				username = Question("Enter username of Player you wish to delete");
-				user = app->GetCurrentAccount()->GetUser(username);
-				if (user != nullptr)
-				{
-					answer = Question("Delete Player " + user->GetUsername() + " Y/N");
-					if (answer == "Y" || answer == "y")
-					{
-						app->GetCurrentAccount()->DeletePlayer(user);
-					}
-
-				}
+			case 'C':
+				CreateNewPlayer(player);
 				break;
-            }
-		case 'A':
-			if (Utils::isUserAdmin(player))
-			{
-				Line("Enter game to add to Guests games by entering corresponding number: ");
-				const int index = Utils::getCharFromUser() - '1';
-				if (index <= player->library.size() - 1)
-				{
-					app->GetCurrentAccount()->GetAdmin()->AddGuestGame(player->library[index]);
-					BlockingMessage(player->library[index]->GetGameName() + "  added to Guests Games!");
-				}
-				else BlockingMessage("Enter corresponding number to game you wish to add");
-
+			case 'D':
+				if (DeleteUser(player)) break;
+			case 'A':
+				AddGameToGuest(player);
+				break;
+			case 'G':
+				UserPlayGame(player);
+				break;
+			case 'T':
+				player->AddCredit(10);
+				break;
+			case 'F': {
+				player->AddCredit(50);
+				break;
 			}
-			break;
-		case 'G':
-			gameChoice = Utils::toInt(Question("Which game would you like to play? Enter Number: "));
-            if(Utils::isUserGuest(player))
-            {
-                for (int i = 0; i < app->GetCurrentAccount()->GetAdmin()->guestLibrary.size(); i++)
-				{
-					if (gameChoice == i + 1)
-					{
-						app->GetCurrentAccount()->GetAdmin()->guestLibrary[i]->addPlayTime();
-						break;
-					}
-				}
-            }
-            else
-            {
-				for (int i = 0; i < player->library.size(); i++)
-				{
-					if (gameChoice == i + 1)
-					{
-						player->library[i]->addPlayTime();
-						break;
-					}
-				}
-            }
-			break;
-		case 'T':
-			player->AddCredit(10);
-			break;
-		case 'F':
-			player->AddCredit(50);
-			break;
-		case 'O':
-			player->AddCredit(100);
-			break;
-
-		case 'N':
-			if (Utils::isUserGuest(app->GetCurrentUser()))
-			{
-				sort(app->GetCurrentAccount()->GetAdmin()->guestLibrary.begin(), app->GetCurrentAccount()->GetAdmin()->guestLibrary.end(), Utils::SortByName);
+			case 'O': {
+				player->AddCredit(100);
+				break;
 			}
-			else
-				sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
+			case 'N': {
+				if (Utils::isUserGuest(app->GetCurrentUser()))
+				{
+					player = app->GetCurrentAccount()->GetAdmin();
+					sort(player->guestLibrary.begin(), player->guestLibrary.end(), Utils::SortByName);
 
-			break;
-
-		case 'P':
-			sort(player->library.begin(), player->library.end(), Utils::SortByDate);
-			break;
-		default:
-		{
-			BlockingMessage("Undefined case");
-			break;
+				}
+				else
+					sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
+				break;
+			}
+			case 'P': {
+				std::sort(player->library.begin(), player->library.end(), Utils::SortByDate);
+				break;
+			}
+			default: {
+				BlockingMessage("Undefined case");
+				break;
+			}
 		}
-
+		return false;
 	}
-	return false;
-}
-
-
+	
 };

@@ -19,6 +19,11 @@ const AccountLogins Account::GetAccountLogins() const
 	return { email, password };
 }
 
+const Date& Account::getCreated() const
+{
+	return created;
+}
+
 List<User*> Account::GetUsers()
 {
 	return users;

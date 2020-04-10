@@ -55,7 +55,7 @@ public:
     T& operator [] (int i);                  // index operator
     bool isEmpty() const;                    // check if list is empty
     const T first() const;                   // return first item (MUST be non-empty)
-    const T last() const;                    // return last item (MUST be non-empty)
+    T last();                          // return last item (MUST be non-empty)
     const List<T> tail() const;              // return tail (MUST be non-empty)
     void addInFront(const T&);               // insert an item in front
     void addAtEnd(const T&);                 // insert an item at end
@@ -161,7 +161,7 @@ const T List<T>::first() const
 }
 
 template <class T>
-const T List<T>::last() const
+T List<T>::last()
 {
     assert(head != nullptr);
     return end()->item;
