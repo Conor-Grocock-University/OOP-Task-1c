@@ -15,7 +15,6 @@ namespace data
 	{
 	public:
 		DataParser(const Application& app);
-		//~DataParser();
 
 		void parseFile();
 		List<Game*> getGames();
