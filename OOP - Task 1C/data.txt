@@ -52,6 +52,48 @@ Brothers
 Split your brain into two thumbs.
 799
 15
+GAME
+9
+Halo CE: Combat Evolved
+Halo: Combat Evolved, also known as Halo 1 or Halo: CE, is a First-person shooter science-fiction video game.
+1599
+15
+GAME
+10
+Dead Island
+Dead Island is an action role-playing survival horror video game series published by Deep Silver for Microsoft Windows.
+1999
+18
+GAME
+11
+Dead Island: Riptide
+Dead Island 2 is an survival horror action role-playing game that follows the story of Dead Island 1
+2599
+18
+GAME
+12
+Rust
+Rust is a multiplayer-only survival video game developed by Facepunch Studios.
+1699
+12
+GAME
+13
+Need For Speed: Most Wanted
+Need for Speed: Most Wanted is an open world racing game developed by Criterion Games and published by Electronic Arts.
+2099
+12
+GAME
+14
+Destiny 2
+Destiny 2 is a science-fiction online-only multiplayer first-person shooter video game developed by Bungie.
+2999
+12
+GAME
+15
+Life Is Strange
+Life is Strange is an award-winning narrative series with a supernatural twist, where your choices matter.
+1599
+12
 ACCOUNT
 16/6/2017
 alice@shu.com
@@ -106,14 +148,83 @@ LIBRARY-ITEM
 ACCOUNT-GUEST
 16/6/2017
 GUEST-ITEM
-1
-9-4-2020
-269
+8
+10-4-2020
+0
 GUEST-ITEM
+14
+10-4-2020
+0
+GUEST-ITEM
+15
+10-4-2020
+0
+GUEST-ITEM
+11
+10-4-2020
+0
+ACCOUNT
+16/6/2017
+thebois@shu.com
+password
+ACCOUNT-ADMIN
+9/4/2020
+Chris
+password
+1487
+LIBRARY-ITEM
+15
+10-4-2020
+0
+LIBRARY-ITEM
+14
+10-4-2020
+0
+LIBRARY-ITEM
+13
+10-4-2020
+0
+LIBRARY-ITEM
 6
 10-4-2020
-46
-GUEST-ITEM
 0
-9-4-2020
-303
+LIBRARY-ITEM
+9
+10-4-2020
+0
+LIBRARY-ITEM
+8
+10-4-2020
+0
+LIBRARY-ITEM
+11
+10-4-2020
+0
+ACCOUNT-PLAYER
+19/9/2017
+Lawrence
+password
+0
+ACCOUNT-PLAYER
+15/4/2020
+Conor
+password
+875
+ACCOUNT-GUEST
+5/3/2020
+GUEST-ITEM
+8
+10-4-2020
+0
+GUEST-ITEM
+14
+10-4-2020
+0
+GUEST-ITEM
+15
+10-4-2020
+0
+GUEST-ITEM
+11
+10-4-2020
+0
