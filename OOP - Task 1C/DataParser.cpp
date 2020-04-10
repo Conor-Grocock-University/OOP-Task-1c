@@ -20,6 +20,7 @@ namespace data
 	void DataParser::parseFile()
 	{
 		if (error) return;
+		Admin* admin = nullptr;
 		
 		for (int i = 0; i < lines.size(); ++i)
 		{
@@ -31,15 +32,17 @@ namespace data
 				accounts.addAtEnd(processAccount(Utils::splitVector(lines, i, 4)));
 			else if (line == "ACCOUNT-PLAYER")
 				accounts.last()->users.addAtEnd(processAccountPlayer(Utils::splitVector(lines, i, 5)));
-			else if (line == "ACCOUNT-ADMIN")
-				accounts.last()->users.addAtEnd(processAccountAdmin(Utils::splitVector(lines, i, 5)));
+			else if (line == "ACCOUNT-ADMIN") {
+				admin = processAccountAdmin(Utils::splitVector(lines, i, 5));
+				accounts.last()->users.addAtEnd(admin);
+			}
 			else if (line == "ACCOUNT-GUEST")
 				accounts.last()->users.addAtEnd(processAccountGuest(Utils::splitVector(lines, i, 2)));
 			else if (line == "LIBRARY-ITEM")
-			{
-				Player* player = (Player*)accounts.last()->users.last();
-				player->library.push_back(processOwnedGame(Utils::splitVector(lines, i, 4), games));
-			}
+				((Player*)accounts.last()->users.last())->library.push_back(processOwnedGame(Utils::splitVector(lines, i, 4), games));
+			else if (line == "GUEST-ITEM") 
+				admin->guestLibrary.push_back(processOwnedGame(Utils::splitVector(lines, i, 4), games));
+			
 		}
 	}
 
