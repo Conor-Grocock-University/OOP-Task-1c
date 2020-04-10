@@ -33,7 +33,7 @@ namespace Menu {
 			Line();
 			Line("Owned Games: ");
 
-			if (player->library.empty() == false) // if the player has owned games
+			if (!player->library.empty()) // if the player has owned games
 			{
 				Line();
 
@@ -54,16 +54,18 @@ namespace Menu {
 		{
 			Line("Owned Games: ");
 			Line();
-
-			for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->guestLibrary.size() - 1; i++)
+			if (!app->GetCurrentAccount()->GetAdmin()->guestLibrary.empty())
 			{
-				LibraryItem* game = app->GetCurrentAccount()->GetAdmin()->guestLibrary[i];
-				Option(i + 1, game->GetGame()->GetName() + " - Purchased - " + game->GetPurchaseDate().ToFormattedString() + " - Play time - " + Utils::formatPlaytime(game->GetPlaytime()));
+				for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->guestLibrary.size() - 1; i++)
+				{
+					LibraryItem* game = app->GetCurrentAccount()->GetAdmin()->guestLibrary[i];
+					Option(i + 1, game->GetGame()->GetName() + " - Purchased - " + game->GetPurchaseDate().ToFormattedString() + " - Play time - " + Utils::formatPlaytime(game->GetPlaytime()));
+				}
+				Line();
+				Option('G', "Play Game");
+				Option('N', "Sort By Name");
 			}
-
-			Line();
-			Option('G', "Play Game");
-			Option('N', "Sort By Name");
+			
 
 		}
 	}
@@ -165,8 +167,11 @@ namespace Menu {
 				if (Utils::isUserGuest(app->GetCurrentUser()))
 				{
 					player = app->GetCurrentAccount()->GetAdmin();
-					sort(player->guestLibrary.begin(), player->guestLibrary.end(), Utils::SortByName);
+					if (!player->guestLibrary.empty())// if there are games in guest library
+					{
+						sort(player->guestLibrary.begin(), player->guestLibrary.end(), Utils::SortByName);
 
+					}
 				}
 				else
 					sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
