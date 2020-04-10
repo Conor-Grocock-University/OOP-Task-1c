@@ -112,7 +112,6 @@ namespace data
 		fileLines.push_back(logins.password);
 		fileLines.push_back(std::to_string(admin->GetCredit()));
 
-
 		writeToLineToFile(fileLines);
 	}
 
@@ -134,6 +133,18 @@ namespace data
 		fileLines.push_back(std::to_string(library_item->GetGame()->GetId()));
 		// TODO: Fix issue with dates being way off
 		// Until then I've hard coded the dates
+		fileLines.push_back(library_item->GetPurchaseDate().ToFormattedString('-'));
+		fileLines.push_back(std::to_string(library_item->GetPlaytime()));
+
+		writeToLineToFile(fileLines);
+	}
+
+	void DataWriter::writeGuestGame(LibraryItem* library_item)
+	{
+		std::vector<std::string> fileLines;
+
+		fileLines.push_back("GUEST-ITEM");
+		fileLines.push_back(std::to_string(library_item->GetGame()->GetId()));
 		fileLines.push_back(library_item->GetPurchaseDate().ToFormattedString('-'));
 		fileLines.push_back(std::to_string(library_item->GetPlaytime()));
 

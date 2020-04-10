@@ -19,7 +19,7 @@ namespace Menu {
 	{
 		//displaying the game price
 		std::cout << "  Price: " << char(156);
-		printf("%.2f", game->GetCost()); //Price to two decimal places
+		printf("%.2f", (double)game->GetCost()/100); //Price to two decimal places
 		Line();
 		Line("Description: " + game->GetDescription()); // Game description
 		Line();

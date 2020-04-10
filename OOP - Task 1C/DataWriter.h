@@ -19,6 +19,7 @@ namespace data
 		void writeAccountAdmin(Admin*);
 		void writeAccountGuest(Guest*);
 		void writeOwnedGame(LibraryItem*);
+		void writeGuestGame(LibraryItem* library_item);
 
 		void writeToLineToFile(const std::vector<std::string>& lines);
 	private:

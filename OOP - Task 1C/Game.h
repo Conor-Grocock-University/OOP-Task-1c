@@ -10,7 +10,7 @@ public:
 
     const std::string& GetName() const;
     const std::string& GetDescription() const;
-    double GetCost() const;
+    int GetCost() const;
     int GetAgeRating() const;
     int GetId() const;
 
@@ -18,6 +18,6 @@ private:
     int id;
     std::string name;
     std::string description;
-    double cost;
+    int cost;
     int ageRating;
 };

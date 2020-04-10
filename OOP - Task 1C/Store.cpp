@@ -26,7 +26,7 @@ List<Game*> Store::SearchByName(std::string &searchText)
 	return searchedGames;
 }
 
-List<Game*> Store::SearchByPriceRange(double min, double max) // unable to pass by reference due to error from returned value from Question function
+List<Game*> Store::SearchByPriceRange(const int& min, const int &max) // unable to pass by reference due to error from returned value from Question function
 {
 	List<Game*> searchedGames;
 	for (int i = 0; i < games.length(); i++)

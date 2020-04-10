@@ -21,7 +21,6 @@ class Account
 	public:
 		Account(const std::string&, const std::string&, const Date&);
 		~Account();
-		const AccountLogins GetAccountLogins() const; // creating a vector which will contain a users username/password for validation
 		List<User*> GetUsers();
 		void AddPlayer(const std::string&, const std::string&);
 		void AddAdmin(const std::string&, const std::string&);
@@ -30,9 +29,10 @@ class Account
 		Player* GetAdmin();
 		void DeletePlayer(User*);
 		
-		List<User*> users;
-
+		const AccountLogins GetAccountLogins() const; // creating a vector which will contain a users username/password for validation
 		const Date& getCreated() const;
+	public:
+		List<User*> users;
 	private:
 		
 		std::string email;

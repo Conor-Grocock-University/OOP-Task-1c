@@ -18,7 +18,7 @@ public:
     static void recursiveToUpper(char*);
     static std::string toLowerString(std::string); // we don't want to pass by reference as we don't want to altar the base string value
     static std::string toUpperString(std::string);
-    static bool withinPriceRange(double&, double&, double);
+    static bool withinPriceRange(const int& min, const int& max, int gamePrice);
     static int toInt(std::string&);
     static double toDouble(std::string&);
     static int randomWithinRange(int min, int max);
