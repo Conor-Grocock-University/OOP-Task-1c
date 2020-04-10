@@ -34,16 +34,26 @@ namespace data
 			List<User*> users = account->users;
 			for (int user_index = 0; user_index < users.length(); user_index++)
 			{
-				User* player = (User*)users[user_index];
-				
-				if(Utils::isUserAdmin(player))
-					writeAccountAdmin(dynamic_cast<Admin*>(player));
-				else if (Utils::isUserGuest(player))
-					writeAccountGuest(dynamic_cast<Guest*>(player));
-				else
-					writeAccountPlayer(dynamic_cast<Player*>(player));
+				User* user = (User*)users[user_index];
+				Player* player;
+				std::vector<LibraryItem*> library;
 
-				std::vector<LibraryItem*> library = player->library;
+				if(Utils::isUserAdmin(user))
+					writeAccountAdmin(dynamic_cast<Admin*>(user));
+				else if (Utils::isUserGuest(user))
+					writeAccountGuest(dynamic_cast<Guest*>(user));
+				else	
+					writeAccountPlayer(dynamic_cast<Player*>(user));
+				if(Utils::isUserGuest(user))
+				{
+					player = app->GetCurrentAccount()->GetAdmin();
+					library = player->guestLibrary;
+				}
+				else
+				{
+					player = (Player*)user;
+					library = player->library;
+				}
 				for (auto& lib_index : library)
 					writeOwnedGame(lib_index);
 			}
