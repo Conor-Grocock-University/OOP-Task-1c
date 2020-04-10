@@ -70,6 +70,7 @@ namespace Menu {
 
 	void ProfileMenu::CreateNewPlayer(Player* player)
 	{
+
 		if (Utils::isUserAdmin(player))
 		{
 			std::string username = Question("Enter username for new Player");
@@ -162,7 +163,11 @@ namespace Menu {
 			}
 			case 'N': {
 				if (Utils::isUserGuest(app->GetCurrentUser()))
-					sort(app->GetCurrentAccount()->GetAdmin()->guestLibrary.begin(), app->GetCurrentAccount()->GetAdmin()->library.end(), Utils::SortByName);
+				{
+					player = app->GetCurrentAccount()->GetAdmin();
+					sort(player->guestLibrary.begin(), player->guestLibrary.end(), Utils::SortByName);
+
+				}
 				else
 					sort(player->library.begin(), player->library.end(), Utils::SortByName); // sorting by name in ascending order, points to static utils function
 				break;
