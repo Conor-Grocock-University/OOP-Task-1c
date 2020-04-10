@@ -54,7 +54,7 @@ namespace Menu {
 		{
 			if (!app->GetCurrentAccount()->GetAdmin()->guestLibrary.empty())
 			{
-				Line("Owned Games: ");
+				Line("Shared Games: ");
 				Line();
 				for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->guestLibrary.size() - 1; i++)
 				{
@@ -65,6 +65,7 @@ namespace Menu {
 				Option('G', "Play Game");
 				Option('N', "Sort By Name");
 			}
+			else Line("No Games shared With Guest!");
 			
 
 		}
