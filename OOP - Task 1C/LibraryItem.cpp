@@ -6,10 +6,6 @@ LibraryItem::LibraryItem(const Date date,const Game* game, int playTime)
 {
 }
 
-LibraryItem::~LibraryItem()
-{
-}
-
 void LibraryItem::addPlayTime()
 {
 	playtime += Utils::randomWithinRange(10, 60);

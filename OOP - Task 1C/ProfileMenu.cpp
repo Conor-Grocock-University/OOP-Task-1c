@@ -52,10 +52,10 @@ namespace Menu {
 		}
 		else if (Utils::isUserGuest(app->GetCurrentUser()))
 		{
-			Line("Owned Games: ");
-			Line();
 			if (!app->GetCurrentAccount()->GetAdmin()->guestLibrary.empty())
 			{
+				Line("Shared Games: ");
+				Line();
 				for (int i = 0; i <= app->GetCurrentAccount()->GetAdmin()->guestLibrary.size() - 1; i++)
 				{
 					LibraryItem* game = app->GetCurrentAccount()->GetAdmin()->guestLibrary[i];
@@ -65,6 +65,7 @@ namespace Menu {
 				Option('G', "Play Game");
 				Option('N', "Sort By Name");
 			}
+			else Line("No Games shared With Guest!");
 			
 
 		}

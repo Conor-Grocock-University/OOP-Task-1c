@@ -10,7 +10,5 @@ Guest::Guest()
 {
 }
 
-Guest::~Guest()
-{
-}
+
 
