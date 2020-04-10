@@ -49,10 +49,8 @@ namespace Menu {
 					Utils::toUpperString(answer) == "Y" ? (player->BuyGame(game)) ? BlockingMessage("Game Purchased") : BlockingMessage("Insufficient Funds") : BlockingMessage("Okay No Worries");
 
 				}
-				else
-				{
-					BlockingMessage("You Already Own This Game!");
-				}
+				else				
+					BlockingMessage("You Already Own This Game!");			
 				break;
 			}
 
