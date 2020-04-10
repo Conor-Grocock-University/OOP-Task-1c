@@ -11,7 +11,7 @@ namespace Menu {
     {
     public:
         Menu(const std::string& title, Application* app);
-        Menu(const std::string& title,const Game* game, Application* app);
+        Menu(const std::string& title,const Game* game, Application* app); // constructor for Game Details page
 
         void Paint();
 
