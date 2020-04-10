@@ -19,7 +19,7 @@ namespace Menu {
 	{
 		//displaying the game price
 		std::cout << "  Price: " << char(156);
-		printf("%.2f", (double)game->GetCost()/100); //Price to two decimal places
+		printf("%.2f", (double)game->GetCost() / 100); //Price to two decimal places
 		Line();
 		Line("Description: " + game->GetDescription()); // Game description
 		Line();
@@ -46,24 +46,23 @@ namespace Menu {
 				if (!player->OwnsGame(game)) // if player does not own the current game
 				{
 					const std::string answer = Question("Are you sure? Y/N");
-					if (answer == "y" || answer == "Y")
-					{
+					Utils::toUpperString(answer) == "Y" ? (player->BuyGame(game)) ? BlockingMessage("Game Purchased") : BlockingMessage("Insufficient Funds") : BlockingMessage("Okay No Worries");
 
-						if (player->BuyGame(game))
-							BlockingMessage("Game Purchased");
-
-						else
-							BlockingMessage("Insufficient Funds");
-
-					}
-					break;
 				}
+				else
+				{
+					BlockingMessage("You Already Own This Game!");
+				}
+				break;
+			}
+
 		default:
 			BlockingMessage("Undefined case");
 			break;
 
-			}
-			return false;
 		}
-	}
-};
+		return false;
+	};
+	
+}
+
