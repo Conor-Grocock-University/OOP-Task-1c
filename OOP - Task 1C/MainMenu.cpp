@@ -19,6 +19,7 @@ namespace Menu {
         }
         else if (app->IsAccountLoggedIn())
         {
+            Option('U', "Login to User");
             Option('L', "Logout of Account");
         }
         else
@@ -48,7 +49,7 @@ namespace Menu {
             }
             else if (app->IsAccountLoggedIn())
             {
-                const std::string answer = Question("Logout of Account?");
+                const std::string answer = Question("Logout of Account? Y/N");
                 if (answer == "y" || answer == "Y")
                 {
                     app->LogoutAccount();
@@ -60,6 +61,9 @@ namespace Menu {
             }
             break;
         }
+        case 'U':
+            LoginUserMenu("Login", app);
+
         case 'P':
         {
             if (app->IsUserLoggedIn())
