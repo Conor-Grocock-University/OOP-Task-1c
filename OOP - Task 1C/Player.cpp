@@ -25,9 +25,9 @@ void Player::AddCredit(int deposit)
 
 bool Player::BuyGame(const Game* game)
 {
-	if (game->GetCost() > credit) return false;
+	if (game->GetCost()/100 > credit) return false;
 	
-	credit -= game->GetCost();
+	credit -= game->GetCost()/100;
 	library.push_back(new LibraryItem(Date::CurrentDate(), game));
 	return true;
 }
